@@ -6,21 +6,19 @@
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
         Title="Dashboard" Height="700" Width="800">
-    <Grid Height="425">
-        <!-- nav buttons -->
-        <Button x:Name="journalBtn" Content="Journal" HorizontalAlignment="Left" Height="40" Margin="24,34,0,0" VerticalAlignment="Top" Width="84" Click="journalBtn_Click"/>
-        <Button x:Name="tAccBtn" Content="T-Accounts" HorizontalAlignment="Left" Height="41" Margin="24,95,0,0" VerticalAlignment="Top" Width="84" Click="tAccBtn_Click"/>
+    <Grid Margin="0,63,0,0">
+        <TabControl HorizontalAlignment="Left" Height="547" Margin="22,0,0,0" VerticalAlignment="Center" Width="752">
+            <TabItem Header="Journal" Margin="-2,-2,-36,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:Journal Margin="0,0,10,0"></local:Journal>
+                </Grid>
+            </TabItem>
+            <TabItem Header="T-Accounts" Margin="37,-2,-74,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:T_Accounts></local:T_Accounts>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
-        <!-- unused buttons -->
-        <Button Content="Profit and Loss" HorizontalAlignment="Left" Height="42" Margin="22,215,0,0" VerticalAlignment="Top" Width="86"/>
-        <Button Content="Balance Sheet" HorizontalAlignment="Left" Height="42" Margin="24,158,0,0" VerticalAlignment="Top" Width="84"/>
-        <Button Content="Cash Flow" HorizontalAlignment="Left" Height="42" Margin="24,275,0,0" VerticalAlignment="Top" Width="84"/>
-        <Button Content="Reports" HorizontalAlignment="Left" Height="42" Margin="24,335,0,0" VerticalAlignment="Top" Width="84"/>
-
-        <!-- where the different sections will be seen (for now until I can find a better way to do it) -->
-        <Grid Height="650" Width="650" Margin="140,-112,10,0" VerticalAlignment="Top">
-            <local:Journal x:Name="journalUserControl" Visibility="Collapsed"></local:Journal>
-            <local:T_Accounts x:Name="t_AccountsUserControl" Visibility="Collapsed"></local:T_Accounts>
-        </Grid>
     </Grid>
 </Window>

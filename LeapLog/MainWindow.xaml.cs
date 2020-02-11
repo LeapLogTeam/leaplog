@@ -27,26 +27,5 @@ namespace LeapLog
         {
             InitializeComponent();
         }
-
-        //Button Click Events
-        private void journalBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SetActiveUserControl(journalUserControl);
-        }
-
-        private void tAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            SetActiveUserControl(t_AccountsUserControl);
-        }
-
-        public void SetActiveUserControl(UserControl control)
-        {
-            //make all user control sections invisible and collapsed
-            journalUserControl.Visibility = Visibility.Collapsed;
-            t_AccountsUserControl.Visibility = Visibility.Collapsed;
-
-            //make the correct user control section visible
-            control.Visibility = Visibility.Visible;
-        }
     }
 }

@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
-    /// Interaction logic for T_Accounts.xaml
+    /// Go ahead and write a summary for T_Accounts.xaml here!
     /// </summary>
     public partial class T_Accounts : UserControl
     {
