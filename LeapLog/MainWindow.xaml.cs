@@ -16,8 +16,7 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
-    /// The main window represents is used to navigate between User Controls.
-    /// Each button makes a different section of our program visible.
+    /// The main window represents is used to navigate between User Controls / program sections.
     /// </summary>
    
     public partial class MainWindow : Window

@@ -8,6 +8,6 @@
              d:DesignHeight="650" d:DesignWidth="650"
              Background="White">
     <Grid>
-        <Label Content="This is the T-Accounts section!" HorizontalAlignment="Center" Height="43" VerticalAlignment="Center" Width="309" FontSize="22"/>
+        <Label Content="This is the T-Accounts section!" HorizontalAlignment="Center" Height="43" VerticalAlignment="Top" Width="310" FontSize="22" Margin="0,296,0,0"/>
     </Grid>
 </UserControl>
