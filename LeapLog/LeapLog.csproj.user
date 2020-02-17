@@ -7,7 +7,21 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Journal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="T_Accounts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Journal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="T_Accounts.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

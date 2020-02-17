@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Dashboard" Height="700" Width="800">
+    <Grid Margin="0,63,0,0">
+        <TabControl HorizontalAlignment="Left" Height="595" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
+            <TabItem Header="Journal" Margin="-2,-2,-36,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:Journal Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="T-Accounts" Margin="37,-2,-74,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:T_Accounts></local:T_Accounts>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Menu Margin="10,-46,26,605"/>
 
     </Grid>
 </Window>

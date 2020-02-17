@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\cynth\leaplog-project\LeapLog\App.xaml
-11151548125
+31309163717
 
-4-106985295
+7-1576786392
 1921654412462
-MainWindow.xaml;
+Journal.xaml;MainWindow.xaml;T_Accounts.xaml;
 
-False
+True
 

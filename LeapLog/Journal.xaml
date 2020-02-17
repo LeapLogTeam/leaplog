@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="LeapLog.Journal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LeapLog"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="650"
+             Background="White">
+    <Grid>
+        <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="3,2,0,0">
+            <!-- TO DO: style entryGrid -->
+
+            <!-- Column Header Text & Bindings -->
+            <DataGrid.Columns>
+                <!-- Date Column -->
+                <DataGridTextColumn Header="Date" Width="150 " Binding="{Binding Date}"/>
+                <!-- Accounts Column -->
+                <DataGridTemplateColumn Header="Accounts" Width="250 ">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Account1}"/>
+                                <TextBlock Text="{Binding Account2}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Debit Column -->
+                <DataGridTemplateColumn Header="Debit" Width="125">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Debit}"/>
+                                <TextBlock Text=""/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Credit Column -->
+                <DataGridTemplateColumn Header="Credit" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical" >
+                                <TextBlock Text=""/>
+                                <TextBlock Text="{Binding Credit}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!-- Add Entry Section-->
+        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="47,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="161,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="384,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="495,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+        <Button Name="addEntryBtn" Content="Add New Entry" HorizontalAlignment="Center" Height="22" Margin="0,498,0,0" VerticalAlignment="Top" Width="118" Click="addEntryBtn_Click"/>
+        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="42,430,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="161,430,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="42,430,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="379,430,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="493,430,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</UserControl>

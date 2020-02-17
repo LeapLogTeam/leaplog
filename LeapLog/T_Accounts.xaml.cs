@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,13 +14,11 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
-    /// The main window represents is used to navigate between User Controls / program sections.
+    /// Go ahead and write a summary for T_Accounts.xaml here!
     /// </summary>
-   
-    public partial class MainWindow : Window
+    public partial class T_Accounts : UserControl
     {
-
-        public MainWindow()
+        public T_Accounts()
         {
             InitializeComponent();
         }
