@@ -6,4 +6,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="monitor %283%29.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="monitor (3).png" />
+  </ItemGroup>
+
 </Project>
