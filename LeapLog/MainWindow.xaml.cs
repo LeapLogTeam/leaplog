@@ -18,6 +18,7 @@ namespace LeapLog
     /// <summary>
     /// The main window represents is used to navigate between User Controls / program sections.
     /// </summary>
+    /// this is the testing new feature clone
    
     public partial class MainWindow : Window
     {
@@ -25,6 +26,12 @@ namespace LeapLog
         public MainWindow()
         {
             InitializeComponent();
+        }
+       
+        //adding shutdown funtionality when closing main window
+        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

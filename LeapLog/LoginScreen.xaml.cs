@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
+    /// this is the git loginScreen Branch
     /// Interaction logic for LoginScreen.xaml
     /// </summary>
     public partial class LoginScreen : Window

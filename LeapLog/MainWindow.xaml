@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
-        Title="Dashboard" Height="700" Width="800">
+        Title="Dashboard" Height="700" Width="800" Closing="Window_Closing_1">
     <Grid Margin="0,63,0,0">
         <TabControl HorizontalAlignment="Left" Height="595" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
             <TabItem Header="Journal" Margin="-2,-2,-36,0">
