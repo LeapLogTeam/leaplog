@@ -5,20 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
-        Title="Welcome" Height="450" Width="800">
-    <Grid Height="399" HorizontalAlignment="Left" Width="790">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="82*"/>
-            <ColumnDefinition Width="313*"/>
-        </Grid.ColumnDefinitions>
-        <Image x:Name="image" Height="210" Margin="67,128,575,0" VerticalAlignment="Top" Source="monitor (3).png" Grid.ColumnSpan="2"/>
-        <Label x:Name="label" Content="User Name:" HorizontalAlignment="Left" Margin="132,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.897,0.593" Width="172" FontSize="14" Grid.Column="1"/>
-        <Label x:Name="label1" Content="Enter Password: " HorizontalAlignment="Left" Margin="132,200,0,0" VerticalAlignment="Top" Width="172" FontSize="14" Grid.Column="1"/>
-        <Button x:Name="button" Content="ENTER" HorizontalAlignment="Left" Margin="137,270,0,0" VerticalAlignment="Top" Width="86" Height="45" Grid.Column="1" Click="button_Click"/>
-        <Button x:Name="button1" Content="EXIT" HorizontalAlignment="Left" Margin="250,270,0,0" VerticalAlignment="Top" Width="86" Height="45" Grid.Column="1" Click="button1_Click"/>
-        <TextBox x:Name="UserName" HorizontalAlignment="Left" Margin="137,153,0,0" Text="Enter username" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TextChanged="textBox1_TextChanged" FontFamily="Calibri" FontStyle="Italic" Height="19" Grid.Column="1"/>
-        <Label x:Name="label2" Content="LeapLog Systems" HorizontalAlignment="Left" Margin="75,27,0,0" VerticalAlignment="Top" Width="425" Height="46" FontSize="20" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="Pass" Grid.Column="1" HorizontalAlignment="Left" Margin="137,234,0,0" Text="Enter Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" Height="20" TextChanged="textBox_TextChanged" FontFamily="Calibri" FontStyle="Italic"/>
+        Title="Login" Height="404" Width="631" FontSize="12" Background="AliceBlue">
+    <Grid HorizontalAlignment="Left" Height="399" Margin="-151,0,0,0" Width="900" >
+        <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Margin="354,108,380,262"/>
+        <Label x:Name="label1" Content="Enter Password: " FontSize="14" Margin="354,176,380,194"/>
+        <TextBox x:Name="UserName" Text="Enter username" TextWrapping="Wrap" TextChanged="textBox1_TextChanged" FontFamily="Calibri" FontStyle="Italic" Margin="354,142,354,228"/>
+        <Label x:Name="label2" Content="Login" FontSize="20" FontWeight="Bold" Margin="414,57,414,296"/>
+        <Button x:Name="button" Content="ENTER" Click="button_Click" Margin="354,254,466,100" RenderTransformOrigin="0.388,0.555"/>
+        <Button x:Name="button1" Content="EXIT" Click="button1_Click" Margin="466,254,354,100"/>
+        <PasswordBox x:Name="Pass" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Width="192" Password="leaplog" Height="25"/>
 
     </Grid>
 </Window>

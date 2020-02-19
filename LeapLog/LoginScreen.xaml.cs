@@ -33,8 +33,9 @@ namespace LeapLog
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
-            if (UserName.Text == "leaplog" && Pass.Text == "leaplog")
+            //updated textbox to passwordbox 
+            //database funtionality coming soon
+            if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
             {
                 MainWindow MS = new MainWindow();
                 MS.Show();
