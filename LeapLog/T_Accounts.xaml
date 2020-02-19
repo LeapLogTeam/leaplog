@@ -8,6 +8,14 @@
              d:DesignHeight="650" d:DesignWidth="650"
              Background="White">
     <Grid>
-        <Label Content="This is the T-Accounts section!" HorizontalAlignment="Center" Height="43" VerticalAlignment="Top" Width="310" FontSize="22" Margin="0,296,0,0"/>
-    </Grid>
+          <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="3,2,0,0">
+               <DataGrid.Columns>
+                    <DataGridTextColumn Header="Date" Width="120" Binding="{Binding Date}"/>
+                    <DataGridTextColumn Header="Description" Width="120" Binding="{Binding Account2}"/>
+                    <DataGridTextColumn Header="Debit" Width="130" Binding="{Binding Debit}"/>
+                    <DataGridTextColumn Header="Credit" Width="130" Binding="{Binding Credit}"/>
+                    <DataGridTextColumn Header="Balance" Width="170" Binding="{Binding Balance}"/>
+               </DataGrid.Columns>
+          </DataGrid>
+     </Grid>
 </UserControl>

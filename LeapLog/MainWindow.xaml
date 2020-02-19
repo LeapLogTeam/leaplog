@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Dashboard" Height="700" Width="800">
     <Grid Margin="0,63,0,0">
-        <TabControl HorizontalAlignment="Left" Height="595" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
+        <TabControl SelectionChanged="TabControl_SelectionChanged" HorizontalAlignment="Left" Height="595" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
             <TabItem Header="Journal" Margin="-2,-2,-36,0">
                 <Grid Background="#FFE5E5E5">
                     <local:Journal Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
@@ -15,7 +15,7 @@
             </TabItem>
             <TabItem Header="T-Accounts" Margin="37,-2,-74,0">
                 <Grid Background="#FFE5E5E5">
-                    <local:T_Accounts></local:T_Accounts>
+                    <local:T_Accounts x:Name="t_account_control" Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>
