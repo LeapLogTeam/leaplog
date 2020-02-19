@@ -26,5 +26,10 @@ namespace LeapLog
         {
             InitializeComponent();
         }
-    }
+          
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            t_account_control.Refresh();
+        }
+     }
 }
