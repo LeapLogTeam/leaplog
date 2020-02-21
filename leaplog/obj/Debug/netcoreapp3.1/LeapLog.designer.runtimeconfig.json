@@ -7,8 +7,7 @@
     },
     "additionalProbingPaths": [
       "C:\\Users\\cynth\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\cynth\\.nuget\\packages",
-      "C:\\Microsoft\\Xamarin\\NuGet",
+      "C:\\Users\\Jay\\.nuget\\packages",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "configProperties": {
