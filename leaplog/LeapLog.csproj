@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <RootNamespace>LeapLog</RootNamespace>
+    <AssemblyName>LeapLog</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
