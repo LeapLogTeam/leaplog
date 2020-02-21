@@ -1,0 +1,6 @@
+*.json
+*.cache
+*.props
+leaplog/.vs
+leaplog/obj/Debug/
+leaplog/bin/Debug/
