@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj": {}
+    "C:\\Users\\cynth\\leaplog-project\\LeapLog\\LeapLog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj": {
+    "C:\\Users\\cynth\\leaplog-project\\LeapLog\\LeapLog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj",
+        "projectUniqueName": "C:\\Users\\cynth\\leaplog-project\\LeapLog\\LeapLog.csproj",
         "projectName": "LeapLog",
-        "projectPath": "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj",
+        "projectPath": "C:\\Users\\cynth\\leaplog-project\\LeapLog\\LeapLog.csproj",
         "packagesPath": "C:\\Users\\cynth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cynth\\leaplog-project\\leaplog\\obj\\",
+        "outputPath": "C:\\Users\\cynth\\leaplog-project\\LeapLog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

@@ -92,3 +92,6 @@ C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.AssemblyInfo.cs
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.pdb
+C:\Users\cynth\leaplog-project\LeapLog\obj\Debug\netcoreapp3.1\LoginScreen.g.cs
+C:\Users\cynth\leaplog-project\LeapLog\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\cynth\leaplog-project\LeapLog\obj\Debug\netcoreapp3.1\LoginScreen.baml
