@@ -35,6 +35,7 @@ namespace LeapLog
             tempEntry.Credit = Int32.Parse(creditTB.Text);
 
             entryGrid.Items.Add(tempEntry);
+            Database.Entries.Add(tempEntry);
 
             //clear textboxes
             account1TB.Text = "";

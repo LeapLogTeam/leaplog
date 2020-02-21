@@ -22,5 +22,14 @@ namespace LeapLog
         {
             InitializeComponent();
         }
+
+        public void Refresh()
+        {
+            entryGrid.Items.Clear();
+            for (int i = 0; i < Database.Entries.Count; i++)
+            {
+                entryGrid.Items.Add(Database.Entries[i]);
+            }
+        }
     }
 }

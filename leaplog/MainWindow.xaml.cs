@@ -27,6 +27,7 @@ namespace LeapLog
         {
             InitializeComponent();
         }
+<<<<<<< HEAD:LeapLog/MainWindow.xaml.cs
        
         //adding shutdown funtionality when closing main window
         private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
@@ -34,4 +35,14 @@ namespace LeapLog
             System.Windows.Application.Current.Shutdown();
         }
     }
+||||||| d5aee70:LeapLog/MainWindow.xaml.cs
+    }
+=======
+          
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            t_account_control.Refresh();
+        }
+     }
+>>>>>>> master:leaplog/MainWindow.xaml.cs
 }
