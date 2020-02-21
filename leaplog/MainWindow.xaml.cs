@@ -18,6 +18,7 @@ namespace LeapLog
     /// <summary>
     /// The main window represents is used to navigate between User Controls / program sections.
     /// </summary>
+    /// this is the testing new feature clone
    
     public partial class MainWindow : Window
     {
@@ -26,10 +27,22 @@ namespace LeapLog
         {
             InitializeComponent();
         }
+<<<<<<< HEAD:LeapLog/MainWindow.xaml.cs
+       
+        //adding shutdown funtionality when closing main window
+        private void Window_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+    }
+||||||| d5aee70:LeapLog/MainWindow.xaml.cs
+    }
+=======
           
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             t_account_control.Refresh();
         }
      }
+>>>>>>> master:leaplog/MainWindow.xaml.cs
 }
