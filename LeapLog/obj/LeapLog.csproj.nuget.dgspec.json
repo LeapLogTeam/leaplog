@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\engel\\OneDrive\\01LoneStar\\2020Spring\\INEW2332Project\\My Branch\\project\\clones\\leaplog\\LeapLog\\LeapLog.csproj": {}
+    "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\engel\\OneDrive\\01LoneStar\\2020Spring\\INEW2332Project\\My Branch\\project\\clones\\leaplog\\LeapLog\\LeapLog.csproj": {
+    "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\engel\\OneDrive\\01LoneStar\\2020Spring\\INEW2332Project\\My Branch\\project\\clones\\leaplog\\LeapLog\\LeapLog.csproj",
+        "projectUniqueName": "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj",
         "projectName": "LeapLog",
-        "projectPath": "C:\\Users\\engel\\OneDrive\\01LoneStar\\2020Spring\\INEW2332Project\\My Branch\\project\\clones\\leaplog\\LeapLog\\LeapLog.csproj",
-        "packagesPath": "C:\\Users\\engel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\engel\\OneDrive\\01LoneStar\\2020Spring\\INEW2332Project\\My Branch\\project\\clones\\leaplog\\LeapLog\\obj\\",
+        "projectPath": "C:\\Users\\cynth\\leaplog-project\\leaplog\\LeapLog.csproj",
+        "packagesPath": "C:\\Users\\cynth\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cynth\\leaplog-project\\leaplog\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\engel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\cynth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
