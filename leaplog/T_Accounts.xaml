@@ -11,7 +11,7 @@
           <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="3,2,0,0">
                <DataGrid.Columns>
                     <DataGridTextColumn Header="Date" Width="120" Binding="{Binding Date}"/>
-                    <DataGridTextColumn Header="Description" Width="120" Binding="{Binding Account2}"/>
+					<DataGridTextColumn Header="Description" Width="120" Binding="{Binding Description}"/>
                     <DataGridTextColumn Header="Debit" Width="130" Binding="{Binding Debit}"/>
                     <DataGridTextColumn Header="Credit" Width="130" Binding="{Binding Credit}"/>
                     <DataGridTextColumn Header="Balance" Width="170" Binding="{Binding Balance}"/>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeapLog
 {
-    class Entry
+    public class Entry
     {
         //class properties
         public Entry() {
