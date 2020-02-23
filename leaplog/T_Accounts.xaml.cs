@@ -31,25 +31,25 @@ namespace LeapLog
                for (int i = 0; i < Database.Entries.Count; i++)
                {
                     Entry entry = Database.Entries[i];
-                    Entry_tacc tacc1 = Get_tacc(entry, 0, balance);
+                    Entry_tacc tacc1 = Get_tacc(entry, account_type.Debit, balance);
                     balance = tacc1.Balance;
-                    Entry_tacc tacc2 = Get_tacc(entry, 1, balance);
-                    balance = tacc1.Balance;
+                    Entry_tacc tacc2 = Get_tacc(entry, account_type.Credit, balance);
+                    balance = tacc2.Balance;
 
                     entryGrid.Items.Add(tacc1);
                     entryGrid.Items.Add(tacc2);
                }
           }
 
-          public Entry_tacc Get_tacc(Entry Entry, int Account_number, int balance)
+          public Entry_tacc Get_tacc(Entry Entry, account_type Account_Type, int balance)
           {
                Entry_tacc acc = new Entry_tacc();
                acc.Date = Entry.Date;
-               
-               if (Account_number == 0)
+               acc.Account_Type = Account_Type;
+
+               if (Account_Type == account_type.Debit)
                {
                     acc.Description = Entry.Account1;
-                    acc.Account_Type = account_type.Debit;
                     int Debit = Entry.Debit;
                     acc.Debit = Debit;
                     acc.Credit = 0;
@@ -58,7 +58,6 @@ namespace LeapLog
                else
                {
                     acc.Description = Entry.Account2;
-                    acc.Account_Type = account_type.Credit;
                     int Credit = Entry.Credit;
                     acc.Debit = 0;
                     acc.Credit = Credit;
