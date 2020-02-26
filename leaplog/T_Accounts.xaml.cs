@@ -57,7 +57,7 @@ namespace LeapLog
                }
                else
                {
-                    acc.Description = Entry.Account2.Trim();
+                    acc.Description = Entry.Account2;
                     int Credit = Entry.Credit;
                     acc.Debit = 0;
                     acc.Credit = Credit;

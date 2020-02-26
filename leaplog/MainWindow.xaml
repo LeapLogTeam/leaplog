@@ -18,7 +18,12 @@
                     <local:T_Accounts x:Name="t_account_control" Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-        </TabControl>
+			   <TabItem Header="Balance Sheet" Margin="75,-2,-112,0">
+			    <Grid Background="#FFE5E5E5">
+					<local:BalanceSheet x:Name="balance_sheet_control" Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
+				</Grid>
+			   </TabItem>
+		  </TabControl>
         <Menu Margin="10,-46,26,605"/>
 
     </Grid>

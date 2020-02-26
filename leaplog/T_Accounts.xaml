@@ -14,7 +14,7 @@
 					<DataGridTextColumn Header="Description" Width="120" Binding="{Binding Description}"/>
                     <DataGridTextColumn Header="Debit" Width="130" Binding="{Binding Debit}"/>
                     <DataGridTextColumn Header="Credit" Width="130" Binding="{Binding Credit}"/>
-                    <DataGridTextColumn Header="Balance" Width="170" Binding="{Binding Balance}"/>
+                    <DataGridTextColumn Header="Balance" Width="142" Binding="{Binding Balance}"/>
                </DataGrid.Columns>
           </DataGrid>
      </Grid>
