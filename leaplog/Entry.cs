@@ -16,6 +16,10 @@ namespace LeapLog
 
         public string Account2 { get; set; }
 
+        public string Category1 { get; set; }
+
+        public string Category2 { get; set; }
+
         public int Debit { get; set; }
 
         public int Credit { get; set; }

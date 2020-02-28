@@ -29,13 +29,28 @@ namespace LeapLog
         {
             Entry tempEntry = new Entry();
 
-            tempEntry.Account1 = account1TB.Text;
-            tempEntry.Account2 = "      " + account2TB.Text;
-            tempEntry.Debit = Int32.Parse(debitTB.Text);
-            tempEntry.Credit = Int32.Parse(creditTB.Text);
+            //clear any warnings, if necessary
+            warningTB.Visibility = Visibility.Hidden;
 
-            entryGrid.Items.Add(tempEntry);
-            Database.Entries.Add(tempEntry);
+            //populates new entry object with user data given
+            try
+            {
+                tempEntry.Account1 = account1TB.Text;
+                tempEntry.Account2 = "      " + account2TB.Text;
+                tempEntry.Debit = Int32.Parse(debitTB.Text);
+                tempEntry.Credit = Int32.Parse(creditTB.Text);
+                tempEntry.Category1 = category1CB.Text;
+                tempEntry.Category2 = category2CB.Text;
+
+                //add entry into entryGrid
+                entryGrid.Items.Add(tempEntry);
+
+                //add entry into entry Database
+                Database.Entries.Add(tempEntry);
+            }
+            catch {
+                warningTB.Visibility = Visibility.Visible;
+            }
 
             //clear textboxes
             account1TB.Text = "";
