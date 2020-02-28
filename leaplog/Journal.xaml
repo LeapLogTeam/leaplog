@@ -24,8 +24,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <!-- Type Column -->
-                <DataGridTemplateColumn Header="Type" Width="100">
+                <!-- Category Column -->
+                <DataGridTemplateColumn Header="Category" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">

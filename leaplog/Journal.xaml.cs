@@ -57,6 +57,8 @@ namespace LeapLog
             account2TB.Text = "";
             debitTB.Text = "";
             creditTB.Text = "";
+            category1CB.SelectedItem = null;
+            category2CB.SelectedItem = null;
         }
     }
 }
