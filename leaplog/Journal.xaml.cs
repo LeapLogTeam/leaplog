@@ -14,7 +14,8 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
-    /// Go ahead and write a summary for Journal.xaml right here! Sometime...
+    /// The Journal class allows the user to create new journal entries that can be stored
+    /// using the Database class.
     /// </summary>
     public partial class Journal : UserControl
     {
@@ -27,12 +28,14 @@ namespace LeapLog
         //Add new entry button
         private void addEntryBtn_Click(object sender, RoutedEventArgs e)
         {
+            //new entry is created
             Entry tempEntry = new Entry();
 
             //clear any warnings, if necessary
             warningTB.Visibility = Visibility.Hidden;
 
             //populates new entry object with user data given
+            //REVISION NEEDED: validation could be improved.
             try
             {
                 tempEntry.Account1 = account1TB.Text;
@@ -49,6 +52,8 @@ namespace LeapLog
                 Database.Entries.Add(tempEntry);
             }
             catch {
+                //if incorrect data entered, warning given
+                //and entry not saved
                 warningTB.Visibility = Visibility.Visible;
             }
 
