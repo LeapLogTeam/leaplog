@@ -42,14 +42,18 @@ namespace LeapLog
                 tempEntry.Account2 = "      " + account2TB.Text;
                 tempEntry.Debit = Int32.Parse(debitTB.Text);
                 tempEntry.Credit = Int32.Parse(creditTB.Text);
-                tempEntry.Category1 = category1CB.Text;
-                tempEntry.Category2 = category2CB.Text;
+                tempEntry.Type1 = type1CB.Text;
+                tempEntry.Type2 = type2CB.Text;
 
                 //add entry into entryGrid
                 entryGrid.Items.Add(tempEntry);
 
-                //add entry into entry Database
+                //add entry into Database
                 Database.Entries.Add(tempEntry);
+                //separate entry into two t-accounts
+                List<Entry_tacc> tempAccounts = T_Accounts.get_taccs(tempEntry);
+                //process t-accounts
+                T_Accounts.add_taccs(tempAccounts);
             }
             catch {
                 //if incorrect data entered, warning given
@@ -62,8 +66,8 @@ namespace LeapLog
             account2TB.Text = "";
             debitTB.Text = "";
             creditTB.Text = "";
-            category1CB.SelectedItem = null;
-            category2CB.SelectedItem = null;
+            type1CB.SelectedItem = null;
+            type2CB.SelectedItem = null;
         }
     }
 }
