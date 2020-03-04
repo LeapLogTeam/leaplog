@@ -8,15 +8,38 @@
              d:DesignHeight="650" d:DesignWidth="650"
              Background="White">
     <Grid>
-          <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="3,2,0,0">
-               <DataGrid.Columns>
-                    <DataGridTextColumn Header="Date" Width="65" Binding="{Binding Date}"/>
-                    <DataGridTextColumn Header="Account" Width="150" Binding="{Binding Account}"/>
-                    <DataGridTextColumn Header="Type" Width="100" Binding="{Binding Type}"/>
-                    <DataGridTextColumn Header="Debit" Width="100" Binding="{Binding Debit}"/>
-                    <DataGridTextColumn Header="Credit" Width="100" Binding="{Binding Credit}"/>
-                    <DataGridTextColumn Header="Balance" Width="100" Binding="{Binding Balance}"/>
+        <!-- assets grid -->
+        <DataGrid x:Name="a_Grid" SelectionMode="Single" HorizontalAlignment="Left" Height="422" VerticalAlignment="Center" Width="199" RenderTransformOrigin="0.5,0.5" Margin="10,0,0,0">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Assets" Width="*" Binding="{Binding Account}"/>
             </DataGrid.Columns>
-          </DataGrid>
-     </Grid>
+        </DataGrid>
+        <!-- liabilities grid -->
+        <DataGrid x:Name="l_Grid" SelectionMode="Single" HorizontalAlignment="Center" Height="422" VerticalAlignment="Center" Width="198" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Liabilities" Width="*" Binding="{Binding Account}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- owner's equity grid -->
+        <DataGrid x:Name="oe_Grid" SelectionMode="Single" HorizontalAlignment="Right" Height="422" VerticalAlignment="Center" Width="199" RenderTransformOrigin="0.5,0.5" Margin="441,0,10,0">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Owner's Equity" Width="*" Binding="{Binding Account}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

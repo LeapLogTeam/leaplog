@@ -48,8 +48,6 @@ namespace LeapLog
                 //add entry into entryGrid
                 entryGrid.Items.Add(tempEntry);
 
-                //add entry into Database
-                Database.Entries.Add(tempEntry);
                 //separate entry into two t-accounts
                 List<Entry_tacc> tempAccounts = T_Accounts.get_taccs(tempEntry);
                 //process t-accounts

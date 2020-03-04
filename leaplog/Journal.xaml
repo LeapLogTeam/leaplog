@@ -9,7 +9,7 @@
              Background="White">
     <!-- create grid to show journal entries -->
     <Grid>
-        <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="394" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="entryGrid" HorizontalAlignment="Center" Height="394" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5">
             <!-- Column Header Text & Bindings -->
             <DataGrid.Columns>
                 <!-- Date Column -->

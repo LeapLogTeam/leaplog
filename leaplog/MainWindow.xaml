@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
-        Title="Dashboard" Height="700" Width="800" Closing="Window_Closing_1">
-    <Grid Margin="0,63,0,0">
-        <TabControl SelectionChanged="TabControl_SelectionChanged" HorizontalAlignment="Left" Height="595" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
+        Title="Dashboard" Height="670" Width="792" Closing="Window_Closing_1">
+    <Grid Height="596">
+        <TabControl SelectionChanged="TabControl_SelectionChanged" HorizontalAlignment="Left" Height="586" Margin="22,10,0,0" VerticalAlignment="Top" Width="752">
             <TabItem Header="Journal" Margin="-2,-2,-36,0">
-                <Grid Background="#FFE5E5E5">
-                    <local:Journal Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
+                <Grid Background="#FFE5E5E5" Margin="0,0,2,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="149*"/>
+                        <ColumnDefinition Width="595*"/>
+                    </Grid.ColumnDefinitions>
+                    <local:Journal Height="558" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="T-Accounts" Margin="37,-2,-74,0">
                 <Grid Background="#FFE5E5E5">
-                    <local:T_Accounts x:Name="t_account_control" Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
+                    <local:T_Accounts x:Name="t_account_control" Height="558" VerticalAlignment="Center"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Menu Margin="10,-46,26,605"/>
 
     </Grid>
 </Window>
