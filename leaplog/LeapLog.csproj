@@ -9,10 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.png" />
     <None Remove="monitor %283%29.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="logo.png" />
     <Resource Include="monitor (3).png" />
   </ItemGroup>
 
