@@ -213,19 +213,52 @@ namespace LeapLog
             return tempAccounts;
           }
 
-        //I AM STUCK RIGHT HERE!!!
-        //method that occurs when a cell in any of the grids is clicked
+        //method that occurs when a cell in any of the grids is clicked: it
+        //gets the cell's respective account's name, data, and balance
         private void DataGridCell_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //open a new window for the account
             SingleAccount accountWindow = new SingleAccount();
             accountWindow.Show();
 
-            //get the account name and data, populate window
-            //string account = DataGridSelectionUnit.Cell.ToString();
+            //get the account name and set in new window
+            DataGridCell cell = (DataGridCell)sender;
+            DataGrid parentGrid = findParent<DataGrid>(cell);
+            DataGridRow parentRow = findParent<DataGridRow>(cell);
+            TextBlock cellTB = (TextBlock)(parentGrid.CurrentCell.Column.GetCellContent(parentRow));
+            string account = cellTB.Text;
+            accountWindow.accountName.Content = account;
 
-            //accountWindow.accountName.Content = account;
-            
+            //get account data
+            Entry_tacc tacc = new Entry_tacc();
+
+            for (int i = 0; i < Database.TEntries.Count; i++)
+            {
+                if (account == Database.TEntries[i].Account)
+                {
+                    tacc.Debit.AddRange(Database.TEntries[i].Debit);
+                    tacc.Credit.AddRange(Database.TEntries[i].Credit);
+                    tacc.Balance = Database.TEntries[i].Balance;
+                }
+            }
+
+            //set account data in new window
+            accountWindow.accountGrid.Items.Add(tacc);
+            accountWindow.balanceLbl.Content = tacc.Balance.ToString();
+        }
+
+        //method to get the specified parent of an object
+        private T findParent<T>(DependencyObject child) where T : DependencyObject
+        {
+            //get parent item
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            //check if the parent matches the type we're looking for
+            T parent = parentObject as T;
+            if (parent != null)
+                return parent;
+            else
+                return findParent<T>(parentObject);
         }
     }
 }
