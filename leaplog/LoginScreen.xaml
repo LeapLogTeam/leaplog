@@ -13,7 +13,7 @@
         <Label x:Name="label2" Content="Login" FontSize="20" FontWeight="Bold" Height="47" Canvas.Left="164" Canvas.Top="118" Width="72"/>
         <Button x:Name="enterButton" TabIndex="3" Content="ENTER" Click="button_Click" RenderTransformOrigin="0.388,0.555" KeyUp="enterButton_KeyUp" Height="46" Canvas.Left="164" Canvas.Top="305" Width="93"/>
         <Button x:Name="exitButton" TabIndex="4" Content="EXIT" Click="button1_Click" Height="46" Canvas.Left="263" Canvas.Top="305" Width="93"/>
-        <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Password="leaplog" Height="25" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="164" Canvas.Top="265" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
+        <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Password="leaplog" Height="25" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="164" Canvas.Top="265" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1" PasswordChar="*"/>
         <Image x:Name="image" Height="112" Canvas.Left="89" Canvas.Top="10" Width="342" Source="logo.png"/>
 
     </Canvas>
