@@ -9,6 +9,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Data;
 
 
 namespace LeapLog
@@ -26,13 +29,20 @@ namespace LeapLog
             InitializeComponent();
         }
 
-        //enter button
+        /*Button Click login*/
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            
-            //updated textbox to passwordbox 
-            //database funtionality coming soon
-            if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
+             
+             
+            //database funtionality for user login credentials
+
+            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+            string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            if (dtbl.Rows.Count == 1)
             {
                 MainWindow MS = new MainWindow();
                 MS.Show();
@@ -41,59 +51,104 @@ namespace LeapLog
             else
             {
                 MessageBox.Show(this, "Wrong User Name or Password", "Information");//, MessageBoxButtons.OK,
-               // MessageBoxIcon.Information);
+                                                                                    // MessageBoxIcon.Information);
                 UserName.Clear();
                 Pass.Clear();
                 UserName.Focus();
             }
+
+
+
+           
+            /* CODE USED FOR TESTING
+             * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
+             {
+                 MainWindow MS = new MainWindow();
+                 MS.Show();
+                 this.Hide();
+             }
+             else
+             {
+                 MessageBox.Show(this, "Wrong User Name or Password", "Information");//, MessageBoxButtons.OK,
+                // MessageBoxIcon.Information);
+                 UserName.Clear();
+                 Pass.Clear();
+                 UserName.Focus();
+             }*/
         }
 
-        //Enter button funtionality for enter button
+        /*Enter button login using tab as selector*/
         private void enterButton_KeyUp(object sender, KeyEventArgs e)
         {
-             
-            
 
-                if (e.Key == Key.Enter)
+              if (e.Key == Key.Enter)
+              {
+                  //our code here
+
+          SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+          string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
+          SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+          DataTable dtbl = new DataTable();
+          sda.Fill(dtbl);
+         
+             if (dtbl.Rows.Count == 1)
+             {
+              MainWindow MS = new MainWindow();
+              MS.Show();
+              this.Hide();
+             }
+
+                /* CODE USED FOR TESTING
+                 * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
+                 {
+                     MainWindow MS = new MainWindow();
+                     MS.Show();
+                     this.Hide();
+                 }*/
+
+                else
                 {
-                     
-                    //our code here
-                    if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
-                    {
-                        MainWindow MS = new MainWindow();
-                        MS.Show();
-                        this.Hide();
-                    }
+                      MessageBox.Show(this, "Wrong User Name or Password.");//, MessageBoxButtons.OK,
 
-                    else 
-                    {
-                        MessageBox.Show(this, "Wrong User Name or Password.");//, MessageBoxButtons.OK,
-                                                                                             
-                        UserName.Clear();
-                        Pass.Clear();
-                        UserName.Focus();
-                        
-                    }
-                   
-                }
-            
+                      UserName.Clear();
+                      Pass.Clear();
+                      UserName.Focus();
+
+                  }
+
+              }
+
 
 
         }
- 
+
         //enter button functionality for pass box
         private void Pass_KeyUp_1(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-            {
-
+            {   
                 //our code here
-                if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
+                SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+                string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
+                DataTable dtbl = new DataTable();
+                sda.Fill(dtbl);
+
+                if (dtbl.Rows.Count == 1)
                 {
                     MainWindow MS = new MainWindow();
                     MS.Show();
                     this.Hide();
                 }
+               
+
+                /* CODE USED FOR TESTING
+                 * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
+                 {
+                     MainWindow MS = new MainWindow();
+                     MS.Show();
+                     this.Hide();
+                 }*/
 
                 else
                 {
