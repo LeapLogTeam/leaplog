@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
         Title="LeapLog" Height="440" Width="336" FontSize="14" Background="#FFB4E5F0" KeyUp="Window_KeyUp_1" WindowStartupLocation="CenterScreen">
-    <Canvas HorizontalAlignment="Left" Height="400" Margin="-100,0,0,0" Width="537" >
+    <Canvas x:Name="loginCanvas" HorizontalAlignment="Left" Height="400" Margin="-100,0,0,0" Width="537" >
         <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="30" Canvas.Left="164" Canvas.Top="165" Width="166" FontFamily="Microsoft Sans Serif"/>
         <Label x:Name="label1" Content="Enter Password: " FontSize="14" Height="30" Canvas.Left="164" Canvas.Top="230" Width="166" FontFamily="Microsoft Sans Serif"/>
         <TextBox x:Name="UserName" TabIndex="1" Text="Enter username" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic" PreviewKeyUp="UserName_PreviewKeyUp" Height="29" Canvas.Left="164" Canvas.Top="200" Width="192" PreviewMouseDown="UserName_PreviewMouseDown"/>
