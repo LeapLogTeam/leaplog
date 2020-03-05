@@ -37,12 +37,12 @@ namespace LeapLog
              
             //database funtionality for user login credentials
 
-            SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
             string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-            DataTable dtbl = new DataTable();
-            sda.Fill(dtbl);
-            if (dtbl.Rows.Count == 1)
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            DataTable dataTable = new DataTable();
+            sda.Fill(dataTable);
+            if (dataTable.Rows.Count == 1)
             {
                 MainWindow MS = new MainWindow();
                 MS.Show();
@@ -85,13 +85,13 @@ namespace LeapLog
               {
                   //our code here
 
-          SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+          SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
           string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
-          SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-          DataTable dtbl = new DataTable();
-          sda.Fill(dtbl);
+          SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+          DataTable dataTable = new DataTable();
+          sda.Fill(dataTable);
          
-             if (dtbl.Rows.Count == 1)
+             if (dataTable.Rows.Count == 1)
              {
               MainWindow MS = new MainWindow();
               MS.Show();
@@ -128,13 +128,13 @@ namespace LeapLog
             if (e.Key == Key.Enter)
             {   
                 //our code here
-                SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
                 string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
-                SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
-                DataTable dtbl = new DataTable();
-                sda.Fill(dtbl);
+                SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+                DataTable dataTable = new DataTable();
+                sda.Fill(dataTable);
 
-                if (dtbl.Rows.Count == 1)
+                if (dataTable.Rows.Count == 1)
                 {
                     MainWindow MS = new MainWindow();
                     MS.Show();
