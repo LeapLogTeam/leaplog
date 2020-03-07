@@ -55,10 +55,8 @@ namespace LeapLog
         public static void add_taccs(List<Entry_tacc> tempAccounts)
         {
             //process each temporary account
-            Entry_tacc acc1 = new Entry_tacc();
-            acc1 = tempAccounts[0];
-            Entry_tacc acc2 = new Entry_tacc();
-            acc2 = tempAccounts[1];
+            Entry_tacc acc1 = tempAccounts[0];
+            Entry_tacc acc2 = tempAccounts[1];
 
             //if database is empty of t-accounts
             if (Database.TEntries.Count == 0)
@@ -72,11 +70,14 @@ namespace LeapLog
             //or add the account to the database
             else
             {
-                //search through list of t-accounts
+                //variable to keep track of whether or not a t-account has been updated
+                bool updated1 = false;
+
+                //search through list of t-accounts for first account
                 for (int i = 0; i < Database.TEntries.Count; i++)
                 {
                     //if first t-account exists already
-                    if (acc1.Account == Database.TEntries[i].Account)
+                    if (acc1.Account.Equals(Database.TEntries[i].Account))
                     {
                         //add the temporary t-account debit to the original debit
                         Database.TEntries[i].Debit.Add(acc1.Debit[0]);
@@ -85,18 +86,18 @@ namespace LeapLog
                         int sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
-                            sumDebit += Database.TEntries[i].Debit[i];
+                            sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
                         int sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
-                            sumCredit += Database.TEntries[i].Credit[i];
+                            sumCredit += Database.TEntries[i].Credit[j];
                         }
 
                         //if it is an asset type
-                        if (Database.TEntries[i].Type == "Asset")
+                        if (Database.TEntries[i].Type.Equals("Asset"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
@@ -107,37 +108,47 @@ namespace LeapLog
                             //update the original account's balance by subtracting the debit from the credit
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
+
+                        updated1 = true;
                     }
                     //if end of list reached and the t-account does not exist,
                     //update the account's properties and add account to list
-                    else if (i == Database.TEntries.Count - 1 && !(acc1.Account == Database.TEntries[i].Account))
+                    else if (i == Database.TEntries.Count - 1 && !(acc1.Account.Equals(Database.TEntries[i].Account)) && !updated1)
                     {
                         //add t-account to list
                         Database.TEntries.Add(acc1);
                     }
+                }
 
+                //search through list of t-accounts for second account
+
+                //variable to keep track of whether or not a t-account has been updated
+                bool updated2 = false;
+
+                for (int i = 0; i < Database.TEntries.Count; i++)
+                {
                     //if second t-account exists already
-                    if (acc2.Account == Database.TEntries[i].Account)
+                    if (acc2.Account.Equals(Database.TEntries[i].Account))
                     {
                         //add the temporary t-account credit to the original credit
-                        Database.TEntries[i].Debit.Add(acc2.Credit[0]);
+                        Database.TEntries[i].Credit.Add(acc2.Credit[0]);
 
                         //get sum of all current debits
                         int sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
-                            sumDebit += Database.TEntries[i].Debit[i];
+                            sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
                         int sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
-                            sumCredit += Database.TEntries[i].Credit[i];
+                            sumCredit += Database.TEntries[i].Credit[j];
                         }
 
                         //if it is an asset type
-                        if (Database.TEntries[i].Type == "Asset")
+                        if (Database.TEntries[i].Type.Equals("Asset"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
@@ -148,17 +159,19 @@ namespace LeapLog
                             //update the original account's balance by subtracting the debit from the credit
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
+
+                        updated2 = true;
                     }
                     //else, if end of list reached and the t-account does not exist,
-                    //update the account's properties and add account to list
-                    else if (i == Database.TEntries.Count - 1 && !(acc2.Account == Database.TEntries[i].Account))
+                    //add account to list
+                    else if (i == Database.TEntries.Count - 1 && !(acc2.Account.Equals(Database.TEntries[i].Account)) && !updated2)
                     {
                         //add t-account to list
                         Database.TEntries.Add(acc2);
                     }
                 }
             }
-            
+
         }
 
         //method that creates two temporary t-accounts that corresponds to a journal entry
