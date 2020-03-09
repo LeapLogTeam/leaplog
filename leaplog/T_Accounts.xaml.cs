@@ -34,15 +34,15 @@ namespace LeapLog
             //add t-accounts to respective grids
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
-                if (Database.TEntries[i].Type == "Asset")
+                if (Database.TEntries[i].Type.Equals("Asset"))
                 {
                     a_Grid.Items.Add(Database.TEntries[i]);
                 }
-                else if (Database.TEntries[i].Type == "Liability")
+                else if (Database.TEntries[i].Type.Equals("Liability"))
                 {
                     l_Grid.Items.Add(Database.TEntries[i]);
                 }
-                else if (Database.TEntries[i].Type == "Owner's Equity")
+                else if (Database.TEntries[i].Type.Equals("Owner's Equity"))
                 {
                     oe_Grid.Items.Add(Database.TEntries[i]);
                 }
@@ -61,6 +61,7 @@ namespace LeapLog
             //if database is empty of t-accounts
             if (Database.TEntries.Count == 0)
             {
+                //add accounts
                 Database.TEntries.Add(acc1);
                 Database.TEntries.Add(acc2);
             }
@@ -70,17 +71,18 @@ namespace LeapLog
             //or add the account to the database
             else
             {
-                //variable to keep track of whether or not a t-account has been updated
+                //variables to keep track of whether or not a t-account has been updated
                 bool updated1 = false;
+                bool updated2 = false;
 
-                //search through list of t-accounts for first account
                 for (int i = 0; i < Database.TEntries.Count; i++)
                 {
                     //if first t-account exists already
                     if (acc1.Account.Equals(Database.TEntries[i].Account))
                     {
-                        //add the temporary t-account debit to the original debit
+                        //add the temporary t-account debit and credit to the original
                         Database.TEntries[i].Debit.Add(acc1.Debit[0]);
+                        Database.TEntries[i].Debit.Add(acc1.Credit[0]);
 
                         //get sum of all current debits
                         int sumDebit = 0;
@@ -115,22 +117,18 @@ namespace LeapLog
                     //update the account's properties and add account to list
                     else if (i == Database.TEntries.Count - 1 && !(acc1.Account.Equals(Database.TEntries[i].Account)) && !updated1)
                     {
-                        //add t-account to list
                         Database.TEntries.Add(acc1);
+                        break;
                     }
+
                 }
-
-                //search through list of t-accounts for second account
-
-                //variable to keep track of whether or not a t-account has been updated
-                bool updated2 = false;
-
                 for (int i = 0; i < Database.TEntries.Count; i++)
                 {
-                    //if second t-account exists already
+                    //if first t-account exists already
                     if (acc2.Account.Equals(Database.TEntries[i].Account))
                     {
-                        //add the temporary t-account credit to the original credit
+                        //add the temporary t-account credit and debit to the original
+                        Database.TEntries[i].Debit.Add(acc2.Debit[0]);
                         Database.TEntries[i].Credit.Add(acc2.Credit[0]);
 
                         //get sum of all current debits
@@ -166,8 +164,8 @@ namespace LeapLog
                     //add account to list
                     else if (i == Database.TEntries.Count - 1 && !(acc2.Account.Equals(Database.TEntries[i].Account)) && !updated2)
                     {
-                        //add t-account to list
                         Database.TEntries.Add(acc2);
+                        break;
                     }
                 }
             }
@@ -211,11 +209,11 @@ namespace LeapLog
             //calculate balance
             if (acc2.Type == "Asset")
             {
-                acc2.Balance = acc1.Debit[0] - acc2.Credit[0];
+                acc2.Balance = acc2.Debit[0] - acc2.Credit[0];
             }
             else
             {
-                acc2.Balance = acc1.Credit[0] - acc2.Debit[0];
+                acc2.Balance = acc2.Credit[0] - acc2.Debit[0];
             }
 
             //add t-accounts to list
@@ -236,18 +234,17 @@ namespace LeapLog
 
             //get the account name and set in new window
             DataGridCell cell = (DataGridCell)sender;
-            DataGrid parentGrid = findParent<DataGrid>(cell);
-            DataGridRow parentRow = findParent<DataGridRow>(cell);
-            TextBlock cellTB = (TextBlock)(parentGrid.CurrentCell.Column.GetCellContent(parentRow));
-            string account = cellTB.Text;
-            accountWindow.accountName.Content = account;
+            string cellName = cell.ToString();
+            int index = cellName.IndexOf(":");
+            string accountName = cellName.Substring(index + 2);
+            accountWindow.accountName.Content = accountName;
 
             //get account data
             Entry_tacc tacc = new Entry_tacc();
 
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
-                if (account == Database.TEntries[i].Account)
+                if (accountName.Equals(Database.TEntries[i].Account))
                 {
                     tacc.Debit.AddRange(Database.TEntries[i].Debit);
                     tacc.Credit.AddRange(Database.TEntries[i].Credit);
@@ -256,22 +253,22 @@ namespace LeapLog
             }
 
             //set account data in new window
-            accountWindow.accountGrid.Items.Add(tacc);
+            Account account = new Account();
+            for (int i = 0; i < tacc.Debit.Count; i++)
+            {
+                account.Debit = tacc.Debit[i];
+                accountWindow.debitGrid.Items.Add(account);
+            }
+            for (int i = 0; i < tacc.Credit.Count; i++)
+            {
+                account.Credit = tacc.Credit[i];
+                accountWindow.creditGrid.Items.Add(account);
+            }
+
             accountWindow.balanceLbl.Content = tacc.Balance.ToString();
-        }
 
-        //method to get the specified parent of an object
-        private T findParent<T>(DependencyObject child) where T : DependencyObject
-        {
-            //get parent item
-            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
-
-            //check if the parent matches the type we're looking for
-            T parent = parentObject as T;
-            if (parent != null)
-                return parent;
-            else
-                return findParent<T>(parentObject);
+            //to clear duplicate cells that pop up after user clicks a cell
+            Refresh();
         }
     }
 }

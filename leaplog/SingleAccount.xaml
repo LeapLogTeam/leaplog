@@ -11,13 +11,19 @@
         <!-- account name label -->
         <Label Content="ACCOUNT NAME" Name="accountName" HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
 
-        <!-- account debits and credits dataGrid -->
-        <DataGrid x:Name="accountGrid" Margin="70,65,64,68">
+        <!-- account debits and credits dataGrids -->
+        <DataGrid x:Name="debitGrid" Margin="70,65,231,68" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Debit" Width="*" Binding="{Binding Debit}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="creditGrid" Margin="236,65,64,68" AutoGenerateColumns="False">
+            <DataGrid.Columns>
                 <DataGridTextColumn Header="Credit" Width="*" Binding="{Binding Credit}"/>
             </DataGrid.Columns>
         </DataGrid>
+
 
         <!-- total account balance -->
         <Label Content="Balance:" HorizontalAlignment="Left" Margin="274,363,0,0" VerticalAlignment="Top"/>

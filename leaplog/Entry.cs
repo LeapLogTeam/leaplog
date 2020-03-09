@@ -24,6 +24,5 @@ namespace LeapLog
 
         public int Credit { get; set; }
 
-        //TO DO: make Notes property
     }
 }
