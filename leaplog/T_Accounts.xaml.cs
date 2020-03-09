@@ -253,16 +253,25 @@ namespace LeapLog
             }
 
             //set account data in new window
-            Account account = new Account();
+            
             for (int i = 0; i < tacc.Debit.Count; i++)
             {
+                Account account = new Account();
                 account.Debit = tacc.Debit[i];
-                accountWindow.debitGrid.Items.Add(account);
+                if (account.Debit != 0)
+                {
+                    accountWindow.debitGrid.Items.Add(account);
+                }
+                
             }
             for (int i = 0; i < tacc.Credit.Count; i++)
             {
+                Account account = new Account();
                 account.Credit = tacc.Credit[i];
-                accountWindow.creditGrid.Items.Add(account);
+                if (account.Credit != 0)
+                {
+                    accountWindow.creditGrid.Items.Add(account);
+                }
             }
 
             accountWindow.balanceLbl.Content = tacc.Balance.ToString();
