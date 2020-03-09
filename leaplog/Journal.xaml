@@ -7,14 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="650"
              Background="White">
+    <!-- create grid to show journal entries -->
     <Grid>
-        <DataGrid x:Name="entryGrid" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="3,2,0,0">
-            <!-- TO DO: style entryGrid -->
-
+        <DataGrid x:Name="entryGrid" HorizontalAlignment="Center" Height="394" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5">
             <!-- Column Header Text & Bindings -->
             <DataGrid.Columns>
                 <!-- Date Column -->
-                <DataGridTextColumn Header="Date" Width="150 " Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Date" Width="62 " Binding="{Binding Date}"/>
                 <!-- Accounts Column -->
                 <DataGridTemplateColumn Header="Accounts" Width="250 ">
                     <DataGridTemplateColumn.CellTemplate>
@@ -26,8 +25,19 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <!-- Category Column -->
+                <DataGridTemplateColumn Header="Type" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Type1}"/>
+                                <TextBlock Text="{Binding Type2}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <!-- Debit Column -->
-                <DataGridTemplateColumn Header="Debit" Width="125">
+                <DataGridTemplateColumn Header="Debit" Width="110">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
@@ -50,17 +60,29 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <!-- Add Entry Section-->
-        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="47,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="161,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="384,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="495,454,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-        <Button Name="addEntryBtn" Content="Add New Entry" HorizontalAlignment="Center" Height="22" Margin="0,498,0,0" VerticalAlignment="Top" Width="118" Click="addEntryBtn_Click"/>
-        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="42,430,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="161,430,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="42,430,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="379,430,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="493,430,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="73,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="73,476,0,0" VerticalAlignment="Top" Width="115">
+            <ComboBoxItem Content="Asset"></ComboBoxItem>
+            <ComboBoxItem Content="Liability"></ComboBoxItem>
+            <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+        </ComboBox>
+        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="72,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox Name="account2TB" HorizontalAlignment="Center" Height="22" Margin="0,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="261,476,0,0" VerticalAlignment="Top" Width="114">
+            <ComboBoxItem Content="Asset"></ComboBoxItem>
+            <ComboBoxItem Content="Liability"></ComboBoxItem>
+            <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+        </ComboBox>
+        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="279,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
+        <Button Name="addEntryBtn" Content="Add New Entry" HorizontalAlignment="Left" Height="22" Margin="449,412,0,0" VerticalAlignment="Top" Width="118" Click="addEntryBtn_Click"/>
+        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="73,494,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="73,394,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="267,395,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="279,494,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="27" Margin="73,449,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="29" Margin="277,447,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox Name="warningTB" HorizontalAlignment="Left" Background="Beige" Visibility="Hidden"  Height="60" Margin="449,462,0,0" Text="Error: Please enter integers for Debit and Credit Amounts" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
     </Grid>
 </UserControl>

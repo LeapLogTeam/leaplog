@@ -34,10 +34,11 @@ namespace LeapLog
             System.Windows.Application.Current.Shutdown();
         }
 
+        //when switching tabs, t-account section refreshes
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             t_account_control.Refresh();
-        } 
+        }
     }
 
 }
