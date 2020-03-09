@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="BalanceSheet.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Journal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,6 +24,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="BalanceSheet.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Journal.xaml">
       <SubType>Designer</SubType>
     </Page>
