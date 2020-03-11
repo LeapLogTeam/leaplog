@@ -12,6 +12,9 @@ namespace LeapLog
           private static List<Entry_tacc> tentries;
           internal static List<Entry_tacc> TEntries { get => tentries; set => tentries = value; }
 
+          // select date for balance sheet calendar
+          public static DateTime select_date;
+
           static Database()
           {
                tentries = new List<Entry_tacc>();

@@ -5,8 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LeapLog"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="550" d:DesignWidth="650"
+             Background="White">
+	 <Grid>
+		  <Calendar HorizontalAlignment="Left" Height="173" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
+		  <DataGrid x:Name="entryGridA" HorizontalAlignment="Left" Height="206" Margin="10,188,0,0" VerticalAlignment="Top" Width="310">
+			   <DataGrid.Columns>
+					<DataGridTextColumn Header="Asset" Width="160" Binding="{Binding Account}"/>
+					<DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
+			   </DataGrid.Columns>
+		  </DataGrid>
+		  <DataGrid x:Name="entryGridTA" HorizontalAlignment="Left" Height="141" Margin="10,399,0,0" VerticalAlignment="Top" Width="310">
+			   <DataGrid.Columns>
+					<DataGridTextColumn Header="Total assets" Width="302" Binding="{Binding total}"/>
+			   </DataGrid.Columns>
+		  </DataGrid>
+		  <DataGrid x:Name="entryGridLO" HorizontalAlignment="Left" Height="206" Margin="330,188,0,0" VerticalAlignment="Top" Width="310">
+			   <DataGrid.Columns>
+					<DataGridTextColumn Header="Liability and Owner's Equity" Width="160" Binding="{Binding Account}"/>
+					<DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
+			   </DataGrid.Columns>
+		  </DataGrid>
+		  <DataGrid x:Name="entryGridTLO" HorizontalAlignment="Left" Height="141" Margin="330,399,0,0" VerticalAlignment="Top" Width="310">
+			   <DataGrid.Columns>
+					<DataGridTextColumn Header="Total liabilities and equity" Width="302" Binding="{Binding total}"/>
+			   </DataGrid.Columns>
+		  </DataGrid>
+	 </Grid>
 </UserControl>
