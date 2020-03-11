@@ -38,7 +38,8 @@ namespace LeapLog
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             t_account_control.Refresh();
-        }
+            balance_sheet_control.Refresh();
+          }
     }
 
 }
