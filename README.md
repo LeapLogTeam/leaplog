@@ -15,13 +15,13 @@ accounting for users and small businesses unfamiliar with accounting tools.
 
 ## Current Features
 
-- Login Screen (not fully developed)
-- Journal (fully functional, needs improvement)
-- T-Accounts (not fully developed)
+- Login Screen
+- Journal
+- T-Accounts
+- Balance Sheet
 
 ## Future Features 
 
-- Balance Sheet
 - Profit and Loss Statement
 - Cash Flow Statement
 - Visual Reports
