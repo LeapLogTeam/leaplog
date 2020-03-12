@@ -5,7 +5,7 @@
 <br>
 LeapLog is an accounting software tool that is meant to be user friendly and straightforward.
 The main goal of this software project is to provide a simple introduction to
-accounting for users unfamiliar with accounting tools.
+accounting for users and small businesses unfamiliar with accounting tools.
 
 <br><br>
 
