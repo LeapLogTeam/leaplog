@@ -67,6 +67,8 @@
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+            <ComboBoxItem Content="Revenue"></ComboBoxItem>
+            <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="72,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBox Name="account2TB" HorizontalAlignment="Center" Height="22" Margin="0,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
@@ -74,6 +76,8 @@
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+            <ComboBoxItem Content="Revenue"></ComboBoxItem>
+            <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="279,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
         <Button Name="addEntryBtn" Content="Add New Entry" HorizontalAlignment="Left" Height="22" Margin="449,412,0,0" VerticalAlignment="Top" Width="118" Click="addEntryBtn_Click"/>

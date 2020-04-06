@@ -51,11 +51,11 @@ namespace LeapLog
                         string type = _tacc.Type;
                         switch (type)
                         {
-                            case "Asset":
+                            case "Revenue":
                                 entryGridR.Items.Add(_tacc);
                                 Total_revenue += _tacc.Balance;
                                 break;
-                            case "Liability":
+                            case "Expense":
                                 entryGridE.Items.Add(_tacc);
                                 Total_expenses += _tacc.Balance;
                                 break;
