@@ -27,7 +27,12 @@
 					<local:BalanceSheet x:Name="balance_sheet_control" Margin="46,10,46,0" Height="541" VerticalAlignment="Top"/>
 				</Grid>
 			   </TabItem>
-		  </TabControl>
+            <TabItem Header="Income Statement" Margin="113,-2,-150,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:IncomeStatement x:Name="income_statement"  Height="541" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
         <Menu Margin="10,-46,26,605"/>
 
     </Grid>

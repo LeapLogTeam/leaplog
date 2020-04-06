@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 
 namespace LeapLog
 {
@@ -14,8 +15,10 @@ namespace LeapLog
 
           // select date for balance sheet calendar
           public static DateTime select_date;
+          // select date for income-statement calendar
+          public static SelectedDatesCollection selected_dates;
 
-          static Database()
+        static Database()
           {
                tentries = new List<Entry_tacc>();
           }
