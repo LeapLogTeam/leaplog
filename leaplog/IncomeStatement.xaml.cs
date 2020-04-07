@@ -49,15 +49,17 @@ namespace LeapLog
                     if (td.Day == date.Day && td.Month == date.Month && td.Year == date.Year)
                     {
                         string type = _tacc.Type;
+                        Entry_tacc t = _tacc.Clone();
+                        t.Balance = Math.Abs(_tacc.Balance);
                         switch (type)
                         {
                             case "Revenue":
-                                entryGridR.Items.Add(_tacc);
-                                Total_revenue += _tacc.Balance;
+                                entryGridR.Items.Add(t);
+                                Total_revenue += t.Balance;
                                 break;
                             case "Expense":
-                                entryGridE.Items.Add(_tacc);
-                                Total_expenses += _tacc.Balance;
+                                entryGridE.Items.Add(t);
+                                Total_expenses += t.Balance;
                                 break;
                         }
                     }
