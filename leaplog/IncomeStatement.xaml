@@ -7,30 +7,33 @@
              mc:Ignorable="d"
              Background="White" Height="497" Width="643">
     <Grid>
-        <Calendar Name="calendar" HorizontalAlignment="Left" Height="173" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" SelectedDatesChanged="Calendar_SelectedDatesChanged" SelectionMode="MultipleRange"/>
-        <DataGrid x:Name="entryGridR" HorizontalAlignment="Left" Height="206" Margin="10,188,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridR" HorizontalAlignment="Left" Height="206" Margin="10,64,0,0" VerticalAlignment="Top" Width="310">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Revenue" Width="160" Binding="{Binding Account}"/>
                 <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridE" HorizontalAlignment="Left" Height="206" Margin="325,188,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridE" HorizontalAlignment="Left" Height="206" Margin="325,64,0,0" VerticalAlignment="Top" Width="310">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Expenses" Width="160" Binding="{Binding Account}"/>
                 <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTR" HorizontalAlignment="Left" Height="66" Margin="10,400,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridTR" HorizontalAlignment="Left" Height="191" Margin="10,275,0,0" VerticalAlignment="Top" Width="310">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Total" Width="302" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTE" HorizontalAlignment="Left" Height="66" Margin="325,400,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridTE" HorizontalAlignment="Left" Height="191" Margin="325,275,0,0" VerticalAlignment="Top" Width="310">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Total" Width="302" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox HorizontalAlignment="Left" Margin="79,471,0,0" Text="0" Name="textBox1" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,472,0,0" Text="Net Income:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Label Content="From:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="From" HorizontalAlignment="Left" Margin="53,14,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="from_SelectionChanged"/>
+        <Label Content="To:" HorizontalAlignment="Left" Margin="23,33,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="To" HorizontalAlignment="Left" Margin="53,37,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="to_SelectionChanged"/>
     </Grid>
 </UserControl>

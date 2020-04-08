@@ -15,8 +15,10 @@ namespace LeapLog
 
           // select date for balance sheet calendar
           public static DateTime select_date;
-          // select date for income-statement calendar
-          public static SelectedDatesCollection selected_dates;
+          // select date from range for income-statement
+          public static DateTime from_date;
+          // select date to range for income-statement
+          public static DateTime to_date;
 
         static Database()
           {
