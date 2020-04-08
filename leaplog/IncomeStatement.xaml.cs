@@ -21,8 +21,12 @@ namespace LeapLog
         public IncomeStatement()
         {
             InitializeComponent();
-            Database.selected_dates = new SelectedDatesCollection(calendar);
-            Database.selected_dates.Add(DateTime.Now);
+            DateTime now = DateTime.Now;
+            string format = "MMMM dd, yyyy";
+            Database.from_date = now;
+            Database.to_date = now;
+            From.Text = now.ToString(format);
+            To.Text = now.ToString(format);
         }
 
         // method that refreshes the income-statement grid so that it is updated with current entries
@@ -39,29 +43,28 @@ namespace LeapLog
             int Total_expenses = 0;
 
             //add t-accounts to respective grids
+            DateTime from = Database.from_date;
+            DateTime to = Database.to_date;
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
                 Entry_tacc _tacc = Database.TEntries[i];
                 DateTime td = _tacc.Date;
-                for (int l = 0; l < Database.selected_dates.Count; l++)
+                if (td.Day >= from.Day && td.Month >= from.Month && td.Year >= from.Year &&
+                    td.Day <= to.Day && td.Month <= to.Month && td.Year <= to.Year)
                 {
-                    DateTime date = Database.selected_dates[l];
-                    if (td.Day == date.Day && td.Month == date.Month && td.Year == date.Year)
+                    string type = _tacc.Type;
+                    Entry_tacc t = _tacc.Clone();
+                    t.Balance = Math.Abs(_tacc.Balance);
+                    switch (type)
                     {
-                        string type = _tacc.Type;
-                        Entry_tacc t = _tacc.Clone();
-                        t.Balance = Math.Abs(_tacc.Balance);
-                        switch (type)
-                        {
-                            case "Revenue":
-                                entryGridR.Items.Add(t);
-                                Total_revenue += t.Balance;
-                                break;
-                            case "Expense":
-                                entryGridE.Items.Add(t);
-                                Total_expenses += t.Balance;
-                                break;
-                        }
+                        case "Revenue":
+                            entryGridR.Items.Add(t);
+                            Total_revenue += t.Balance;
+                            break;
+                        case "Expense":
+                            entryGridE.Items.Add(t);
+                            Total_expenses += t.Balance;
+                            break;
                     }
                 }
             }
@@ -72,15 +75,16 @@ namespace LeapLog
             textBox1.Text = (Total_revenue - Total_expenses).ToString();
         }
 
-        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        private void from_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            // Update the calendar date and than refresh
-            Calendar calendar = sender as Calendar;
-            if (calendar.SelectedDates.Count > 0)
-            {
-                Database.selected_dates = calendar.SelectedDates;
-                Refresh();
-            }
+            DateTime.TryParse(From.Text, out Database.from_date);
+            Refresh();
+        }
+
+        private void to_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            DateTime.TryParse(To.Text, out Database.to_date);
+            Refresh();
         }
     }
 }
