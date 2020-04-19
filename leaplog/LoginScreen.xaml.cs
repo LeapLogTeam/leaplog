@@ -20,8 +20,12 @@ namespace LeapLog
     /// this is the git loginScreen Branch
     /// Interaction logic for LoginScreen.xaml
     /// </summary>
+    /// 
+    //color #FFB4E5F0  and #FFB4DDF0
     public partial class LoginScreen : Window
     {
+
+        
         public object MessageBoxIcon { get; private set; }
 
         public LoginScreen()
@@ -37,7 +41,7 @@ namespace LeapLog
              
             //database funtionality for user login credentials
 
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\DOWNLOADS\NEW FOLDER\UPDATED 4-17\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
             string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             DataTable dataTable = new DataTable();
@@ -85,7 +89,7 @@ namespace LeapLog
               {
             //our code here
                                                                                               
-SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\DOWNLOADS\NEW FOLDER\UPDATED 4-17\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
           string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
           SqlDataAdapter sda = new SqlDataAdapter(query, conn);
           DataTable dataTable = new DataTable();
@@ -126,9 +130,9 @@ SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Atta
         private void Pass_KeyUp_1(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
-            {   
-                //our code here
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\My Branch\project\clones\leaplog\LeapLog\loginDB\LoginDB.mdf;Integrated Security=True");
+            {
+                //our code here Data C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF
+                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\DOWNLOADS\NEW FOLDER\UPDATED 4-17\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
                 string query = "Select * from LoginTable where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
                 SqlDataAdapter sda = new SqlDataAdapter(query, conn);
                 DataTable dataTable = new DataTable();
@@ -201,7 +205,9 @@ SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Atta
         //exit button
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Environment.Exit(Environment.ExitCode);
+
         }
 
 
@@ -211,11 +217,22 @@ SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Atta
             if (e.Key == Key.Escape)
             {
                 //our code here
-                this.Close();
+                // this.Close();
+                Environment.Exit(Environment.ExitCode);
 
             }
         }
 
-        
+        private void newUser_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewUser MS = new AddNewUser();
+            MS.Show();
+            this.Hide();
+        }
+
+        private void loginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+             System.Windows.Application.Current.Shutdown();
+        }
     }
 }
