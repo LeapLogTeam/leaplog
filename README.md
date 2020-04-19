@@ -39,14 +39,12 @@ After you follow those steps, you should be able to run the program.
 - Journal
 - T-Accounts
 - Balance Sheet
+- Profit and Loss Statement
 
 ## Future Features 
-
-- Profit and Loss Statement
 - Cash Flow Statement
 - Visual Reports
 - Help and Guidance Features
 
 ## License
-
 We don't have one yet, but we will soon!
