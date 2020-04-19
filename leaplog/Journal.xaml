@@ -62,31 +62,52 @@
         </DataGrid>
 
         <!-- Add Entry Section-->
-        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="73,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="73,476,0,0" VerticalAlignment="Top" Width="115">
+        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="221,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="330,450,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="72,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBox Name="account2TB" HorizontalAlignment="Center" Height="22" Margin="0,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="261,476,0,0" VerticalAlignment="Top" Width="114">
+        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="419,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="221,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="330,513,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="279,518,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"/>
-        <Button Name="addEntryBtn" Content="Add New Entry" HorizontalAlignment="Left" Height="22" Margin="449,412,0,0" VerticalAlignment="Top" Width="118" Click="addEntryBtn_Click"/>
-        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="73,494,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="73,394,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="267,395,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="279,494,0,0" VerticalAlignment="Top" Width="96"/>
-        <Label Content="Account Type" HorizontalAlignment="Left" Height="27" Margin="73,449,0,0" VerticalAlignment="Top" Width="82"/>
-        <Label Content="Account Type" HorizontalAlignment="Left" Height="29" Margin="277,447,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="419,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="59" Margin="546,463,0,0" VerticalAlignment="Top" Width="96" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
+        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="419,419,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="221,418,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="221,482,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="416,480,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.75,0.583">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.299"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="324,418,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.24"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="325,480,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox Name="warningTB" HorizontalAlignment="Left" Background="Beige" Visibility="Hidden"  Height="60" Margin="449,462,0,0" Text="Error: Please enter integers for Debit and Credit Amounts" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="67,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
+        <Label x:Name="label" Content="Enter Journal Name:" HorizontalAlignment="Left" Margin="73,437,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="enter_button" Content="Create Jorunal Table" HorizontalAlignment="Left" Margin="67,492,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="128" FontWeight="Bold"/>
     </Grid>
 </UserControl>
