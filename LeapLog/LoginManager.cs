@@ -11,15 +11,15 @@ using System.Data;
 
 namespace LeapLog
 {
-    class LoginManager
-    {
+	class LoginManager
+	{
 		SqlConnection connection;
 
 		public LoginManager()
 		{
 
-			//C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF
-			connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\DOWNLOADS\NEW FOLDER\UPDATED 4-17\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
+			//
+			connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
 		}
 
 		public LoginManager(string connectionString)
