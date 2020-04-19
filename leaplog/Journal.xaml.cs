@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,12 +21,18 @@ namespace LeapLog
     /// </summary>
     public partial class Journal : UserControl
     {
+
+        
+       
+        
+        
         public Journal()
         {
             InitializeComponent();
+           
 
         }
-
+        
         //Add new entry button
         private void addEntryBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +60,17 @@ namespace LeapLog
                 List<Entry_tacc> tempAccounts = T_Accounts.get_taccs(tempEntry);
                 //process t-accounts
                 T_Accounts.add_taccs(tempAccounts);
+
+                //<<-------------inserting data to the database-------------------->>
+                LeapLogDBManager sqlTables = new LeapLogDBManager();
+                 
+                //<<------- this chooses the table where the data will be added to-------->>
+                 string tableName = user_Input.Text.Replace(" ", "");
+ 
+                sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + Int32.Parse(debitTB.Text) + "','" + Int32.Parse(creditTB.Text) + "')");
+
+
+
             }
             catch {
                 //if incorrect data entered, warning given
@@ -66,6 +85,34 @@ namespace LeapLog
             creditTB.Text = "";
             type1CB.SelectedItem = null;
             type2CB.SelectedItem = null;
+
+           
+
+        }
+
+        private void enter_button_Click(object sender, RoutedEventArgs e)
+        {
+            //<<--------this creates the datatable into the database------->>
+            string messageBoxText = "Journal field cannot be null or empty";
+            string caption = "Wrong Input";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+
+
+            LeapLogDBManager sqlTables = new LeapLogDBManager();
+            string tableName = user_Input.Text.Replace(" ", "");
+
+            string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
+"Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
+"Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+            if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
+            {
+                MessageBox.Show(messageBoxText, caption, button, icon);
+            }
+             
+
+            else
+                sqlTables.WriteData(dbString);
         }
     }
 }
