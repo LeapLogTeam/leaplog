@@ -63,9 +63,11 @@ namespace LeapLog
             LoginManager sqlTables = new LoginManager();
 
             string messageBoxText = "Username and password fields cannot be null or empty.";
+            string messageBoxText2 = "Username and password have been added.";
             string caption = "Wrong Input";
+            string caption2 = "User Added";
             MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxImage icon = MessageBoxImage.Information;
 
             //<<------- this chooses the table where the data will be added to-------->>
             string username = newUsername.Text.Replace(" ", "");
@@ -80,8 +82,10 @@ namespace LeapLog
                 MessageBox.Show(messageBoxText, caption, button, icon);
             }
             else
-                sqlTables.WriteData("INSERT INTO LoginTable VALUES ('" + username + "','" + password + "')");
-
+            {
+                sqlTables.WriteData("INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')");
+                MessageBox.Show(messageBoxText2, caption2, button, icon);
+            }
             newUsername.Clear();
             newPass.Clear();
 
