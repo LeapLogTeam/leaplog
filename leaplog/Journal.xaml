@@ -9,7 +9,7 @@
              Background="White">
     <!-- create grid to show journal entries -->
     <Grid>
-        <DataGrid x:Name="entryGrid" HorizontalAlignment="Center" Height="394" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5">
+        <DataGrid x:Name="entryGrid" HorizontalAlignment="Center" Height="332" VerticalAlignment="Top" Width="650" RenderTransformOrigin="0.5,0.5" Margin="0,81,0,0">
             <!-- Column Header Text & Bindings -->
             <DataGrid.Columns>
                 <!-- Date Column -->
@@ -109,5 +109,28 @@
         <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="67,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
         <Label x:Name="label" Content="Enter Journal Name:" HorizontalAlignment="Left" Margin="73,437,0,0" VerticalAlignment="Top"/>
         <Button x:Name="enter_button" Content="Create Jorunal Table" HorizontalAlignment="Left" Margin="67,492,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="128" FontWeight="Bold"/>
+
+        <!--help feature-->
+        <Button x:Name="journalHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="journalHelpButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Grid x:Name="journalHelpWindow1" Visibility="Collapsed" >
+            <Rectangle  HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Left" Margin="138,115,0,0" Text="The journal allows the user to record financial transactions. Begin by first creating a journal table. After you click the 'Create a Journal Table' button, fill out the entry form." TextWrapping="Wrap" VerticalAlignment="Top" Height="174" Width="478"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center" Margin="0,316,0,0" Text="Each entry requires two accounts, one that is debited and another that is credited. The amounts must be the same so as to assure balance." TextWrapping="Wrap" VerticalAlignment="Top" Height="176" Width="478"/>
+            <Button Name="forwardButton" Content="Next Page" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="forwardButton_Click"/>
+        </Grid>
+        <Grid x:Name="journalHelpWindow2" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
+            <TextBlock Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,119,0,0" Text="Account types are Asset, Liability, or Owner's Equity. An asset is a resource that is owned by the business, such as cash, equipment, or Accounts Receivable. A liability is an obligation that must be paid to another entity. An example is Accounts Payable. Owner's Equity is the amount invested into a business by its owner." TextWrapping="Wrap" VerticalAlignment="Top" Height="156" Width="478"/>
+            <TextBlock Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,293,0,0" Text="An example of a journal entry could be a business owner, Bob, providing $10,000 cash to start their business. The account debited would be Cash, which is an Asset. The debit amount should be $10,000. The account credited would be Bob, Capital which is an Owner's Equity type. The amount credited would be $10,000." TextWrapping="Wrap" VerticalAlignment="Top" Height="156" Width="478"/>
+            <Button Name="backButton" Content="Go back" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
+            <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
+        </Grid>
+
     </Grid>
 </UserControl>

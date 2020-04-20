@@ -78,5 +78,17 @@ namespace LeapLog
 					Refresh();
 			   }
 		  }
-	 }
+
+		//method for when help feature button is clicked
+		private void balanceHelpButton_Click(object sender, RoutedEventArgs e)
+		{
+			balanceHelpWindow.Visibility = Visibility.Visible;
+		}
+
+		//method for when help feature close button is clicked
+		private void balanceCloseButton_Click(object sender, RoutedEventArgs e)
+		{
+			balanceHelpWindow.Visibility = Visibility.Collapsed;
+		}
+	}
 }
