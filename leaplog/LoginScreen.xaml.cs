@@ -35,7 +35,7 @@ namespace LeapLog
 
         /*Button Click login*/
 
-        private void button_Click(object sender, RoutedEventArgs e)
+         private void button_Click(object sender, RoutedEventArgs e)
         {
 
 
@@ -87,41 +87,11 @@ namespace LeapLog
         private void enterButton_KeyUp(object sender, KeyEventArgs e)
         {
 
+           
               if (e.Key == Key.Enter)
               {
-            //our code here
-                                                                                              
-SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
-          string query = "Select * from UserLogin where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
-          SqlDataAdapter sda = new SqlDataAdapter(query, conn);
-          DataTable dataTable = new DataTable();
-          sda.Fill(dataTable);
-         
-             if (dataTable.Rows.Count == 1)
-             {
-              MainWindow MS = new MainWindow();
-              MS.Show();
-              this.Hide();
-             }
-
-                /* CODE USED FOR TESTING
-                 * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
-                 {
-                     MainWindow MS = new MainWindow();
-                     MS.Show();
-                     this.Hide();
-                 }*/
-
-                else
-                {
-                      MessageBox.Show(this, "Wrong User Name or Password.");//, MessageBoxButtons.OK,
-
-                      UserName.Clear();
-                      Pass.Clear();
-                      UserName.Focus();
-
-                  }
-
+                button_Click(sender, e);
+        
               }
 
 
@@ -131,43 +101,9 @@ SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Atta
         //enter button functionality for pass box
         private void Pass_KeyUp_1(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                
-                //our code here Data C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF
-                SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
-                string query = "Select * from UserLogin where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
-                SqlDataAdapter sda = new SqlDataAdapter(query, conn);
-                DataTable dataTable = new DataTable();
-                sda.Fill(dataTable);
+            enterButton_KeyUp(sender, e);
 
-                if (dataTable.Rows.Count == 1)
-                {
-                    MainWindow MS = new MainWindow();
-                    MS.Show();
-                    this.Hide();
-                }
-               
-
-                /* CODE USED FOR TESTING
-                 * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
-                 {
-                     MainWindow MS = new MainWindow();
-                     MS.Show();
-                     this.Hide();
-                 }*/
-
-                else
-                {
-                    MessageBox.Show(this, "Wrong User Name or Password.");//, MessageBoxButtons.OK,
-
-                    UserName.Clear();
-                    Pass.Clear();
-                    UserName.Focus();
-
-                }
-
-            }
+        
         }
 
 

@@ -83,7 +83,7 @@ namespace LeapLog
             }
             else
             {
-                sqlTables.WriteData("INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')");
+                sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')");
                 MessageBox.Show(messageBoxText2, caption2, button, icon);
             }
             newUsername.Clear();

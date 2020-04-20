@@ -67,5 +67,16 @@ namespace LeapLog
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void enter_Button_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                enter_Button_Click(sender, e);
+        }
+
+        private void Pass_KeyUp(object sender, KeyEventArgs e)
+        {
+            enter_Button_KeyUp(sender, e);
+        }
     }
 }
