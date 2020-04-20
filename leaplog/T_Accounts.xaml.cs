@@ -279,5 +279,17 @@ namespace LeapLog
             //to clear duplicate cells that pop up after user clicks a cell
             Refresh();
         }
+
+        //method for when help feature button is clicked
+        private void taccHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            taccHelpWindow.Visibility = Visibility.Visible;
+        }
+
+        //method for when close button on help feature is clicked
+        private void tCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            taccHelpWindow.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -114,5 +114,30 @@ namespace LeapLog
             else
                 sqlTables.WriteData(dbString);
         }
+
+        //button that opens up journal help feature
+        private void journalHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow1.Visibility = Visibility.Visible;
+        }
+
+        //button that changes to second help feature page
+        private void forwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow2.Visibility = Visibility.Visible;
+        }
+
+        //button that changes to first help feature page
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow2.Visibility = Visibility.Collapsed;
+        }
+
+        //button that closes help feature
+        private void jCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow1.Visibility = Visibility.Collapsed;
+            journalHelpWindow2.Visibility = Visibility.Collapsed;
+        }
     }
 }

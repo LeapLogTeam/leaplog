@@ -41,5 +41,21 @@
                 <DataGridTextColumn Header="Owner's Equity" Width="*" Binding="{Binding Account}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!--help feature-->
+        <Button x:Name="taccHelpButton" Content="?" HorizontalAlignment="Left" Margin="600,22,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="taccHelpButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Grid x:Name="taccHelpWindow" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
+            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Center" Margin="0,126,0,0" Text="The T-Accounts section allows the user to look at each account created individually. The accounts are separated by type." TextWrapping="Wrap" VerticalAlignment="Top" Height="148" Width="478"/>
+            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Center" Margin="0,291,0,0" Text="Click on an account name to see the financial history of each account." TextWrapping="Wrap" VerticalAlignment="Top" Height="157" Width="478"/>
+            <Button x:Name="tCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="607,70,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="tCloseButton_Click" RenderTransformOrigin="2.477,0.376"/>
+        </Grid>
+
     </Grid>
 </UserControl>
