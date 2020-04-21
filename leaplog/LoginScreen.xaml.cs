@@ -20,12 +20,12 @@ namespace LeapLog
     /// this is the git loginScreen Branch
     /// Interaction logic for LoginScreen.xaml
     /// </summary>
-    /// 
+    ///
     //color #FFB4E5F0  and #FFB4DDF0
     public partial class LoginScreen : Window
     {
 
-        
+
         public object MessageBoxIcon { get; private set; }
 
         public LoginScreen()
@@ -65,7 +65,7 @@ namespace LeapLog
 
 
 
-           
+
             /* CODE USED FOR TESTING
              * if (UserName.Text == "leaplog" && Pass.Password == "leaplog")
              {
@@ -87,11 +87,11 @@ namespace LeapLog
         private void enterButton_KeyUp(object sender, KeyEventArgs e)
         {
 
-           
+
               if (e.Key == Key.Enter)
               {
                 button_Click(sender, e);
-        
+
               }
 
 
@@ -103,7 +103,7 @@ namespace LeapLog
         {
             enterButton_KeyUp(sender, e);
 
-        
+
         }
 
 
@@ -127,7 +127,7 @@ namespace LeapLog
             {
                 //my code here
                 UserName.Clear();
-                 
+
             }
         }
         //clear textbox when tab is pressed
@@ -137,7 +137,7 @@ namespace LeapLog
             {
                 //my code here
                 Pass.Clear();
-                 
+
             }
         }
 

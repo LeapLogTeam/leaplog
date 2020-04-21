@@ -86,5 +86,17 @@ namespace LeapLog
             DateTime.TryParse(To.Text, out Database.to_date);
             Refresh();
         }
+
+        //method for when help feature button is clicked
+        private void incomeHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            incomeHelpWindow.Visibility = Visibility.Visible;
+        }
+
+        //method for when help feature close button is clicked
+        private void incomeStatementCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            incomeHelpWindow.Visibility = Visibility.Collapsed;
+        }
     }
 }
