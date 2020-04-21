@@ -86,8 +86,10 @@ namespace LeapLog
 
                 if (name.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase))
                 {
-                    MessageBox.Show("Username is already taken", "Try again", button, icon);
-                   
+                    MessageBox.Show("Username already taken", "Try again", button, icon);
+                   // string labelprint = "Username already taken";
+                   // labelPrint.Content = labelprint.ToString();
+               
                     break;
 
                 }
@@ -119,9 +121,11 @@ namespace LeapLog
                 }
 
             }
-              
+
             //<<--------this clears the textboxes after inserting input----------->>
+            //string l = "";
             newUsername.Clear();
+            //labelPrint.Content = l.ToString();
             newPass.Clear();
             newUsername.Focus();
 

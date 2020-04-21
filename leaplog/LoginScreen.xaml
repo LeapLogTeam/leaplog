@@ -8,12 +8,12 @@
         Title="Login Form" Height="440" Width="336" FontSize="14" Background="#FFB4E5F0" KeyUp="Window_KeyUp_1" WindowStartupLocation="CenterScreen" Closing="loginWindow_Closing">
     <Canvas x:Name="loginCanvas" HorizontalAlignment="Left" Height="400" Margin="-100,0,0,0" Width="537" >
         <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="164" Canvas.Top="180" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
-        <Label x:Name="label1" Content="Enter Password: " FontSize="14" Height="16" Canvas.Left="164" Canvas.Top="245" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
+        <Label x:Name="label1" Content="Enter Password: " FontSize="14" Height="16" Canvas.Left="164" Canvas.Top="235" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
         <TextBox x:Name="UserName" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic" PreviewKeyUp="UserName_PreviewKeyUp" Height="25" Canvas.Left="164" Canvas.Top="200" Width="192" PreviewMouseDown="UserName_PreviewMouseDown" FlowDirection="LeftToRight"/>
         <Label x:Name="label2" Content="Member Login" FontSize="18" FontWeight="Bold" Height="47" Canvas.Left="164" Canvas.Top="122" Width="144" FontFamily="Segoe UI" FontStyle="Normal"/>
         <Button x:Name="enterButton" TabIndex="3" Content="ENTER" Click="button_Click" RenderTransformOrigin="0.388,0.555" KeyUp="enterButton_KeyUp" Height="46" Canvas.Left="164" Canvas.Top="305" Width="93" FontFamily="Microsoft Sans Serif" FontWeight="Bold" FontSize="12"/>
         <Button x:Name="exitButton" TabIndex="4" Content="EXIT" Click="button1_Click" Height="46" Canvas.Left="262" Canvas.Top="305" Width="94" FontFamily="Microsoft Sans Serif" FontWeight="Bold" FontSize="12"/>
-        <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Height="25" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="164" Canvas.Top="265" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
+        <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Height="25" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="164" Canvas.Top="255" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
         <Image x:Name="image" Height="112" Canvas.Left="89" Canvas.Top="10" Width="342" Source="logo.png"/>
         <Button x:Name="newUser" Content="Register Account" Canvas.Left="164" Canvas.Top="367" Width="120" FontStyle="Italic" FontWeight="Bold" Visibility="Visible" Background="#FFB4E5F0" Click="newUser_Click"/>
 
