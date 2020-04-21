@@ -13,7 +13,7 @@
             <ColumnDefinition Width="236*"/>
             <ColumnDefinition Width="93*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="createButton" TabIndex="3" Content="ADD" Grid.Column="2" HorizontalAlignment="Left" Margin="78,143,0,0" VerticalAlignment="Top" Height="31" Width="55" Click="createButton_Click" FontWeight="Bold" FontSize="10"/>
+        <Button x:Name="createButton" TabIndex="3" Content="ADD" Grid.Column="2" HorizontalAlignment="Left" Margin="78,143,0,0" VerticalAlignment="Top" Height="31" Width="55" Click="createButton_Click" FontWeight="Bold" FontSize="10" KeyUp="createButton_KeyUp"/>
         <Button x:Name="backToLogin" Content="Back to Login Screen" Grid.Column="2" HorizontalAlignment="Left" Margin="62,207,0,0" VerticalAlignment="Top" Click="backToLogin_Click" Grid.ColumnSpan="2" Width="148" Background="#FFB4E5F0" FontWeight="Bold" FontSize="14" FontStyle="Italic"/>
         <Label x:Name="label" Content="Enter username:" HorizontalAlignment="Left" Margin="90,51,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="96"/>
         <Label x:Name="label_Copy" Content="Enter Password:" HorizontalAlignment="Left" Margin="90,92,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="96"/>
@@ -25,7 +25,7 @@
             </Image.OpacityMask>
         </Image>
         <Label x:Name="label1" Content="Register New User" Margin="10,0,103,0" VerticalAlignment="Top" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="16" Height="34"/>
-        <PasswordBox x:Name="newPass" TabIndex="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="78,96,0,0" VerticalAlignment="Top" Width="115"/>
+        <PasswordBox x:Name="newPass" TabIndex="2" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="78,96,0,0" VerticalAlignment="Top" Width="115" KeyUp="newPass_KeyUp"/>
 
     </Grid>
 </Window>

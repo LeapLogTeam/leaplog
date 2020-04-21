@@ -52,7 +52,7 @@ namespace LeapLog
 				{
 					while (reader.Read())
 					{
-						Console.WriteLine(reader[0]);
+						System.Diagnostics.Debug.WriteLine(reader[0]);
 					}
 				}
 

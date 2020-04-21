@@ -41,8 +41,8 @@ namespace LeapLog
 
             //database funtionality for user login credentials
 
-           
 
+            UserName.Focus();
             SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
             string query = "Select * from UserLogin where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
@@ -161,7 +161,7 @@ namespace LeapLog
 
             }
         }
-
+        //sends user to the admin login
         private void newUser_Click(object sender, RoutedEventArgs e)
         {
             AdminLogin MS = new AdminLogin();
@@ -169,6 +169,7 @@ namespace LeapLog
             this.Hide();
         }
 
+        //exits application after button x closed
         private void loginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
              System.Windows.Application.Current.Shutdown();

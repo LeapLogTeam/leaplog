@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -60,6 +62,7 @@ namespace LeapLog
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
+            
             LoginManager sqlTables = new LoginManager();
 
             string messageBoxText = "Username and password fields cannot be null or empty.";
@@ -69,26 +72,75 @@ namespace LeapLog
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Information;
 
-            //<<------- this chooses the table where the data will be added to-------->>
-            string username = newUsername.Text.Replace(" ", "");
-            string password = newPass.Password.ToString();
+            // sqlTables.ReadData("Select * from AdminLogin ");
 
-            if (String.IsNullOrEmpty(username) || username == "")
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
+            string query = "Select * from UserLogin ";
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            DataTable dataTable = new DataTable();
+            sda.Fill(dataTable);
+            foreach (DataRow row in dataTable.Rows)
             {
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                string name = row["username"].ToString().Trim();
+                System.Diagnostics.Debug.WriteLine(name);
+
+                if (name.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase))
+                {
+                    MessageBox.Show("Username is already taken", "Try again", button, icon);
+                   
+                    break;
+
+                }
+
+
+                else
+                {
+                    //MessageBox.Show("Username not in the database", "Good news!");
+                 
+                    //<<---------this 
+                    string username = newUsername.Text.Replace(" ", "");
+                    string password = newPass.Password.ToString();
+
+
+                    if (String.IsNullOrEmpty(username) || username == "")
+                    {
+                        MessageBox.Show(messageBoxText, caption, button, icon);
+                    }
+                    else if (String.IsNullOrEmpty(password) || password == "")
+                    {
+                        MessageBox.Show(messageBoxText, caption, button, icon);
+                    }
+                    else
+                    {
+                        sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')  ");
+                        MessageBox.Show(messageBoxText2, caption2, button, icon);
+                    }
+                    break;
+                }
+
             }
-            else if (String.IsNullOrEmpty(password) || password == "")
-            {
-                MessageBox.Show(messageBoxText, caption, button, icon);
-            }
-            else
-            {
-                sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')");
-                MessageBox.Show(messageBoxText2, caption2, button, icon);
-            }
+              
+            //<<--------this clears the textboxes after inserting input----------->>
             newUsername.Clear();
             newPass.Clear();
+            newUsername.Focus();
 
+        }
+        //enter the program by pressing enter when the tab is on the Add Button
+        private void createButton_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Enter)
+            {
+                createButton_Click(sender, e);
+
+            }
+        }
+
+        //enter the program by pressing enter when the tab is on the Passwordbox
+        private void newPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            createButton_KeyUp(sender, e);
         }
     }
 }
