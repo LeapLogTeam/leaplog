@@ -1,0 +1,29 @@
+﻿<Window x:Class="LeapLog.AdminLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeapLog"
+        mc:Ignorable="d"
+        Title="AdminLogin" Height="313" Width="301" Background="#FFB6D3D1" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10,10,16,14">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="52*"/>
+            <ColumnDefinition Width="108*"/>
+            <ColumnDefinition Width="194*"/>
+            <ColumnDefinition Width="341*"/>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="label" Content="Username:" Grid.Column="1" HorizontalAlignment="Left" Margin="19,86,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label1" Content="Password:" Grid.Column="1" HorizontalAlignment="Left" Margin="19,0,0,0" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="userName" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="46,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label2" Content="Admin Login" Grid.Column="2" HorizontalAlignment="Left" Margin="57,30,0,0" VerticalAlignment="Top" Width="88" FontWeight="Bold" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="Pass" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="46,0,0,0" VerticalAlignment="Center" Width="120" KeyUp="Pass_KeyUp"/>
+        <Button x:Name="enter_Button" Content="ENTER" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="46,175,0,0" VerticalAlignment="Top" Width="50" Click="enter_Button_Click" FontWeight="Bold" FontSize="10" Height="25" KeyUp="enter_Button_KeyUp"/>
+        <Button x:Name="exit_Button" Content="EXIT" Grid.Column="3" HorizontalAlignment="Right" Margin="0,175,19,0" VerticalAlignment="Top" Width="50" Click="exit_Button_Click" FontSize="10" FontWeight="Bold" Height="25"/>
+        <Button x:Name="back2_Login" Content="Back to Login Screen" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Margin="42,223,0,0" VerticalAlignment="Top" Height="21" Width="128" Background="#FFB6D3D1" FontWeight="Bold" Click="back2_Login_Click"/>
+        <Image x:Name="image" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="66" Margin="17,10,0,0" VerticalAlignment="Top" Width="75" Source="/monitor (3).png" Grid.Column="1"/>
+
+    </Grid>
+</Window>

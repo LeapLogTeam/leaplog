@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -18,6 +20,9 @@ namespace LeapLog
     /// </summary>
     public partial class AddNewUser : Window
     {
+        
+        private string check;
+
         public AddNewUser()
         {
             InitializeComponent();
@@ -60,31 +65,89 @@ namespace LeapLog
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
+            List<String> list = new List<String>();
+
             LoginManager sqlTables = new LoginManager();
 
             string messageBoxText = "Username and password fields cannot be null or empty.";
+            string messageBoxText2 = "Username and password have been added.";
             string caption = "Wrong Input";
+            string caption2 = "User Added";
             MessageBoxButton button = MessageBoxButton.OK;
-            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxImage icon = MessageBoxImage.Information;
 
-            //<<------- this chooses the table where the data will be added to-------->>
-            string username = newUsername.Text.Replace(" ", "");
-            string password = newPass.Password.ToString();
+            // sqlTables.ReadData("Select * from AdminLogin ");
 
-            if (String.IsNullOrEmpty(username) || username == "")
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
+            string query = "Select * from UserLogin ";
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            DataTable dataTable = new DataTable();
+            sda.Fill(dataTable);
+
+            string name;
+
+            foreach (DataRow row in dataTable.Rows)
             {
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                name = row["username"].ToString().Trim();
+                System.Diagnostics.Debug.WriteLine(name);
+                list.Add(name);
             }
-            else if (String.IsNullOrEmpty(password) || password == "")
-            {
-                MessageBox.Show(messageBoxText, caption, button, icon);
-            }
+
+
+            // if (name.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase))
+
+            //<<-----------this code compares user input string with strings in database------------>>
+            if (list.FindIndex(x => x.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase)) != -1)
+            
+                    MessageBox.Show("Username already taken", "Try again", button, icon);
+                     
+
+                //<<---------this code adds the string username and password to the db
             else
-                sqlTables.WriteData("INSERT INTO LoginTable VALUES ('" + username + "','" + password + "')");
+            {
+                string username = newUsername.Text.Replace(" ", "");
+                string password = newPass.Password.ToString();
 
+
+                if (String.IsNullOrEmpty(username) || username == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
+                else if (String.IsNullOrEmpty(password) || password == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
+                else
+                {
+                    sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')  ");
+                    MessageBox.Show(messageBoxText2, caption2, button, icon);
+                }
+
+            }
+
+            //<<--------this clears the textboxes after inserting input----------->>
+            //string l = "";
             newUsername.Clear();
+            //labelPrint.Content = l.ToString();
             newPass.Clear();
+            newUsername.Focus();
 
+        }
+        //enter the program by pressing enter when the tab is on the Add Button
+        private void createButton_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.Enter)
+            {
+                createButton_Click(sender, e);
+
+            }
+        }
+
+        //enter the program by pressing enter when the tab is on the Passwordbox
+        private void newPass_KeyUp(object sender, KeyEventArgs e)
+        {
+            createButton_KeyUp(sender, e);
         }
     }
 }
