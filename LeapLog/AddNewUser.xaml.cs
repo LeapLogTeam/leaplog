@@ -20,6 +20,9 @@ namespace LeapLog
     /// </summary>
     public partial class AddNewUser : Window
     {
+        
+        private string check;
+
         public AddNewUser()
         {
             InitializeComponent();
@@ -62,7 +65,8 @@ namespace LeapLog
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            List<String> list = new List<String>();
+
             LoginManager sqlTables = new LoginManager();
 
             string messageBoxText = "Username and password fields cannot be null or empty.";
@@ -79,45 +83,44 @@ namespace LeapLog
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             DataTable dataTable = new DataTable();
             sda.Fill(dataTable);
+
+            string name;
+
             foreach (DataRow row in dataTable.Rows)
             {
-                string name = row["username"].ToString().Trim();
+                name = row["username"].ToString().Trim();
                 System.Diagnostics.Debug.WriteLine(name);
+                list.Add(name);
+            }
 
-                if (name.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase))
-                {
+
+            // if (name.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase))
+
+            //<<-----------this code compares user input string with strings in database------------>>
+            if (list.FindIndex(x => x.Equals(newUsername.Text.Trim(), StringComparison.CurrentCultureIgnoreCase)) != -1)
+            
                     MessageBox.Show("Username already taken", "Try again", button, icon);
-                   // string labelprint = "Username already taken";
-                   // labelPrint.Content = labelprint.ToString();
-               
-                    break;
+                     
 
+                //<<---------this code adds the string username and password to the db
+            else
+            {
+                string username = newUsername.Text.Replace(" ", "");
+                string password = newPass.Password.ToString();
+
+
+                if (String.IsNullOrEmpty(username) || username == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
                 }
-
-
+                else if (String.IsNullOrEmpty(password) || password == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
                 else
                 {
-                    //MessageBox.Show("Username not in the database", "Good news!");
-                 
-                    //<<---------this 
-                    string username = newUsername.Text.Replace(" ", "");
-                    string password = newPass.Password.ToString();
-
-
-                    if (String.IsNullOrEmpty(username) || username == "")
-                    {
-                        MessageBox.Show(messageBoxText, caption, button, icon);
-                    }
-                    else if (String.IsNullOrEmpty(password) || password == "")
-                    {
-                        MessageBox.Show(messageBoxText, caption, button, icon);
-                    }
-                    else
-                    {
-                        sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')  ");
-                        MessageBox.Show(messageBoxText2, caption2, button, icon);
-                    }
-                    break;
+                    sqlTables.WriteData(" INSERT INTO UserLogin VALUES ('" + username + "','" + password + "')  ");
+                    MessageBox.Show(messageBoxText2, caption2, button, icon);
                 }
 
             }
