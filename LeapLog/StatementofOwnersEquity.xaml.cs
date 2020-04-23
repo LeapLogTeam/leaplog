@@ -14,37 +14,45 @@ using System.Windows.Shapes;
 namespace LeapLog
 {
     /// <summary>
-    /// Interaction logic for IncomeStatement.xaml
+    /// Interaction logic for StatementofOwnersEquity.xaml
     /// </summary>
-    public partial class IncomeStatement : UserControl
+    public partial class StatementofOwnersEquity : UserControl
     {
-        public IncomeStatement()
+        public bool can_Refresh = false;
+        public StatementofOwnersEquity()
         {
             InitializeComponent();
             DateTime now = DateTime.Now;
             string format = "MMMM dd, yyyy";
-            Database.is_date.from_date = now;
-            Database.is_date.to_date = now;
+            Database.sooe_date.from_date = now;
+            Database.sooe_date.to_date = now;
             From.Text = now.ToString(format);
             To.Text = now.ToString(format);
         }
 
-        // method that refreshes the income-statement grid so that it is updated with current entries
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+            can_Refresh = true;
+        }
+
         public void Refresh()
         {
-            // Clear all grids and textbox
-            entryGridE.Items.Clear();
-            entryGridR.Items.Clear();
-            entryGridTE.Items.Clear();
-            entryGridTR.Items.Clear();
-            textBox1.Clear();
+            // I don't know what is wrong but I need to do this else textboxes 1-4 will be null.
+            if (!can_Refresh)
+            {
+                return;
+            }
 
-            int Total_revenue = 0;
-            int Total_expenses = 0;
+            textbox1.Clear();
+            textbox2.Clear();
+            textbox3.Clear();
+            textbox4.Clear();
 
-            //add t-accounts to respective grids
-            DateTime from = Database.is_date.from_date;
-            DateTime to = Database.is_date.to_date;
+            DateTime from = Database.sooe_date.from_date;
+            DateTime to = Database.sooe_date.to_date;
+            int equity = 0;
+            int withdrawals = 0;
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
                 Entry_tacc _tacc = Database.TEntries[i];
@@ -57,35 +65,31 @@ namespace LeapLog
                     t.Balance = Math.Abs(_tacc.Balance);
                     switch (type)
                     {
-                        case "Revenue":
-                            entryGridR.Items.Add(t);
-                            Total_revenue += t.Balance;
+                        case "Withdrawal":
+                            withdrawals += t.Balance;
                             break;
-                        case "Expense":
-                            entryGridE.Items.Add(t);
-                            Total_expenses += t.Balance;
+                        case "Owner's Equity":
+                            equity += t.Balance;
                             break;
                     }
                 }
             }
 
-            // Add the totals
-            entryGridTR.Items.Add(new Total() { total = Total_revenue });
-            entryGridTE.Items.Add(new Total() { total = Total_expenses });
-            int ni = (Total_revenue - Total_expenses);
-            textBox1.Text = ni.ToString();
-            Database.net_income = ni;
+            textbox1.Text = equity.ToString();
+            textbox2.Text = Database.net_income.ToString();
+            textbox3.Text = withdrawals.ToString();
+            textbox4.Text = (equity - withdrawals).ToString();
         }
-
+        
         private void from_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            DateTime.TryParse(From.Text, out Database.is_date.from_date);
+            DateTime.TryParse(From.Text, out Database.sooe_date.from_date);
             Refresh();
         }
-
+        
         private void to_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            DateTime.TryParse(To.Text, out Database.is_date.to_date);
+            DateTime.TryParse(To.Text, out Database.sooe_date.to_date);
             Refresh();
         }
     }

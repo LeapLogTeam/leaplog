@@ -15,12 +15,14 @@ namespace LeapLog
 
           // select date for balance sheet calendar
           public static DateTime select_date;
-          // select date from range for income-statement
-          public static DateTime from_date;
-          // select date to range for income-statement
-          public static DateTime to_date;
+          // select date range for income-statement
+          public static DateRange is_date;
+          // select date range for statement of owner's equity
+          public static DateRange sooe_date;
+          // net-income
+          public static int net_income = 0;
 
-        static Database()
+          static Database()
           {
                tentries = new List<Entry_tacc>();
           }

@@ -40,7 +40,8 @@ namespace LeapLog
             t_account_control.Refresh();
             balance_sheet_control.Refresh();
             income_statement.Refresh();
-          }
+            statementofownersequity.Refresh();
+        }
     }
 
 }
