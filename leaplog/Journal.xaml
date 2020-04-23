@@ -80,7 +80,7 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="419,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="59" Margin="546,463,0,0" VerticalAlignment="Top" Width="96" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
+        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="35" Margin="546,436,0,0" VerticalAlignment="Top" Width="70" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
         <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="419,419,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="221,418,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="221,482,0,0" VerticalAlignment="Top" Width="104"/>
@@ -131,6 +131,7 @@
             <Button Name="backButton" Content="Go back" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
             <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
         </Grid>
+        <Button x:Name="toExcel" Content="Save " HorizontalAlignment="Left" Margin="546,500,0,0" VerticalAlignment="Top" Width="70" Height="35" FontWeight="Bold" Click="toExcel_Click"/>
 
     </Grid>
 </UserControl>
