@@ -78,7 +78,7 @@ namespace LeapLog
             textbox1.Text = equity.ToString();
             textbox2.Text = Database.net_income.ToString();
             textbox3.Text = withdrawals.ToString();
-            textbox4.Text = (equity - withdrawals).ToString();
+            textbox4.Text = ((equity + Database.net_income) - withdrawals).ToString();
         }
         
         private void from_SelectionChanged(object sender, RoutedEventArgs e)
