@@ -23,8 +23,8 @@ namespace LeapLog
             InitializeComponent();
             DateTime now = DateTime.Now;
             string format = "MMMM dd, yyyy";
-            Database.from_date = now;
-            Database.to_date = now;
+            Database.is_date.from_date = now;
+            Database.is_date.to_date = now;
             From.Text = now.ToString(format);
             To.Text = now.ToString(format);
         }
@@ -43,8 +43,8 @@ namespace LeapLog
             int Total_expenses = 0;
 
             //add t-accounts to respective grids
-            DateTime from = Database.from_date;
-            DateTime to = Database.to_date;
+            DateTime from = Database.is_date.from_date;
+            DateTime to = Database.is_date.to_date;
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
                 Entry_tacc _tacc = Database.TEntries[i];
@@ -72,18 +72,20 @@ namespace LeapLog
             // Add the totals
             entryGridTR.Items.Add(new Total() { total = Total_revenue });
             entryGridTE.Items.Add(new Total() { total = Total_expenses });
-            textBox1.Text = (Total_revenue - Total_expenses).ToString();
+            int ni = (Total_revenue - Total_expenses);
+            textBox1.Text = ni.ToString();
+            Database.net_income = ni;
         }
 
         private void from_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            DateTime.TryParse(From.Text, out Database.from_date);
+            DateTime.TryParse(From.Text, out Database.is_date.from_date);
             Refresh();
         }
 
         private void to_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            DateTime.TryParse(To.Text, out Database.to_date);
+            DateTime.TryParse(To.Text, out Database.is_date.to_date);
             Refresh();
         }
 

@@ -28,6 +28,9 @@
     <Compile Update="SingleAccount.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="StatementofOwnersEquity.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="T_Accounts.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -55,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SingleAccount.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StatementofOwnersEquity.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="T_Accounts.xaml">

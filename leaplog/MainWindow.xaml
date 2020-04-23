@@ -36,6 +36,11 @@
                     <local:IncomeStatement x:Name="income_statement"  Height="541" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Statement of Owner's Equity" Margin="151,-2,-150,0">
+                <Grid Background="#FFE5E5E5">
+                    <local:StatementofOwnersEquity x:Name="statementofownersequity" Height="541" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Image x:Name="image" HorizontalAlignment="Left" Height="81" Margin="359,-51,0,0" VerticalAlignment="Top" Width="194" Source="/logo.png" Stretch="Fill" Grid.Column="1"/>
 
