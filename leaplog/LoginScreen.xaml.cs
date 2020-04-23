@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
-
+using System.IO;
 
 namespace LeapLog
 {
@@ -41,9 +41,11 @@ namespace LeapLog
 
             //database funtionality for user login credentials
 
+            Directory.SetCurrentDirectory(AppDomain.CurrentDomain.BaseDirectory); //or set executing Assembly location path in param
 
+           
             UserName.Focus();
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
+            SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\LOGINDB.MDF;Integrated Security=True");
             string query = "Select * from UserLogin where username = '" + UserName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             DataTable dataTable = new DataTable();

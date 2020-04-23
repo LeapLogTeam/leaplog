@@ -20,9 +20,7 @@ namespace LeapLog
     /// </summary>
     public partial class AddNewUser : Window
     {
-        
-        private string check;
-
+       
         public AddNewUser()
         {
             InitializeComponent();
@@ -78,7 +76,7 @@ namespace LeapLog
 
             // sqlTables.ReadData("Select * from AdminLogin ");
 
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\LOGINDB\LOGINDB.MDF;Integrated Security=True");
+            SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\LOGINDB.MDF;Integrated Security=True");
             string query = "Select * from UserLogin ";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
             DataTable dataTable = new DataTable();

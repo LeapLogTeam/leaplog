@@ -16,7 +16,7 @@ namespace LeapLog
 		{
 			
 			//C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\TABLES\DATABASE1.MDF
-			connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\NEWGITHUBCLONE\LEAPLOG\LEAPLOG\TABLES\DATABASE1.MDF;Integrated Security=True");
+			connection = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\DATABASE1.MDF;Integrated Security=True");
 		}
 
 		public LeapLogDBManager(string connectionString)

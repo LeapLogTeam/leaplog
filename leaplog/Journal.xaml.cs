@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+
+
 
 namespace LeapLog
 {
@@ -138,6 +131,38 @@ namespace LeapLog
         {
             journalHelpWindow1.Visibility = Visibility.Collapsed;
             journalHelpWindow2.Visibility = Visibility.Collapsed;
+        }
+
+        private void toExcel_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+          /*  string tableName = user_Input.Text.Replace(" ", "");
+            // Load up Excel, then make a new empty workbook.
+            Excel.Application excelApp = new Excel.Application();
+            excelApp.Workbooks.Add();
+            // This example uses a single workSheet.
+            Excel._Worksheet workSheet = excelApp.ActiveSheet;
+            // Establish column headings in cells.
+            workSheet.Cells[1, "A"] = "Make";
+            workSheet.Cells[1, "B"] = "Color";
+            workSheet.Cells[1, "C"] = "Pet Name";
+            // Now, map all data in List<Car> to the cells of the spreadsheet.
+            int row = 1;
+            foreach (Car c in carsInStock)
+            {
+                row++;
+                workSheet.Cells[row, "A"] = c.Make;
+                workSheet.Cells[row, "B"] = c.Color;
+                workSheet.Cells[row, "C"] = c.PetName;
+            }
+            // Give our table data a nice look and feel.
+            workSheet.Range["A1"].AutoFormat(Excel.XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+            // Save the file, quit Excel, and display message to user.
+            workSheet.SaveAs($@"{Environment.CurrentDirectory}\Inventory.xlsx");
+            excelApp.Quit();
+            Console.WriteLine("The Inventory.xslx file has been saved to your app folder");*/
+
         }
     }
 }
