@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using Excel = Microsoft.Office.Interop.Excel;
+ 
 
 
 
@@ -135,33 +139,89 @@ namespace LeapLog
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
-           
+                    //***********************from db to table adapter*******************************        
+            string tableName = user_Input.Text.Replace(" ", "");
 
-          /*  string tableName = user_Input.Text.Replace(" ", "");
-            // Load up Excel, then make a new empty workbook.
-            Excel.Application excelApp = new Excel.Application();
+            SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+            string query = "Select * from "+tableName+" ";
+            SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+            System.Data.DataTable dataTable = new System.Data.DataTable();
+            sda.Fill(dataTable);
+            //string name;
+
+            List<tableAdapterr> tablelist = new List<tableAdapterr>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                tableAdapterr journalTable = new tableAdapterr();
+
+                 /*name = row["username"].ToString().Trim();
+                System.Diagnostics.Debug.WriteLine(name);
+                list.Add(name);*/
+                journalTable.ID = Convert.ToInt32(row["ID"]);
+                journalTable.Date = row["Date"].ToString().Trim();
+                journalTable.Account_1 = row["Account_1"].ToString().Trim();
+                journalTable.Account_2 = row["Account_2"].ToString().Trim();
+                journalTable.Type_1 = row["Type_1"].ToString().Trim();
+                journalTable.Type_2 = row["Type_2"].ToString().Trim();
+                journalTable.Debit = Convert.ToInt32( row["Debit"]);
+                journalTable.Credit = Convert.ToInt32( row["Credit"]);
+
+                
+                tablelist.Add(journalTable);
+
+
+
+            }
+             foreach(var i in tablelist)
+            {
+                System.Diagnostics.Debug.WriteLine(i.Account_1);
+            }
+
+            //*************************************to excel****************************************
+             
+              // Load up Excel, then make a new empty workbook.
+              Excel.Application excelApp = new Excel.Application();
+            
+
             excelApp.Workbooks.Add();
             // This example uses a single workSheet.
-            Excel._Worksheet workSheet = excelApp.ActiveSheet;
-            // Establish column headings in cells.
-            workSheet.Cells[1, "A"] = "Make";
-            workSheet.Cells[1, "B"] = "Color";
-            workSheet.Cells[1, "C"] = "Pet Name";
-            // Now, map all data in List<Car> to the cells of the spreadsheet.
-            int row = 1;
-            foreach (Car c in carsInStock)
-            {
-                row++;
-                workSheet.Cells[row, "A"] = c.Make;
-                workSheet.Cells[row, "B"] = c.Color;
-                workSheet.Cells[row, "C"] = c.PetName;
+            Worksheet workSheet = (Worksheet)excelApp.ActiveSheet;
+              // Establish column headings in cells.
+              workSheet.Cells[1, "A"] = "ID";
+              workSheet.Cells[1, "B"] = "Date";
+              workSheet.Cells[1, "C"] = "Account 1";
+              workSheet.Cells[1, "D"] = "Type 1";
+              workSheet.Cells[1, "E"] = "Debit";
+              workSheet.Cells[1, "F"] = "Account 2";
+              workSheet.Cells[1, "G"] = "Type 2";
+              workSheet.Cells[1, "H"] = "Credit";
+
+              // Now, map all data in List<Car> to the cells of the spreadsheet.
+              int row1 = 1;
+              char letter = 'A';
+              foreach (var i in tablelist)
+              {
+                  row1++;
+                  letter++;
+
+                  workSheet.Cells[row1, "A"] = i.ID;
+                  workSheet.Cells[row1, "B"] = i.Date;
+                  workSheet.Cells[row1, "C"] = i.Account_1;
+                  workSheet.Cells[row1, "D"] = i.Type_1;
+                  workSheet.Cells[row1, "E"] = i.Debit;
+                  workSheet.Cells[row1, "F"] = i.Account_2;
+                  workSheet.Cells[row1, "G"] = i.Type_2;
+                  workSheet.Cells[row1, "H"] = i.Credit;
             }
-            // Give our table data a nice look and feel.
-            workSheet.Range["A1"].AutoFormat(Excel.XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-            // Save the file, quit Excel, and display message to user.
-            workSheet.SaveAs($@"{Environment.CurrentDirectory}\Inventory.xlsx");
-            excelApp.Quit();
-            Console.WriteLine("The Inventory.xslx file has been saved to your app folder");*/
+              // Give our table data a nice look and feel.
+              workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+              // Save the file, quit Excel, and display message to user.
+              workSheet.SaveAs($@"{Environment.CurrentDirectory}\"+tableName+ ".xlsx");
+              //excelApp.Quit();
+            excelApp.Visible = true;
+
+            System.Diagnostics.Debug.WriteLine("The tableOne.xslx file has been saved to your app folder");
 
         }
     }
