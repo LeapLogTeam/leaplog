@@ -60,17 +60,10 @@ namespace LeapLog
                 if (td.Day >= from.Day && td.Month >= from.Month && td.Year >= from.Year &&
                     td.Day <= to.Day && td.Month <= to.Month && td.Year <= to.Year)
                 {
-                    string type = _tacc.Type;
-                    Entry_tacc t = _tacc.Clone();
-                    t.Balance = Math.Abs(_tacc.Balance);
-                    switch (type)
+                    if (_tacc.Type == "Owner's Equity") 
                     {
-                        case "Withdrawal":
-                            withdrawals += t.Balance;
-                            break;
-                        case "Owner's Equity":
-                            equity += t.Balance;
-                            break;
+                        equity += _tacc.TotalCredit;
+                        withdrawals += _tacc.TotalDebit;
                     }
                 }
             }

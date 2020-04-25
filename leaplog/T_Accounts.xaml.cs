@@ -111,6 +111,9 @@ namespace LeapLog
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
 
+                        Database.TEntries[i].TotalCredit = sumCredit;
+                        Database.TEntries[i].TotalDebit = sumDebit;
+
                         updated1 = true;
                     }
                     //if end of list reached and the t-account does not exist,
@@ -158,6 +161,9 @@ namespace LeapLog
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
 
+                        Database.TEntries[i].TotalCredit = sumCredit;
+                        Database.TEntries[i].TotalDebit = sumDebit;
+
                         updated2 = true;
                     }
                     //else, if end of list reached and the t-account does not exist,
@@ -187,6 +193,7 @@ namespace LeapLog
             acc1.Type = entry.Type1;
             acc1.Debit.Add(entry.Debit);
             acc1.Credit.Add(0);
+            acc1.TotalDebit = entry.Debit;
 
             //calculate balance
             if (acc1.Type == "Asset")
@@ -205,6 +212,7 @@ namespace LeapLog
             acc2.Type = entry.Type2;
             acc2.Debit.Add(0);
             acc2.Credit.Add(entry.Credit);
+            acc1.TotalCredit = entry.Credit;
 
             //calculate balance
             if (acc2.Type == "Asset")

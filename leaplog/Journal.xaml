@@ -67,7 +67,6 @@
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
-            <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
@@ -77,7 +76,6 @@
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
-            <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
