@@ -80,7 +80,7 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="419,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="35" Margin="546,436,0,0" VerticalAlignment="Top" Width="70" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
+        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="35" Margin="546,449,0,0" VerticalAlignment="Top" Width="70" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
         <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="419,419,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="221,418,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="221,482,0,0" VerticalAlignment="Top" Width="104"/>
@@ -106,9 +106,9 @@
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="325,480,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox Name="warningTB" HorizontalAlignment="Left" Background="Beige" Visibility="Hidden"  Height="60" Margin="449,462,0,0" Text="Error: Please enter integers for Debit and Credit Amounts" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="67,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
-        <Label x:Name="label" Content="Enter Journal Name:" HorizontalAlignment="Left" Margin="73,437,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="enter_button" Content="Create Jorunal Table" HorizontalAlignment="Left" Margin="67,492,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="128" FontWeight="Bold"/>
+        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
+        <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="64,424,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="72,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
 
         <!--help feature-->
         <Button x:Name="journalHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="journalHelpButton_Click">
@@ -131,7 +131,8 @@
             <Button Name="backButton" Content="Go back" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
             <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
         </Grid>
-        <Button x:Name="toExcel" Content="Save " HorizontalAlignment="Left" Margin="546,500,0,0" VerticalAlignment="Top" Width="70" Height="35" FontWeight="Bold" Click="toExcel_Click"/>
+        <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="546,501,0,0" VerticalAlignment="Top" Width="94" Height="35" FontWeight="Bold" Click="toExcel_Click"/>
+        <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="116,474,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>

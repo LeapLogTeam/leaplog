@@ -140,7 +140,7 @@ namespace LeapLog
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
             //**************************flow control************************************
-            string messageBoxText = "Table field cannot be null or empty";
+            string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Warning;
