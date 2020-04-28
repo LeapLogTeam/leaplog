@@ -125,25 +125,25 @@
         </Grid>
         <Grid x:Name="journalHelpWindow2" Visibility="Collapsed">
             <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Center" Margin="0,135,0,0" Text="An example of a journal entry using assets would be to purchase equipment with cash. You are increasing one asset and decreasing another." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="116,135,0,0" Text="An example of a journal entry using assets would be to purchase equipment with cash. You are increasing one asset and decreasing another." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
             <Image Source="\images\asset-example.png" HorizontalAlignment="Center" Height="31" Margin="0,182,0,0" VerticalAlignment="Top" Width="538"/>
             <Button Name="backButton" Content="Go back" HorizontalAlignment="Left" Margin="253,463,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
             <Button Name="forwardButton2" Content="Next Page" HorizontalAlignment="Left" Margin="315,463,0,0" VerticalAlignment="Top" Click="forwardButton2_Click"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Center" Margin="0,229,0,0" Text="An example of a journal entry using a liability is buying supplies on credit. You get the supplies now, but will have a debt to pay later." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="116,229,0,0" Text="An example of a journal entry using a liability is buying supplies on credit. You get the supplies now, but will have a debt to pay later." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
             <Image Source="\images\liability-ex.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,276,0,0"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="76,320,0,0" Text="An example of a journal entry using owner's equity is to invest money into your business. Bob invests money, so both cash and owner's equity increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="106,320,0,0" Text="An example of a journal entry using owner's equity is to invest money into your business. Bob invests money, so both cash and owner's equity increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
             <Image Source="\images\oe-example.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,362,0,0"/>
 
         </Grid>
-        <Grid x:Name="journalHelpWindow3" Visibility="Visible">
+        <Grid x:Name="journalHelpWindow3" Visibility="Collapsed">
             <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
             <Button Name="backButton2" Content="Go back" HorizontalAlignment="Left" Margin="253,463,0,0" VerticalAlignment="Top" Click="backButton2_Click"/>
             <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="76,136,0,0" Text="An example of a  a journal entry using a withdrawal is if Bob, the owner, chooses to withdraw money from their business for their own personal expenses." TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,136,0,0" Text="An example of a  a journal entry using a withdrawal is if Bob, the owner, chooses to withdraw money from their business for their own personal expenses." TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="478"/>
             <Image Source="\images\drawing-ex.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,209,0,0"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="76,259,0,0" Text="An example of a journal entry using a revenue account is when the business generates sales income. Both cash and revenue increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,259,0,0" Text="An example of a journal entry using a revenue account is when the business generates sales income. Both cash and revenue increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="478"/>
             <Image Source="\images\rev-ex.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,309,0,0"/>
-            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="76,354,0,0" Text="An example of a journal entry using an expense account is when an owner needs to pay their employees' salary. The expense account is increased and cash is decreased." TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="478"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,354,0,0" Text="An example of a journal entry using an expense account is when an owner needs to pay their employees' salary. The expense account is increased and cash is decreased." TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="478"/>
             <Image Source="\images\expense-ex.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,415,0,0"/>
 
         </Grid>
