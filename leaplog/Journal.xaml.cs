@@ -126,6 +126,19 @@ namespace LeapLog
         {
             journalHelpWindow1.Visibility = Visibility.Collapsed;
             journalHelpWindow2.Visibility = Visibility.Collapsed;
+            journalHelpWindow3.Visibility = Visibility.Collapsed;
+        }
+
+        //button that changes to third help window
+        private void forwardButton2_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow3.Visibility = Visibility.Visible;
+        }
+
+        //button that changes from third to second help window
+        private void backButton2_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow3.Visibility = Visibility.Collapsed;
         }
 
         private void toExcel_Click(object sender, RoutedEventArgs e)

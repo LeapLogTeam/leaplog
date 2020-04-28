@@ -22,5 +22,38 @@ namespace LeapLog
         {
             InitializeComponent();
         }
+
+        //switches explanation views
+        private void accBtn_Click(object sender, RoutedEventArgs e)
+        {
+            accGrid.Visibility = Visibility.Visible;
+            assetGrid.Visibility = Visibility.Collapsed;
+            liabilityGrid.Visibility = Visibility.Collapsed;
+            oeGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void assetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            accGrid.Visibility = Visibility.Collapsed;
+            assetGrid.Visibility = Visibility.Visible;
+            liabilityGrid.Visibility = Visibility.Collapsed;
+            oeGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void liabilityBtn_Click(object sender, RoutedEventArgs e)
+        {
+            accGrid.Visibility = Visibility.Collapsed;
+            assetGrid.Visibility = Visibility.Collapsed;
+            liabilityGrid.Visibility = Visibility.Visible;
+            oeGrid.Visibility = Visibility.Collapsed;
+        }
+
+        private void oeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            accGrid.Visibility = Visibility.Collapsed;
+            assetGrid.Visibility = Visibility.Collapsed;
+            liabilityGrid.Visibility = Visibility.Collapsed;
+            oeGrid.Visibility = Visibility.Visible;
+        }
     }
 }
