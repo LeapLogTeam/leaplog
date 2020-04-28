@@ -85,14 +85,14 @@ namespace LeapLog
                         Database.TEntries[i].Debit.Add(acc1.Credit[0]);
 
                         //get sum of all current debits
-                        int sumDebit = 0;
+                        double sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
                             sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
-                        int sumCredit = 0;
+                        double sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
                             sumCredit += Database.TEntries[i].Credit[j];
@@ -132,14 +132,14 @@ namespace LeapLog
                         Database.TEntries[i].Credit.Add(acc2.Credit[0]);
 
                         //get sum of all current debits
-                        int sumDebit = 0;
+                        double sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
                             sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
-                        int sumCredit = 0;
+                        double sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
                             sumCredit += Database.TEntries[i].Credit[j];

@@ -33,8 +33,8 @@ namespace LeapLog
 			   entryGridLO.Items.Clear();
 			   entryGridTLO.Items.Clear();
 
-			   int Total_assests = 0;
-			   int Total_LOE = 0;
+			   double Total_assests = 0;
+			   double Total_LOE = 0;
 
 			   //add t-accounts to respective grids
 			   for (int i = 0; i < Database.TEntries.Count; i++)

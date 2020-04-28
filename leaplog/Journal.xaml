@@ -67,8 +67,6 @@
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
-            <ComboBoxItem Content="Revenue"></ComboBoxItem>
-            <ComboBoxItem Content="Expense"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="419,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
         <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="221,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>

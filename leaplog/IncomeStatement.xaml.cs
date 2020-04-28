@@ -39,8 +39,8 @@ namespace LeapLog
             entryGridTR.Items.Clear();
             textBox1.Clear();
 
-            int Total_revenue = 0;
-            int Total_expenses = 0;
+            double Total_revenue = 0;
+            double Total_expenses = 0;
 
             //add t-accounts to respective grids
             DateTime from = Database.from_date;
@@ -53,18 +53,25 @@ namespace LeapLog
                     td.Day <= to.Day && td.Month <= to.Month && td.Year <= to.Year)
                 {
                     string type = _tacc.Type;
+                    string name = _tacc.Account;
                     Entry_tacc t = _tacc.Clone();
                     t.Balance = Math.Abs(_tacc.Balance);
-                    switch (type)
+
+                    //if account is of OE type
+                    if (type.Equals("Owner's Equity"))
                     {
-                        case "Revenue":
+                        //and if account is a revenue account
+                        if (name.Contains("Income"))
+                        {
                             entryGridR.Items.Add(t);
                             Total_revenue += t.Balance;
-                            break;
-                        case "Expense":
+                        }
+                        //or if account is an expense account
+                        else if (name.Contains("Expense"))
+                        {
                             entryGridE.Items.Add(t);
                             Total_expenses += t.Balance;
-                            break;
+                        }
                     }
                 }
             }

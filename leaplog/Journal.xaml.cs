@@ -18,16 +18,9 @@ namespace LeapLog
     /// </summary>
     public partial class Journal : UserControl
     {
-
-        
-       
-        
-        
         public Journal()
         {
             InitializeComponent();
-           
-
         }
         
         //Add new entry button
@@ -45,8 +38,8 @@ namespace LeapLog
             {
                 tempEntry.Account1 = account1TB.Text;
                 tempEntry.Account2 = "      " + account2TB.Text;
-                tempEntry.Debit = Int32.Parse(debitTB.Text);
-                tempEntry.Credit = Int32.Parse(creditTB.Text);
+                tempEntry.Debit = Double.Parse(debitTB.Text);
+                tempEntry.Credit = Double.Parse(creditTB.Text);
                 tempEntry.Type1 = type1CB.Text;
                 tempEntry.Type2 = type2CB.Text;
 
@@ -64,9 +57,7 @@ namespace LeapLog
                 //<<------- this chooses the table where the data will be added to-------->>
                  string tableName = user_Input.Text.Replace(" ", "");
  
-                sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + Int32.Parse(debitTB.Text) + "','" + Int32.Parse(creditTB.Text) + "')");
-
-
+                sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + double.Parse(debitTB.Text) + "','" + double.Parse(creditTB.Text) + "')");
 
             }
             catch {
