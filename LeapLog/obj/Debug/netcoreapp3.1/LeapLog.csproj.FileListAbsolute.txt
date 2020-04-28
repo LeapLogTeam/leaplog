@@ -99,4 +99,3 @@ C:\Users\cynth\leaplog-project\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.p
 C:\Users\cynth\leaplog-project\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.genruntimeconfig.cache
 C:\Users\cynth\leaplog-project\leaplog\LeapLog\obj\Debug\netcoreapp3.1\Dashboard.g.cs
 C:\Users\cynth\leaplog-project\leaplog\LeapLog\obj\Debug\netcoreapp3.1\Dashboard.baml
-C:\Users\cynth\leaplog-project\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.csprojAssemblyReference.cache
