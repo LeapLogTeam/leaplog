@@ -89,27 +89,77 @@ namespace LeapLog
 
         private void enter_button_Click(object sender, RoutedEventArgs e)
         {
-            //<<--------this creates the datatable into the database------->>
+
             string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Warning;
+            //**********************Check if table name already exists**********************
 
+            List<String> list = new List<String>(); // to save the table names
 
-            LeapLogDBManager sqlTables = new LeapLogDBManager();
-            string tableName = user_Input.Text.Replace(" ", "");
+            string connetionString = null;
+            SqlConnection connection;
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            int counterV = 0;
+            string sql = null;
 
-            string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
-"Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
-"Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
-            if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
+            connetionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True";
+            sql = "Select DISTINCT(name) FROM sys.Tables";
+
+            connection = new SqlConnection(connetionString);
+
+            try
             {
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                connection.Open();
+                command = new SqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds);
+                adapter.Dispose();
+                command.Dispose();
+                connection.Close();
+
+                for (counterV = 0; counterV <= ds.Tables[0].Rows.Count - 1; counterV++)
+                {
+                    list.Add(ds.Tables[0].Rows[counterV].ItemArray[0].ToString());
+                }
             }
-             
+            catch (Exception)
+            {
+                Console.WriteLine("Can not open connection ! ");
+            }
+            //******************end of block of code*********************************
+
+
+            //******************Control if statement******************
+
+            if (list.FindIndex(x => x.Equals(user_Input.Text.Trim(), StringComparison.CurrentCultureIgnoreCase)) != -1)
+
+                MessageBox.Show("Table name already taken", "Try again", button, icon);
 
             else
-                sqlTables.WriteData(dbString);
+            {
+                //<<--------this creates the datatable into the database------->>
+                LeapLogDBManager sqlTables = new LeapLogDBManager();
+                string tableName = user_Input.Text.Replace(" ", "");
+
+                string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
+    "Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
+    "Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+                if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
+
+
+                else
+                {
+                    sqlTables.WriteData(dbString);
+                    MessageBox.Show("Table " + user_Input.Text + " added to Database. ", "Table added", button, icon);
+                }
+            }
         }
 
         //button that opens up journal help feature
