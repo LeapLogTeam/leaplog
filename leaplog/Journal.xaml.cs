@@ -137,7 +137,7 @@ namespace LeapLog
 
             if (list.FindIndex(x => x.Equals(user_Input.Text.Trim(), StringComparison.CurrentCultureIgnoreCase)) != -1)
 
-                MessageBox.Show("Table name already taken", "Try again", button, icon);
+                MessageBox.Show("Table name already taken.", "Try again", button, icon);
 
             else
             {
