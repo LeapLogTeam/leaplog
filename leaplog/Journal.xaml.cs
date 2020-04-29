@@ -252,6 +252,7 @@ namespace LeapLog
                 excelApp.Workbooks.Add();
                 // This example uses a single workSheet.
                 Worksheet workSheet = (Worksheet)excelApp.ActiveSheet;
+                workSheet.Name = "Journal Entry";
                 // Establish column headings in cells.
                 workSheet.Cells[1, "A"] = "ID";
                 workSheet.Cells[1, "B"] = "Date";
