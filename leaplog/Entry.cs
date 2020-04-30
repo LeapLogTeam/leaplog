@@ -20,9 +20,9 @@ namespace LeapLog
 
         public string Type2 { get; set; }
 
-        public int Debit { get; set; }
+        public double Debit { get; set; }
 
-        public int Credit { get; set; }
+        public double Credit { get; set; }
 
     }
 }

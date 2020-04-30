@@ -20,7 +20,7 @@ namespace LeapLog
           // select date range for statement of owner's equity
           public static DateRange sooe_date;
           // net-income
-          public static int net_income = 0;
+          public static double net_income = 0;
 
           static Database()
           {

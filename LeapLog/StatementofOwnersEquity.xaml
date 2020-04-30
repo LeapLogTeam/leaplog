@@ -11,13 +11,28 @@
         <TextBox x:Name="From" HorizontalAlignment="Left" Margin="53,14,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="from_SelectionChanged"/>
         <Label Content="To:" HorizontalAlignment="Left" Margin="23,33,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="To" HorizontalAlignment="Left" Margin="53,37,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="to_SelectionChanged"/>
-        <Label Content="Capital at start date:" HorizontalAlignment="Left" Height="23" Margin="53,64,0,0" VerticalAlignment="Top" Width="115"/>
-        <Label Content="Net income:" HorizontalAlignment="Left" Height="23" Margin="93,92,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Withdrawals:" HorizontalAlignment="Left" Height="23" Margin="87,120,0,0" VerticalAlignment="Top" Width="81"/>
-        <Label Content="Capital at end date:" HorizontalAlignment="Left" Height="23" Margin="53,148,0,0" VerticalAlignment="Top" Width="115"/>
-        <TextBox Name="textbox1" HorizontalAlignment="Left" Margin="173,69,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <TextBox Name="textbox2" HorizontalAlignment="Left" Margin="173,97,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <TextBox Name="textbox3" HorizontalAlignment="Left" Margin="173,125,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <TextBox Name="textbox4" HorizontalAlignment="Left" Margin="173,153,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <Label Content="Capital at start date:" HorizontalAlignment="Left" Height="23" Margin="164,127,0,0" VerticalAlignment="Top" Width="115"/>
+        <Label Content="Net income:" HorizontalAlignment="Left" Height="23" Margin="204,155,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Withdrawals:" HorizontalAlignment="Left" Height="23" Margin="198,183,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Content="Capital at end date:" HorizontalAlignment="Left" Height="23" Margin="164,211,0,0" VerticalAlignment="Top" Width="115"/>
+        <TextBox Name="textbox1" HorizontalAlignment="Left" Margin="284,132,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox Name="textbox2" HorizontalAlignment="Left" Margin="284,160,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox Name="textbox3" HorizontalAlignment="Left" Margin="284,188,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        <TextBox Name="textbox4" HorizontalAlignment="Left" Margin="284,216,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+
+        <!--help feature-->
+        <Button Name="SOEHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="SOEHelpButton_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Grid Name="SOEHelpWindow" Visibility="Collapsed" >
+            <Rectangle  HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center" Margin="0,110,0,0" Text="The Statement of Owner's Equity calculates the correct amount of capital at the end of a specified time period." TextWrapping="Wrap" VerticalAlignment="Top" Height="174" Width="478"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center" Margin="0,289,0,0" Text="It starts with the capital at the beginning date, then it adds net income and subtracts any withdrawals made to get the final capital at the end date." TextWrapping="Wrap" VerticalAlignment="Top" Height="174" Width="478"/>
+            <Button x:Name="SOECloseButton" Content="  X  " HorizontalAlignment="Left" Margin="581,62,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="SOECloseButton_Click"/>
+        </Grid>
     </Grid>
 </UserControl>

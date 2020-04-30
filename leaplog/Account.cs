@@ -9,7 +9,7 @@ namespace LeapLog
     //to show up on a grid
     class Account
     {
-        public int Debit { get; set; }
-        public int Credit { get; set; }
+        public double Debit { get; set; }
+        public double Credit { get; set; }
     }
 }

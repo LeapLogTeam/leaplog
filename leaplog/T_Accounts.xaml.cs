@@ -42,7 +42,10 @@ namespace LeapLog
                 {
                     l_Grid.Items.Add(Database.TEntries[i]);
                 }
-                else if (Database.TEntries[i].Type.Equals("Owner's Equity"))
+                else if (Database.TEntries[i].Type.Equals("Owners Equity") ||
+                        Database.TEntries[i].Type.Equals("Revenue") ||
+                        Database.TEntries[i].Type.Equals("Expense") ||
+                        Database.TEntries[i].Type.Equals("Withdrawal"))
                 {
                     oe_Grid.Items.Add(Database.TEntries[i]);
                 }
@@ -85,26 +88,26 @@ namespace LeapLog
                         Database.TEntries[i].Debit.Add(acc1.Credit[0]);
 
                         //get sum of all current debits
-                        int sumDebit = 0;
+                        double sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
                             sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
-                        int sumCredit = 0;
+                        double sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
                             sumCredit += Database.TEntries[i].Credit[j];
                         }
 
-                        //if it is an asset type
-                        if (Database.TEntries[i].Type.Equals("Asset"))
+                        //if it is an asset, withdrawal, or expense type
+                        if (Database.TEntries[i].Type.Equals("Asset") || Database.TEntries[i].Type.Equals("Expense") || Database.TEntries[i].Type.Equals("Withdrawal"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
                         }
-                        //if it is a liability or owner's equity type
+                        //if it is a liability, revenue, or owner's equity type
                         else
                         {
                             //update the original account's balance by subtracting the debit from the credit
@@ -135,26 +138,26 @@ namespace LeapLog
                         Database.TEntries[i].Credit.Add(acc2.Credit[0]);
 
                         //get sum of all current debits
-                        int sumDebit = 0;
+                        double sumDebit = 0;
                         for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
                         {
                             sumDebit += Database.TEntries[i].Debit[j];
                         }
 
                         //get sum of all current credits
-                        int sumCredit = 0;
+                        double sumCredit = 0;
                         for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
                         {
                             sumCredit += Database.TEntries[i].Credit[j];
                         }
 
-                        //if it is an asset type
-                        if (Database.TEntries[i].Type.Equals("Asset"))
+                        //if it is an asset, withdrawal, or expense type
+                        if (Database.TEntries[i].Type.Equals("Asset") || Database.TEntries[i].Type.Equals("Expense") || Database.TEntries[i].Type.Equals("Withdrawal"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
                         }
-                        //if it is a liability or owner's equity type
+                        //if it is a liability, revenue, or owner's equity type
                         else
                         {
                             //update the original account's balance by subtracting the debit from the credit

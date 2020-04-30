@@ -7,7 +7,7 @@ namespace LeapLog
 	 // just a class to hold the total for the balance-sheet. May remove this when I find something better.
 	 public class Total
 	 {
-		  public int total { get; set; }
+		  public double total { get; set; }
 		  public Total()
 		  {
 			   total = 0;
