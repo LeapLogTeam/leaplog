@@ -215,7 +215,7 @@ namespace LeapLog
             acc2.Type = entry.Type2;
             acc2.Debit.Add(0);
             acc2.Credit.Add(entry.Credit);
-            acc1.TotalCredit = entry.Credit;
+            acc2.TotalCredit = entry.Credit;
 
             //calculate balance
             if (acc2.Type == "Asset" || acc2.Type == "Expense" || acc2.Type == "Withdrawal")
