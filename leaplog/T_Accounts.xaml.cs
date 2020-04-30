@@ -199,7 +199,7 @@ namespace LeapLog
             acc1.TotalDebit = entry.Debit;
 
             //calculate balance
-            if (acc1.Type == "Asset")
+            if (acc1.Type == "Asset" || acc1.Type == "Expense" || acc1.Type == "Withdrawal")
             {
                 acc1.Balance = acc1.Debit[0] - acc1.Credit[0];
             }
@@ -218,7 +218,7 @@ namespace LeapLog
             acc1.TotalCredit = entry.Credit;
 
             //calculate balance
-            if (acc2.Type == "Asset")
+            if (acc2.Type == "Asset" || acc2.Type == "Expense" || acc2.Type == "Withdrawal")
             {
                 acc2.Balance = acc2.Debit[0] - acc2.Credit[0];
             }
