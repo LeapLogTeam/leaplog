@@ -36,6 +36,12 @@ namespace LeapLog
             //REVISION NEEDED: validation could be improved.
             try
             {
+                //process account names to make sure no quotation marks are entered
+                if (account1TB.Text.Contains("'") || account2TB.Text.Contains("'"))
+                {
+                    throw new Exception();
+                }
+
                 tempEntry.Account1 = account1TB.Text;
                 tempEntry.Account2 = "      " + account2TB.Text;
                 tempEntry.Debit = Double.Parse(debitTB.Text);
@@ -296,5 +302,10 @@ namespace LeapLog
 
         }
 
+        private void account1TB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //clear any warnings, if necessary
+            warningTB.Visibility = Visibility.Hidden;
+        }
     }
 }

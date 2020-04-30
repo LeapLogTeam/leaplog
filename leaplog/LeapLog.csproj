@@ -41,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="18.1.0.45" />
+    <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="18.1.0.46" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 
