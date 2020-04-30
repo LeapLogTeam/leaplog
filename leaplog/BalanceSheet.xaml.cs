@@ -35,6 +35,8 @@ namespace LeapLog
 
 			   double Total_assests = 0;
 			   double Total_LOE = 0;
+			   double total_expenses = 0;
+			   double total_withdrawals = 0;
 
 			   //add t-accounts to respective grids
 			   for (int i = 0; i < Database.TEntries.Count; i++)
@@ -55,9 +57,12 @@ namespace LeapLog
 								   entryGridLO.Items.Add(_tacc);
 								   Total_LOE += _tacc.Balance;
 								   break;
-							  case "Revenue":
 							  case "Expense":
 							  case "Withdrawal":
+								   entryGridLO.Items.Add(_tacc);
+								   Total_LOE -= _tacc.Balance;
+								   break;
+							  case "Revenue":
 							  case "Owners Equity":
 								   entryGridLO.Items.Add(_tacc);
 								   Total_LOE += _tacc.Balance;
