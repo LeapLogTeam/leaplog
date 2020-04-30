@@ -17,4 +17,4 @@ accounting for users and small businesses unfamiliar with accounting tools.
 - T-Accounts
 - Balance Sheet
 - Income Statement
-- Help and Guidance Features
+- Statement of Owner's Equity
