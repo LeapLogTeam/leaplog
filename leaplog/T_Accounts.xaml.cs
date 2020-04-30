@@ -42,7 +42,10 @@ namespace LeapLog
                 {
                     l_Grid.Items.Add(Database.TEntries[i]);
                 }
-                else if (Database.TEntries[i].Type.Equals("Owner's Equity"))
+                else if (Database.TEntries[i].Type.Equals("Owners Equity") ||
+                        Database.TEntries[i].Type.Equals("Revenue") ||
+                        Database.TEntries[i].Type.Equals("Expense") ||
+                        Database.TEntries[i].Type.Equals("Withdrawal"))
                 {
                     oe_Grid.Items.Add(Database.TEntries[i]);
                 }
@@ -98,18 +101,21 @@ namespace LeapLog
                             sumCredit += Database.TEntries[i].Credit[j];
                         }
 
-                        //if it is an asset type
-                        if (Database.TEntries[i].Type.Equals("Asset"))
+                        //if it is an asset, withdrawal, or expense type
+                        if (Database.TEntries[i].Type.Equals("Asset") || Database.TEntries[i].Type.Equals("Expense") || Database.TEntries[i].Type.Equals("Withdrawal"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
                         }
-                        //if it is a liability or owner's equity type
+                        //if it is a liability, revenue, or owner's equity type
                         else
                         {
                             //update the original account's balance by subtracting the debit from the credit
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
+
+                        Database.TEntries[i].TotalCredit = sumCredit;
+                        Database.TEntries[i].TotalDebit = sumDebit;
 
                         updated1 = true;
                     }
@@ -145,18 +151,21 @@ namespace LeapLog
                             sumCredit += Database.TEntries[i].Credit[j];
                         }
 
-                        //if it is an asset type
-                        if (Database.TEntries[i].Type.Equals("Asset"))
+                        //if it is an asset, withdrawal, or expense type
+                        if (Database.TEntries[i].Type.Equals("Asset") || Database.TEntries[i].Type.Equals("Expense") || Database.TEntries[i].Type.Equals("Withdrawal"))
                         {
                             //update the original account's balance by subtracting the credit from the debit
                             Database.TEntries[i].Balance = sumDebit - sumCredit;
                         }
-                        //if it is a liability or owner's equity type
+                        //if it is a liability, revenue, or owner's equity type
                         else
                         {
                             //update the original account's balance by subtracting the debit from the credit
                             Database.TEntries[i].Balance = sumCredit - sumDebit;
                         }
+
+                        Database.TEntries[i].TotalCredit = sumCredit;
+                        Database.TEntries[i].TotalDebit = sumDebit;
 
                         updated2 = true;
                     }
@@ -187,6 +196,7 @@ namespace LeapLog
             acc1.Type = entry.Type1;
             acc1.Debit.Add(entry.Debit);
             acc1.Credit.Add(0);
+            acc1.TotalDebit = entry.Debit;
 
             //calculate balance
             if (acc1.Type == "Asset")
@@ -205,6 +215,7 @@ namespace LeapLog
             acc2.Type = entry.Type2;
             acc2.Debit.Add(0);
             acc2.Credit.Add(entry.Credit);
+            acc1.TotalCredit = entry.Credit;
 
             //calculate balance
             if (acc2.Type == "Asset")

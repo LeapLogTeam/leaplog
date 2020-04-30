@@ -25,6 +25,10 @@ namespace LeapLog
 
         public double Balance { get; set; }
 
+        public double TotalDebit { get; set; }
+
+        public double TotalCredit { get; set; }
+
         public Entry_tacc Clone()
         {
             return new Entry_tacc()
@@ -34,7 +38,9 @@ namespace LeapLog
                 Credit = this.Credit,
                 Date = this.Date,
                 Debit = this.Debit,
-                Type = this.Type
+                Type = this.Type,
+                TotalDebit = this.TotalDebit,
+                TotalCredit = this.TotalCredit
             };
         }
      }

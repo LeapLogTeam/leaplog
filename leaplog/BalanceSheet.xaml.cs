@@ -55,7 +55,10 @@ namespace LeapLog
 								   entryGridLO.Items.Add(_tacc);
 								   Total_LOE += _tacc.Balance;
 								   break;
-							  case "Owner's Equity":
+							  case "Revenue":
+							  case "Expense":
+							  case "Withdrawal":
+							  case "Owners Equity":
 								   entryGridLO.Items.Add(_tacc);
 								   Total_LOE += _tacc.Balance;
 								   break;

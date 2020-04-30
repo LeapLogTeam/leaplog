@@ -12,13 +12,16 @@
     <None Remove="images\asset-example.PNG" />
     <None Remove="images\asset-image-colored.jpg" />
     <None Remove="images\drawing-ex.PNG" />
+    <None Remove="images\drawing-example-image.PNG" />
     <None Remove="images\expense-ex.PNG" />
+    <None Remove="images\expense-example-image.PNG" />
     <None Remove="images\expenses-image-colored.jpg" />
     <None Remove="images\liability-ex.PNG" />
     <None Remove="images\liability-image-colored.jpg" />
     <None Remove="images\oe-example.PNG" />
     <None Remove="images\oe-image-colored.jpg" />
     <None Remove="images\rev-ex.PNG" />
+    <None Remove="images\revenue-example-image.PNG" />
     <None Remove="images\revenue-image-colored.jpg" />
     <None Remove="images\withdrawal-image-colored.jpg" />
     <None Remove="logo.png" />
@@ -45,14 +48,14 @@
   <ItemGroup>
     <Resource Include="images\asset-example.PNG" />
     <Resource Include="images\asset-image-colored.jpg" />
-    <Resource Include="images\drawing-ex.PNG" />
-    <Resource Include="images\expense-ex.PNG" />
+    <Resource Include="images\drawing-example-image.PNG" />
+    <Resource Include="images\expense-example-image.PNG" />
     <Resource Include="images\expenses-image-colored.jpg" />
     <Resource Include="images\liability-ex.PNG" />
     <Resource Include="images\liability-image-colored.jpg" />
     <Resource Include="images\oe-example.PNG" />
     <Resource Include="images\oe-image-colored.jpg" />
-    <Resource Include="images\rev-ex.PNG" />
+    <Resource Include="images\revenue-example-image.PNG" />
     <Resource Include="images\revenue-image-colored.jpg" />
     <Resource Include="images\withdrawal-image-colored.jpg" />
     <Resource Include="logo.png" />
