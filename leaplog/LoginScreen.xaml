@@ -5,30 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeapLog"
         mc:Ignorable="d"
-        Title="Member Login" Height="440" Width="340" FontSize="14" Background="#234264" KeyUp="Window_KeyUp_1" WindowStartupLocation="CenterScreen" Closing="loginWindow_Closing">
-    <Canvas x:Name="loginCanvas" HorizontalAlignment="Center" Margin="0,0,0,2" Width="340" >
-        <Rectangle Fill="#fdfdfd" Height="300" Canvas.Left="48" Stroke="Black" Canvas.Top="46" Width="244"/>
-        <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="74" Canvas.Top="154" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
-        <Label x:Name="label1" Content="Enter Password: " FontSize="14" Height="16" Canvas.Left="74" Canvas.Top="208" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
-        <TextBox x:Name="UserName" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic" PreviewKeyUp="UserName_PreviewKeyUp" Height="24" Canvas.Left="74" Canvas.Top="174" Width="192" PreviewMouseDown="UserName_PreviewMouseDown" FlowDirection="LeftToRight"/>
-        <Button x:Name="enterButton" TabIndex="3" Content="ENTER" Click="button_Click" RenderTransformOrigin="0.388,0.555" KeyUp="enterButton_KeyUp" Height="35" Canvas.Left="80" Canvas.Top="277" Width="80" FontFamily="Microsoft Sans Serif" FontWeight="Bold" FontSize="12">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                    
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="exitButton" TabIndex="4" Content="EXIT" Click="button1_Click" Height="35" Canvas.Left="178" Canvas.Top="277" Width="80" FontFamily="Microsoft Sans Serif" FontWeight="Bold" FontSize="12">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Height="26" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="74" Canvas.Top="228" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
-        <Image x:Name="image" Height="100" Canvas.Top="52" Width="236" Source="logo.png" Canvas.Left="54"/>
-        <Button x:Name="newUser" Content="Register Account" Canvas.Left="112" Canvas.Top="376" Width="120" FontStyle="Italic" FontWeight="Bold" Visibility="Visible" Background="#FFB4E5F0" Click="newUser_Click"/>
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        Title="Member Login" Height="460" Width="340" FontSize="14" KeyUp="Window_KeyUp_1" WindowStartupLocation="CenterScreen" Closing="loginWindow_Closing">
+    <Border CornerRadius="20" BorderThickness="14" BorderBrush="#234264">
+        <Canvas x:Name="loginCanvas" HorizontalAlignment="Center" Margin="0,0,0,0" Width="320" >
+            <Image Source="images\member-login-background.jpg" Height="435" Canvas.Left="-51" Width="418"/>
+            <Image Source="images\blur.jpg" Height="316" Canvas.Left="-132" Width="600" Canvas.Top="49" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <RotateTransform Angle="0.273"/>
+                </Image.RenderTransform>
+                <Image.BitmapEffect>
+                    <BlurBitmapEffect Radius="30" />
+                </Image.BitmapEffect>
+            </Image>
+            <Rectangle Fill="#fdfdfd" Height="300" Stroke="Black" Canvas.Top="44" Width="244" Canvas.Left="44">
+                <Rectangle.Clip>
+                    <RectangleGeometry Rect="0,0,245,300"  RadiusX="20" RadiusY="20"/>
+                </Rectangle.Clip>
+            </Rectangle>
+            <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="162" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
+            <Label x:Name="label1" Content="Enter Password: " FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="216" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
+            <TextBox x:Name="UserName" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic" PreviewKeyUp="UserName_PreviewKeyUp" Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" PreviewMouseDown="UserName_PreviewMouseDown" FlowDirection="LeftToRight"/>
+            <Button x:Name="enterButton" TabIndex="3" BorderBrush="#353535" Background="#d9d9d9" Content="ENTER" Click="button_Click" RenderTransformOrigin="0.388,0.555" KeyUp="enterButton_KeyUp" Height="34" Canvas.Left="76" Canvas.Top="284" Width="80" FontFamily="Calibri" FontWeight="Bold" FontSize="18">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button x:Name="exitButton" TabIndex="4" BorderBrush="#353535" Background="#d9d9d9" Content="EXIT" Click="button1_Click" Height="34" Canvas.Left="174" Canvas.Top="284" Width="80" FontFamily="Calibri" FontWeight="Bold" FontSize="18">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Height="26" PreviewKeyUp="Pass_PreviewKeyUp" Canvas.Left="68" Canvas.Top="236" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
+            <Image x:Name="image" Height="100" Canvas.Top="60" Width="236" Source="images\leaplog_logo2.jpg" Canvas.Left="48"/>
+            <Button x:Name="newUser" Content="ADMIN LOGIN" Canvas.Left="106" Canvas.Top="377" Width="120" FontWeight="Bold" Visibility="Visible" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="newUser_Click" FontFamily="Calibri"  FontSize="15">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
-    </Canvas>
+        </Canvas>
+    </Border>
 </Window>
