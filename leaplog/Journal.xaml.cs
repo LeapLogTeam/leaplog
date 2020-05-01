@@ -263,6 +263,7 @@ namespace LeapLog
                 workSheet.Cells[1, "G"] = "Type 2";
                 workSheet.Cells[1, "H"] = "Credit";
 
+                // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet.
                 int row1 = 1;
                 char letter = 'A';
                 foreach (var i in tablelist)
