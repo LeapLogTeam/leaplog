@@ -18,16 +18,9 @@ namespace LeapLog
     /// </summary>
     public partial class Journal : UserControl
     {
-
-        
-       
-        
-        
         public Journal()
         {
             InitializeComponent();
-           
-
         }
         
         //Add new entry button
@@ -43,10 +36,16 @@ namespace LeapLog
             //REVISION NEEDED: validation could be improved.
             try
             {
+                //process account names to make sure no quotation marks are entered
+                if (account1TB.Text.Contains("'") || account2TB.Text.Contains("'"))
+                {
+                    throw new Exception();
+                }
+
                 tempEntry.Account1 = account1TB.Text;
                 tempEntry.Account2 = "      " + account2TB.Text;
-                tempEntry.Debit = Int32.Parse(debitTB.Text);
-                tempEntry.Credit = Int32.Parse(creditTB.Text);
+                tempEntry.Debit = Double.Parse(debitTB.Text);
+                tempEntry.Credit = Double.Parse(creditTB.Text);
                 tempEntry.Type1 = type1CB.Text;
                 tempEntry.Type2 = type2CB.Text;
 
@@ -64,9 +63,7 @@ namespace LeapLog
                 //<<------- this chooses the table where the data will be added to-------->>
                  string tableName = user_Input.Text.Replace(" ", "");
  
-                sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + Int32.Parse(debitTB.Text) + "','" + Int32.Parse(creditTB.Text) + "')");
-
-
+                sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + double.Parse(debitTB.Text) + "','" + double.Parse(creditTB.Text) + "')");
 
             }
             catch {
@@ -185,6 +182,19 @@ namespace LeapLog
         {
             journalHelpWindow1.Visibility = Visibility.Collapsed;
             journalHelpWindow2.Visibility = Visibility.Collapsed;
+            journalHelpWindow3.Visibility = Visibility.Collapsed;
+        }
+
+        //button that changes to third help window
+        private void forwardButton2_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow3.Visibility = Visibility.Visible;
+        }
+
+        //button that changes from third to second help window
+        private void backButton2_Click(object sender, RoutedEventArgs e)
+        {
+            journalHelpWindow3.Visibility = Visibility.Collapsed;
         }
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
@@ -292,5 +302,10 @@ namespace LeapLog
 
         }
 
+        private void account1TB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //clear any warnings, if necessary
+            warningTB.Visibility = Visibility.Hidden;
+        }
     }
 }

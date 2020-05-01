@@ -51,8 +51,8 @@ namespace LeapLog
 
             DateTime from = Database.sooe_date.from_date;
             DateTime to = Database.sooe_date.to_date;
-            int equity = 0;
-            int withdrawals = 0;
+            double equity = 0;
+            double withdrawals = 0;
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
                 Entry_tacc _tacc = Database.TEntries[i];
@@ -60,9 +60,13 @@ namespace LeapLog
                 if (td.Day >= from.Day && td.Month >= from.Month && td.Year >= from.Year &&
                     td.Day <= to.Day && td.Month <= to.Month && td.Year <= to.Year)
                 {
-                    if (_tacc.Type == "Owner's Equity") 
+                    if (_tacc.Type == "Owners Equity") 
                     {
                         equity += _tacc.TotalCredit;
+                    }
+                    
+                    if (_tacc.Type == "Withdrawal")
+                    {
                         withdrawals += _tacc.TotalDebit;
                     }
                 }
@@ -84,6 +88,16 @@ namespace LeapLog
         {
             DateTime.TryParse(To.Text, out Database.sooe_date.to_date);
             Refresh();
+        }
+
+        private void SOEHelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            SOEHelpWindow.Visibility = Visibility.Visible;
+        }
+
+        private void SOECloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            SOEHelpWindow.Visibility = Visibility.Collapsed;
         }
     }
 }

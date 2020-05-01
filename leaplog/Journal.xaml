@@ -62,22 +62,24 @@
         </DataGrid>
 
         <!-- Add Entry Section-->
-        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="221,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="221,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="account1TB_GotFocus"/>
         <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="330,450,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
-            <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+            <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
+            <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="419,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
         <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="221,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
         <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="330,513,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
-            <ComboBoxItem Content="Owner's Equity"></ComboBoxItem>
+            <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
             <ComboBoxItem Content="Revenue"></ComboBoxItem>
             <ComboBoxItem Content="Expense"></ComboBoxItem>
+            <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="419,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
         <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="35" Margin="546,449,0,0" VerticalAlignment="Top" Width="70" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
@@ -105,7 +107,7 @@
             </Label.RenderTransform>
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="325,480,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
-        <TextBox Name="warningTB" HorizontalAlignment="Left" Background="Beige" Visibility="Hidden"  Height="60" Margin="449,462,0,0" Text="Error: Please enter integers for Debit and Credit Amounts" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+        <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
         <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="64,424,0,0" VerticalAlignment="Top" Width="127"/>
         <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="72,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
@@ -120,19 +122,34 @@
         </Button>
         <Grid x:Name="journalHelpWindow1" Visibility="Collapsed" >
             <Rectangle  HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
-            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Left" Margin="138,115,0,0" Text="The journal allows the user to record financial transactions. Begin by first creating a journal table. After you click the 'Create a Journal Table' button, fill out the entry form." TextWrapping="Wrap" VerticalAlignment="Top" Height="174" Width="478"/>
-            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center" Margin="0,316,0,0" Text="Each entry requires two accounts, one that is debited and another that is credited. The amounts must be the same so as to assure balance." TextWrapping="Wrap" VerticalAlignment="Top" Height="176" Width="478"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Left" Margin="138,115,0,0" Text="The journal allows the user to record financial transactions. Begin by first creating a journal table. After you type its name and click the 'Create a Journal Table' button, fill out the entry form." TextWrapping="Wrap" VerticalAlignment="Top" Height="174" Width="478"/>
+            <TextBlock Foreground="White" FontSize="25" HorizontalAlignment="Center" Margin="0,316,0,0" Text="To switch between tables that have already been created, simply type the name of the existing table and start filling out your entry. You do not need to click the 'Create a Journal Table' button." TextWrapping="Wrap" VerticalAlignment="Top" Height="176" Width="478"/>
             <Button Name="forwardButton" Content="Next Page" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="forwardButton_Click"/>
         </Grid>
         <Grid x:Name="journalHelpWindow2" Visibility="Collapsed">
             <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
-            <TextBlock Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,119,0,0" Text="Account types are Asset, Liability, or Owner's Equity. An asset is a resource that is owned by the business, such as cash, equipment, or Accounts Receivable. A liability is an obligation that must be paid to another entity. An example is Accounts Payable. Owner's Equity is the amount invested into a business by its owner." TextWrapping="Wrap" VerticalAlignment="Top" Height="156" Width="478"/>
-            <TextBlock Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,293,0,0" Text="An example of a journal entry could be a business owner, Bob, providing $10,000 cash to start their business. The account debited would be Cash, which is an Asset. The debit amount should be $10,000. The account credited would be Bob, Capital which is an Owner's Equity type. The amount credited would be $10,000." TextWrapping="Wrap" VerticalAlignment="Top" Height="156" Width="478"/>
-            <Button Name="backButton" Content="Go back" HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
-            <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="116,135,0,0" Text="An example of a journal entry using assets would be to purchase equipment with cash. You are increasing one asset and decreasing another." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <Image Source="\images\asset-example.png" HorizontalAlignment="Center" Height="31" Margin="0,182,0,0" VerticalAlignment="Top" Width="538"/>
+            <Button Name="backButton" Content="Go back" HorizontalAlignment="Left" Margin="253,463,0,0" VerticalAlignment="Top" Click="backButton_Click"/>
+            <Button Name="forwardButton2" Content="Next Page" HorizontalAlignment="Left" Margin="315,463,0,0" VerticalAlignment="Top" Click="forwardButton2_Click"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="116,229,0,0" Text="An example of a journal entry using a liability is buying supplies on credit. You get the supplies now, but will have a debt to pay later." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <Image Source="\images\liability-ex.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,276,0,0"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="106,320,0,0" Text="An example of a journal entry using owner's equity is to invest money into your business. Bob invests money, so both cash and owner's equity increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="478"/>
+            <Image Source="\images\oe-example.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,362,0,0"/>
         </Grid>
+        <Grid x:Name="journalHelpWindow3" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
+            <Button Name="backButton2" Content="Go back" HorizontalAlignment="Left" Margin="253,463,0,0" VerticalAlignment="Top" Click="backButton2_Click"/>
+            <Button x:Name="jCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="608,72,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="jCloseButton_Click"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,136,0,0" Text="An example of a  a journal entry using a withdrawal is if Bob, the owner, chooses to withdraw money from their business for their own personal expenses." TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="478"/>
+            <Image Source="\images\drawing-example-image.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,209,0,0"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,259,0,0" Text="An example of a journal entry using a revenue account is when the business generates sales income. Both cash and revenue increase." TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="478"/>
+            <Image Source="\images\revenue-example-image.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,309,0,0"/>
+            <TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Left" Margin="122,354,0,0" Text="An example of a journal entry using an expense account is when an owner needs to pay their employees' salary. The expense account is increased and cash is decreased." TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="478"/>
+            <Image Source="\images\expense-example-image.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,415,0,0"/>
+        </Grid>
+
         <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="546,501,0,0" VerticalAlignment="Top" Width="94" Height="35" FontWeight="Bold" Click="toExcel_Click"/>
         <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="116,474,0,0" VerticalAlignment="Top"/>
-
     </Grid>
 </UserControl>

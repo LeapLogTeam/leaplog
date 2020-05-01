@@ -42,6 +42,17 @@ namespace LeapLog
             income_statement.Refresh();
             statementofownersequity.Refresh();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (gettingStartedWindow.Visibility == Visibility.Collapsed)
+            {
+                gettingStartedWindow.Visibility = Visibility.Visible;
+            }
+            else {
+                gettingStartedWindow.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 
 }

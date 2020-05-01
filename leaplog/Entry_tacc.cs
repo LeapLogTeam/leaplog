@@ -10,8 +10,8 @@ namespace LeapLog
         public Entry_tacc()
         {
             Date = DateTime.Now;
-            Debit = new List<int>();
-            Credit = new List<int>();
+            Debit = new List<double>();
+            Credit = new List<double>();
         }
         public DateTime Date { get; set; }
 
@@ -19,15 +19,15 @@ namespace LeapLog
 
         public string Type { get; set; }
 
-        public List<int> Debit { get; private set; }
+        public List<double> Debit { get; private set; }
 
-        public List<int> Credit { get; private set; }
+        public List<double> Credit { get; private set; }
 
-        public int Balance { get; set; }
+        public double Balance { get; set; }
 
-        public int TotalDebit { get; set; }
+        public double TotalDebit { get; set; }
 
-        public int TotalCredit { get; set; }
+        public double TotalCredit { get; set; }
 
         public Entry_tacc Clone()
         {

@@ -47,7 +47,7 @@
         <Grid x:Name="incomeHelpWindow" Visibility="Collapsed" >
             <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
             <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Left" Margin="91,126,0,0" Text="The income statement, or profit and loss statement, allows a user to see their overall net income over a specific period of time. Start by selecting the start and end dates." TextWrapping="Wrap" VerticalAlignment="Top" Height="149" Width="479"/>
-            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Left" Margin="91,280,0,0" Text="From there, you will be able to see your total revenue, total expenses. You can also see your net income, which is your total revenue minus your total expenses." TextWrapping="Wrap" VerticalAlignment="Top" Height="157" Width="479"/>
+            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Left" Margin="91,280,0,0" Text="From there, you will be able to see your total revenue and total expenses. You can also see your net income, which is your total revenue minus your total expenses." TextWrapping="Wrap" VerticalAlignment="Top" Height="157" Width="479"/>
             <Button x:Name="incomeStatementCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="567,60,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="incomeStatementCloseButton_Click" RenderTransformOrigin="2.477,0.376"/>
         </Grid>
     </Grid>
