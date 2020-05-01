@@ -13,7 +13,7 @@ namespace LeapLog
         public string Account_2 { get; set; }
         public string Type_1 { get; set; }
         public string Type_2 { get; set; }
-        public int Debit { get; set; }
-        public int Credit { get; set; }
+        public double Debit { get; set; }
+        public double Credit { get; set; }
     }
 }

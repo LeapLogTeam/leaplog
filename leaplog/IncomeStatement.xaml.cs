@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace LeapLog
 {
@@ -18,6 +20,8 @@ namespace LeapLog
     /// </summary>
     public partial class IncomeStatement : UserControl
     {
+        public static string destinationText = Journal.passingText;
+
         public IncomeStatement()
         {
             InitializeComponent();
@@ -100,5 +104,7 @@ namespace LeapLog
         {
             incomeHelpWindow.Visibility = Visibility.Collapsed;
         }
+
+  
     }
 }
