@@ -108,7 +108,7 @@
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="325,480,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22"/>
+        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
         <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="64,424,0,0" VerticalAlignment="Top" Width="127"/>
         <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="72,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
 

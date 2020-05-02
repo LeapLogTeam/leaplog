@@ -18,6 +18,11 @@ namespace LeapLog
     /// </summary>
     public partial class Journal : UserControl
     {
+        public static string passingText;
+
+
+
+
         public Journal()
         {
             InitializeComponent();
@@ -225,7 +230,8 @@ namespace LeapLog
                 //string name;
 
 
-
+                //*********************if need assistance please ask ***************************
+                //*****************************James Alexander **************************
                 foreach (DataRow row in dataTable.Rows)
                 {
                     tableAdapterr journalTable = new tableAdapterr();
@@ -239,8 +245,8 @@ namespace LeapLog
                     journalTable.Account_2 = row["Account_2"].ToString().Trim();
                     journalTable.Type_1 = row["Type_1"].ToString().Trim();
                     journalTable.Type_2 = row["Type_2"].ToString().Trim();
-                    journalTable.Debit = Convert.ToInt32(row["Debit"]);
-                    journalTable.Credit = Convert.ToInt32(row["Credit"]);
+                    journalTable.Debit = Convert.ToDouble(row["Debit"]);
+                    journalTable.Credit = Convert.ToDouble(row["Credit"]);
 
 
                     tablelist.Add(journalTable);
@@ -255,14 +261,22 @@ namespace LeapLog
 
                 //*************************************to excel****************************************
 
+                //*********************if need assistance please ask ***************************
+                //*****************************James Alexander **************************
+
                 // Load up Excel, then make a new empty workbook.
                 Excel.Application excelApp = new Excel.Application();
 
 
+
+                object missing = System.Reflection.Missing.Value;
+
+                Excel.Workbook oWB = excelApp.Workbooks.Add(missing);
+
                 excelApp.Workbooks.Add();
                 // This example uses a single workSheet.
-                Worksheet workSheet = (Worksheet)excelApp.ActiveSheet;
-                workSheet.Name = "Journal Entry";
+                Worksheet workSheet = (Worksheet)oWB.ActiveSheet;
+                workSheet.Name = "Journal";
                 // Establish column headings in cells.
                 workSheet.Cells[1, "A"] = "ID";
                 workSheet.Cells[1, "B"] = "Date";
@@ -273,6 +287,41 @@ namespace LeapLog
                 workSheet.Cells[1, "G"] = "Type 2";
                 workSheet.Cells[1, "H"] = "Credit";
 
+                // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet.
+               //****************T Accounts *******************
+                Worksheet workSheet2 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                workSheet2.Name = "T Accounts";
+                // Establish column headings in cells.
+                workSheet2.Cells[1, "A"] = "ID";             //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
+                workSheet2.Cells[1, "B"] = "FILL IN";
+                workSheet2.Cells[1, "C"] = "FILL IN";
+
+                //****************Balance sheet*******************
+                Worksheet workSheet3 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                workSheet3.Name = "Balance Sheet";
+                // Establish column headings in cells.
+                workSheet3.Cells[1, "A"] = "ID";
+                workSheet3.Cells[1, "B"] = "FILL IN";       //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
+                workSheet3.Cells[1, "C"] = "FILL IN";
+
+                //****************Income Statement*******************
+                Worksheet workSheet4 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                workSheet4.Name = "Income Statement";
+                // Establish column headings in cells.
+                workSheet4.Cells[1, "A"] = "ID";
+                workSheet4.Cells[1, "B"] = "FILL IN";       //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
+                workSheet4.Cells[1, "C"] = "FILL IN";
+
+                //****************Statement of Owner Equity*******************
+                Worksheet workSheet5 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                workSheet5.Name = "Statement of Owner Equity";
+                // Establish column headings in cells.
+                workSheet5.Cells[1, "A"] = "ID";
+                workSheet5.Cells[1, "B"] = "FILL IN";       //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
+                workSheet5.Cells[1, "C"] = "FILL IN";
+
+              
+                
                 // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet.
                 int row1 = 1;
                 char letter = 'A';
@@ -285,19 +334,47 @@ namespace LeapLog
                     workSheet.Cells[row1, "B"] = i.Date;
                     workSheet.Cells[row1, "C"] = i.Account_1;
                     workSheet.Cells[row1, "D"] = i.Type_1;
-                    workSheet.Cells[row1, "E"] = i.Debit;
+                    workSheet.Cells[row1, "E"] = i.Debit;        //this one is already done
                     workSheet.Cells[row1, "F"] = i.Account_2;
                     workSheet.Cells[row1, "G"] = i.Type_2;
                     workSheet.Cells[row1, "H"] = i.Credit;
                 }
+
+
+                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 2.
+
+                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+
+
+                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 3.
+
+                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+
+                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4.
+
+                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+
+
+                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 5.
+
+                      //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+
                 // Give our table data a nice look and feel.
                 workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                 // Save the file, quit Excel, and display message to user.
-                workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                oWB.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
                 //excelApp.Quit();
                 excelApp.Visible = true;
 
                 System.Diagnostics.Debug.WriteLine("The tableOne.xslx file has been saved to your app folder");
+
+                //*********************if need assistance please ask ***************************
+                //*****************************James Alexander **************************
             }
 
         }
@@ -306,6 +383,10 @@ namespace LeapLog
         {
             //clear any warnings, if necessary
             warningTB.Visibility = Visibility.Hidden;
+        }
+        private void user_Input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            passingText = user_Input.Text.Replace(" ", "");
         }
     }
 }

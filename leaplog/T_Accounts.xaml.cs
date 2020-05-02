@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
 
 namespace LeapLog
 {
@@ -18,7 +19,9 @@ namespace LeapLog
      /// </summary>
      public partial class T_Accounts : UserControl
      {
-          public T_Accounts()
+        public static string destinationText = Journal.passingText;
+
+        public T_Accounts()
           {
                InitializeComponent();
           }
@@ -302,5 +305,7 @@ namespace LeapLog
         {
             taccHelpWindow.Visibility = Visibility.Collapsed;
         }
+
+      
     }
 }
