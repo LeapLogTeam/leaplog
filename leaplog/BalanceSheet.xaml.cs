@@ -78,6 +78,10 @@ namespace LeapLog
 			   // Add the totals
 			   entryGridTA.Items.Add(new Total() { total = Total_assests });
 			   entryGridTLO.Items.Add(new Total() { total = Total_LOE });
+
+			//add balance sheet data into database
+			Database.BalanceData.total_assets = Total_assests;
+			Database.BalanceData.total_loe = Total_LOE;
 		  }
 
 		  private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)

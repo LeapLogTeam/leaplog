@@ -83,6 +83,11 @@ namespace LeapLog
             double ni = (Total_revenue - Total_expenses);
             textBox1.Text = ni.ToString();
             Database.net_income = ni;
+
+            //get the three variables, add them into a new income-data class object
+            Database.IncomeData.total_revenue = Total_revenue;
+            Database.IncomeData.total_expenses = Total_expenses;
+            Database.IncomeData.net_income = ni;
         }
 
         private void from_SelectionChanged(object sender, RoutedEventArgs e)

@@ -293,16 +293,19 @@ namespace LeapLog
                 workSheet2.Name = "T Accounts";
                 // Establish column headings in cells.
                 workSheet2.Cells[1, "A"] = "ID";             //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
-                workSheet2.Cells[1, "B"] = "FILL IN";
-                workSheet2.Cells[1, "C"] = "FILL IN";
+                workSheet2.Cells[1, "B"] = "Account";
+                workSheet2.Cells[1, "C"] = "Type";
+                workSheet2.Cells[1, "D"] = "Total Debit";
+                workSheet2.Cells[1, "E"] = "Total Credit";
+                workSheet2.Cells[1, "F"] = "Balance";
 
                 //****************Balance sheet*******************
                 Worksheet workSheet3 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
                 workSheet3.Name = "Balance Sheet";
                 // Establish column headings in cells.
                 workSheet3.Cells[1, "A"] = "ID";
-                workSheet3.Cells[1, "B"] = "FILL IN";       //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
-                workSheet3.Cells[1, "C"] = "FILL IN";
+                workSheet3.Cells[1, "B"] = "Total Assets";       //Cynthia and Jason all you have to do here is insert the columns and their titles of this Excel sheet. 
+                workSheet3.Cells[1, "C"] = "Total Liabilities and Owners Equity";
 
                 //****************Income Statement*******************
                 Worksheet workSheet4 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
@@ -343,21 +346,33 @@ namespace LeapLog
 
                 // Now, map all data in List<tableAdapterr> to the cells of the Sheet 2.
 
-                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+                int taccRow = 1;
 
+                foreach (var i in Database.TEntries)
+                {
+                        taccRow++;
+
+                        workSheet2.Cells[taccRow, "B"] = i.Account;    //this one is done except for the list of debits and credits. may not include for simplicity's sake.
+                        workSheet2.Cells[taccRow, "C"] = i.Type;
+                        workSheet2.Cells[taccRow, "D"] = i.TotalDebit;
+                        workSheet2.Cells[taccRow, "E"] = i.TotalCredit;
+                        workSheet2.Cells[taccRow, "F"] = i.Balance;
+                    
+                }
 
                 // Now, map all data in List<tableAdapterr> to the cells of the Sheet 3.
 
-                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+                    workSheet3.Cells[2, "B"] = Database.BalanceData.total_assets;  //this one is done except it does not list the accounts. Will need to refactor balance_data.cs if we want to include those lists.
+                    workSheet3.Cells[2, "C"] = Database.BalanceData.total_loe;
 
                 // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4.
 
-                       //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+                //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
 
 
                 // Now, map all data in List<tableAdapterr> to the cells of the Sheet 5.
 
-                      //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
+                //*******Cynthia and Jason all you have to do here is get the output generated in T Accounts and insert it here.
 
                 // Give our table data a nice look and feel.
                 workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
