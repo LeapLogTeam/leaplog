@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -143,9 +144,16 @@ namespace LeapLog
 
             else
             {
+                string tableName = user_Input.Text.Replace(" ", "");
+                // Fail safe for if the user inputs an number as the first word.
+                Match match = Regex.Match(tableName[0].ToString(), "[0-9]");
+                if (match.Success)
+                {
+                    MessageBox.Show("Letters only as the first character.", "Try again", button, icon);
+                    return;
+                }
                 //<<--------this creates the datatable into the database------->>
                 LeapLogDBManager sqlTables = new LeapLogDBManager();
-                string tableName = user_Input.Text.Replace(" ", "");
 
                 string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
     "Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
