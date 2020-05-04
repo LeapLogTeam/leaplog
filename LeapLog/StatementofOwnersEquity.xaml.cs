@@ -79,6 +79,12 @@ namespace LeapLog
             textbox2.Text = Database.net_income.ToString();
             textbox3.Text = withdrawals.ToString();
             textbox4.Text = ((equity + Database.net_income) - withdrawals).ToString();
+
+            //get data and put into database
+            Database.SoeData.start_capital = equity;
+            Database.SoeData.net_income = Database.net_income;
+            Database.SoeData.total_withdrawals = withdrawals;
+            Database.SoeData.final_capital = (equity + Database.net_income) - withdrawals;
         }
         
         private void from_SelectionChanged(object sender, RoutedEventArgs e)
