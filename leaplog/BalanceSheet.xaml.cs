@@ -39,8 +39,6 @@ namespace LeapLog
 
 			   double Total_assests = 0;
 			   double Total_LOE = 0;
-			   double total_expenses = 0;
-			   double total_withdrawals = 0;
 
 			   //add t-accounts to respective grids
 			   for (int i = 0; i < Database.TEntries.Count; i++)

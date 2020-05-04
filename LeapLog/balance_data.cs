@@ -10,5 +10,8 @@ namespace LeapLog
 
         public double total_loe { get; set; }
 
+        public List<Entry_tacc> assetsList { get; set; }
+
+        public List<Entry_tacc> loeList { get; set; }
     }
 }
