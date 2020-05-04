@@ -425,7 +425,15 @@ namespace LeapLog
                 workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                 // Save the file, quit Excel, and display message to user.
                 // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
-                oWB.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                try
+                {
+                    oWB.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                }
+                catch (Exception unused)
+                {
+                    excelApp.Quit();
+                    return;
+                }
                 //excelApp.Quit();
                 excelApp.Visible = true;
 
