@@ -183,10 +183,11 @@ namespace LeapLog
             }
 
             //once list of accounts is updated, update list of accounts for balance sheet
+
             //clear existing data
             Database.BalanceData.assetsList.Clear();
             Database.BalanceData.loeList.Clear();
-
+            
             //enter updated data
             for (int i = 0; i < Database.TEntries.Count; i++)
             {
