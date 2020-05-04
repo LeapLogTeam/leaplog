@@ -145,6 +145,12 @@ namespace LeapLog
             else
             {
                 string tableName = user_Input.Text.Replace(" ", "");
+                // If the tableName is empty quit this function.
+                if (tableName.Length < 1)
+                {
+                    MessageBox.Show("No name was given to the table.", "Try again", button, icon);
+                    return;
+                }
                 // Fail safe for if the user inputs an number as the first word.
                 Match match = Regex.Match(tableName[0].ToString(), "[0-9]");
                 if (match.Success)
