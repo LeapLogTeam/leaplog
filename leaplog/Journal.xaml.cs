@@ -273,7 +273,7 @@ namespace LeapLog
 
                 Excel.Workbook oWB = excelApp.Workbooks.Add(missing);
 
-                excelApp.Workbooks.Add();
+                //excelApp.Workbooks.Add();
                 // This example uses a single workSheet.
                 Worksheet workSheet = (Worksheet)oWB.ActiveSheet;
                 workSheet.Name = "Journal";
