@@ -100,3 +100,5 @@ C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\Lea
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.pdb
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.genruntimeconfig.cache
+C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\LeapLog\obj\Debug\netcoreapp3.1\Dashboard.g.cs
+C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\NewGit\leaplog\LeapLog\obj\Debug\netcoreapp3.1\Dashboard.baml

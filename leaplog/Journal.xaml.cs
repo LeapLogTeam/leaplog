@@ -160,8 +160,8 @@ namespace LeapLog
                 }
                 //<<--------this creates the datatable into the database------->>
                 LeapLogDBManager sqlTables = new LeapLogDBManager();
-
-                string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
+                string journalName = tableName + "Journal";
+                string dbString = @"CREATE TABLE  " + journalName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
     "Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
     "Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
                 if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
@@ -173,7 +173,15 @@ namespace LeapLog
                 else
                 {
                     sqlTables.WriteData(dbString);
-                    MessageBox.Show("Table " + user_Input.Text + " added to Database. ", "Table added", button, icon);
+                    MessageBox.Show("Tables " + user_Input.Text + " added to Database. ", "Table added", button, icon);
+
+                    AddDBTable.TAccounts(tableName);
+                    AddDBTable.BalanceSheet(tableName);
+                    AddDBTable.IncomeStatement(tableName);
+                    AddDBTable.StatementOfOwnerEquity(tableName);
+                  
+
+
                 }
             }
         }
