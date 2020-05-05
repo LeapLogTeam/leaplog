@@ -225,9 +225,14 @@ namespace LeapLog
             journalHelpWindow3.Visibility = Visibility.Collapsed;
         }
 
+       
+        
+        //************to excel *********************
+
+
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
-            //**************************flow control************************************
+           
             string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
@@ -235,14 +240,23 @@ namespace LeapLog
 
             string tableName = user_Input.Text.Replace(" ", "");
 
-            List<tableAdapterr> tablelist = new List<tableAdapterr>();
+            string TaccountName = tableName + "Taccount";
+            string BalanceSheetName = tableName + "BalanceSheet";
+            string IncomeStatementName = tableName + "IncomeStatement";
+            string StatementOfOEName = tableName + "StatementOfOE";
 
-            //***********************from db to table adapter*******************************        
+            List<tableAdapterr> DBList = new List<tableAdapterr>();
 
+
+
+            //**************************flow control************************************
             if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
             {
                 MessageBox.Show(messageBoxText, caption, button, icon);
             }
+
+            //***********************from db to table adapter*******************************        
+
             else
             {
                 SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
@@ -253,8 +267,12 @@ namespace LeapLog
                 //string name;
 
 
-                //*********************if need assistance please ask ***************************
-                //*****************************James Alexander **************************
+                //*********************if need assistance please ask James***************************
+
+
+
+                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
                 foreach (DataRow row in dataTable.Rows)
                 {
                     tableAdapterr journalTable = new tableAdapterr();
@@ -271,13 +289,13 @@ namespace LeapLog
                     journalTable.Debit = Convert.ToDouble(row["Debit"]);
                     journalTable.Credit = Convert.ToDouble(row["Credit"]);
 
-
-                    tablelist.Add(journalTable);
+                //*********adding to list adapter*********
+                    DBList.Add(journalTable);
 
 
 
                 }
-                foreach (var i in tablelist)
+                foreach (var i in DBList)
                 {
                     System.Diagnostics.Debug.WriteLine(i.Account_1);
                 }
@@ -361,7 +379,7 @@ namespace LeapLog
                 // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet (journal).
                 int row1 = 1;
                 char letter = 'A';
-                foreach (var i in tablelist)
+                foreach (var i in DBList)
                 {
                     row1++;
                     letter++;
@@ -487,8 +505,7 @@ namespace LeapLog
         {
             LeapLogDBManager sqlTables = new LeapLogDBManager();
 
-            string messageBoxText = "Journal field cannot be null or empty";
-            string caption = "Wrong Input";
+            
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Warning;
 
