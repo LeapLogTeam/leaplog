@@ -69,6 +69,7 @@ namespace LeapLog
                 //<<------- this chooses the table where the data will be added to-------->>
                  string tableName = user_Input.Text.Replace(" ", "");
  
+                //**********insert into journal table************
                 sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + double.Parse(debitTB.Text) + "','" + double.Parse(creditTB.Text) + "')");
 
             }
@@ -160,8 +161,8 @@ namespace LeapLog
                 }
                 //<<--------this creates the datatable into the database------->>
                 LeapLogDBManager sqlTables = new LeapLogDBManager();
-                string journalName = tableName + "Journal";
-                string dbString = @"CREATE TABLE  " + journalName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
+                //string journalName = tableName + "Journal";
+                string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
     "Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
     "Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
                 if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
@@ -475,6 +476,62 @@ namespace LeapLog
         private void user_Input_TextChanged(object sender, TextChangedEventArgs e)
         {
             passingText = user_Input.Text.Replace(" ", "");
+        }
+
+       
+        
+        
+        
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            LeapLogDBManager sqlTables = new LeapLogDBManager();
+
+            string tableName= user_Input.Text.Replace(" ", "");
+            string TaccountName = tableName + "Taccount";
+            string BalanceSheetName = tableName + "BalanceSheet";
+            string IncomeStatementName = tableName + "IncomeStatement";
+            string StatementOfOEName = tableName + "StatementOfOE";
+
+
+
+            //**********insert into T accounts table************
+
+            foreach (var i in Database.TEntries)
+            {
+              
+                sqlTables.WriteData("INSERT INTO " + TaccountName + " VALUES ('" + i.Account + "','" + i.Type + "','" + string.Join("\n", i.Debit.ToArray()) + "','" + string.Join("\n", i.Credit.ToArray()) + "','" + i.TotalDebit + "','" + i.TotalCredit + "','" + i.Balance + "')");
+
+
+            }
+
+
+
+            //**********insert into Balance Sheet************
+
+              
+              //iterate through list of all asset accounts
+              foreach (var i in Database.BalanceData.assetsList)
+              {
+                                                                                                                                  //
+                  sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_assets + "','" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_loe + "')");
+
+
+              }
+
+
+            //**********insert into Income Statement************
+
+
+            sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + Database.IncomeData.total_revenue + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
+
+           
+            //**********insert into Stetemtent of Owner Equity************
+          
+
+            sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital +  "')");
+
+
+            
         }
     }
 }
