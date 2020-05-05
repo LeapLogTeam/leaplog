@@ -478,15 +478,21 @@ namespace LeapLog
             passingText = user_Input.Text.Replace(" ", "");
         }
 
-       
-        
-        
-        
+
+
+
+        //**************Save All table to DB*******************
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             LeapLogDBManager sqlTables = new LeapLogDBManager();
 
-            string tableName= user_Input.Text.Replace(" ", "");
+            string messageBoxText = "Journal field cannot be null or empty";
+            string caption = "Wrong Input";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+
+            string tableName = user_Input.Text.Replace(" ", "");
             string TaccountName = tableName + "Taccount";
             string BalanceSheetName = tableName + "BalanceSheet";
             string IncomeStatementName = tableName + "IncomeStatement";
@@ -495,43 +501,49 @@ namespace LeapLog
 
 
             //**********insert into T accounts table************
-
-            foreach (var i in Database.TEntries)
+            if (user_Input.Text == "")
             {
-              
-                sqlTables.WriteData("INSERT INTO " + TaccountName + " VALUES ('" + i.Account + "','" + i.Type + "','" + string.Join("\n", i.Debit.ToArray()) + "','" + string.Join("\n", i.Credit.ToArray()) + "','" + i.TotalDebit + "','" + i.TotalCredit + "','" + i.Balance + "')");
-
-
+                MessageBox.Show("No table name selected.", "Error", button, icon);
             }
 
+            else
+            {
+
+                foreach (var i in Database.TEntries)
+                {
+
+                    sqlTables.WriteData("INSERT INTO " + TaccountName + " VALUES ('" + i.Account + "','" + i.Type + "','" + string.Join("\n", i.Debit.ToArray()) + "','" + string.Join("\n", i.Credit.ToArray()) + "','" + i.TotalDebit + "','" + i.TotalCredit + "','" + i.Balance + "')");
 
 
-            //**********insert into Balance Sheet************
+                }
 
-              
-              //iterate through list of all asset accounts
-              foreach (var i in Database.BalanceData.assetsList)
-              {
-                                                                                                                                  //
-                  sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_assets + "','" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_loe + "')");
+                //**********insert into Balance Sheet************
 
 
-              }
+                //iterate through list of all asset accounts
+                foreach (var i in Database.BalanceData.assetsList)
+                {
+                    //
+                    sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_assets + "','" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_loe + "')");
 
 
-            //**********insert into Income Statement************
+                }
 
 
-            sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + Database.IncomeData.total_revenue + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
-
-           
-            //**********insert into Stetemtent of Owner Equity************
-          
-
-            sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital +  "')");
+                //**********insert into Income Statement************
 
 
-            
+                sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + Database.IncomeData.total_revenue + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
+
+
+                //**********insert into Stetemtent of Owner Equity************
+
+
+                sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital + "')");
+
+
+                MessageBox.Show("Table data saved to database.", "Saved", button, icon);
+            }
         }
     }
 }
