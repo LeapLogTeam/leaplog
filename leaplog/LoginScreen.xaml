@@ -42,7 +42,7 @@
             </Button>
             <PasswordBox x:Name="Pass" TabIndex="2" PreviewKeyUp="Pass_PreviewKeyUp"  Width="192" Height="26" Canvas.Left="68" Canvas.Top="236" PreviewMouseDown="Pass_PreviewMouseDown" KeyUp="Pass_KeyUp_1"/>
             <Image x:Name="image" Height="100" Canvas.Top="60" Width="236" Source="images\leaplog_logo2.jpg" Canvas.Left="48"/>
-            <Button x:Name="newUser" Content="ADMIN LOGIN" Canvas.Left="92" Canvas.Top="381" Width="144" Height="25" FontWeight="Bold" Visibility="Visible" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="newUser_Click" FontFamily="Calibri"  FontSize="15">
+            <Button x:Name="newUser" Content="ADMIN LOGIN" Canvas.Left="92" Canvas.Top="381" Width="144" Height="25"  FontWeight="Bold" Visibility="Visible" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="newUser_Click" FontFamily="Calibri"  FontSize="15">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

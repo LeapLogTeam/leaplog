@@ -26,7 +26,7 @@
             <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="162" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
             <Label x:Name="label1" Content="Password: " FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="216" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
             <TextBox x:Name="userName" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic"  Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" FlowDirection="LeftToRight"/>
-            <PasswordBox x:Name="Pass" TabIndex="2"  Width="192" Height="26" Canvas.Left="68" Canvas.Top="236" KeyUp="Pass_KeyUp"/>
+            <PasswordBox x:Name="Pass" TabIndex="2" Width="192" Height="26" Canvas.Left="68" Canvas.Top="236" KeyUp="Pass_KeyUp"/>
             <Button x:Name="enter_Button" BorderBrush="#353535" Background="#d9d9d9" Content="ENTER" Height="34" Canvas.Left="76" Canvas.Top="284" Width="80" RenderTransformOrigin="0.388,0.555" Click="enter_Button_Click" FontFamily="Calibri" FontWeight="Bold" FontSize="15" KeyUp="enter_Button_KeyUp">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -41,14 +41,14 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="back2_Login" Content="BACK TO USER LOGIN" Canvas.Left="92" Canvas.Top="370" Width="144" Height="25" BorderBrush="#234264" Background="#96251c" Foreground="White" FontWeight="Bold" Click="back2_Login_Click">
+            <Button x:Name="back2_Login" Content="BACK TO USER LOGIN" Canvas.Left="92" Canvas.Top="381" Width="144" Height="25" BorderBrush="#234264" Background="#96251c" Foreground="White" FontWeight="Bold" Click="back2_Login_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>
                     </Style>
                 </Button.Resources>
             </Button>
-            <Image x:Name="image" Height="103" Margin="94,62,0,0" Width="110" Source="/monitor (3).png" Canvas.Left="18" RenderTransformOrigin="0.485,0.499"/>
+            <Image x:Name="image" Height="103" Margin="94,62,0,0" Width="110" Source="\images\admin-frog.jpg" Canvas.Left="15" RenderTransformOrigin="0.485,0.499" Canvas.Top="-10"/>
         </Canvas>
     </Border>
 </Window>
