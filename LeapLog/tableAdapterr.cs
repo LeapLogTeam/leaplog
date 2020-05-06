@@ -30,7 +30,7 @@ namespace LeapLog
         public int ID_BalanceSheet { get; set; }
         public string Asset_Account_Name { get; set; }
         public double Asset_Account_Balance { get; set; }
-        public string Total_Assets { get; set; }
+        public double Total_Assets { get; set; }
         public string Liability_Account_Name { get; set; }
         public double Liability_Account_Balance { get; set; }
         public double Total_Liability { get; set; }
