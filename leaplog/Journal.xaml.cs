@@ -259,6 +259,9 @@ namespace LeapLog
 
             else
             {
+                //******************************************************************************************************
+                //*************extracting journal table********************
+                //******************************************************************************************************
                 SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
                 string query = "Select * from " + tableName + " ";
                 SqlDataAdapter sda = new SqlDataAdapter(query, conn);
@@ -289,18 +292,80 @@ namespace LeapLog
                     journalTable.Debit = Convert.ToDouble(row["Debit"]);
                     journalTable.Credit = Convert.ToDouble(row["Credit"]);
 
-                //*********adding to list adapter*********
+                    //*********adding to list adapter*********
                     DBList.Add(journalTable);
-
-
-
                 }
+
+                //test code
                 foreach (var i in DBList)
                 {
                     System.Diagnostics.Debug.WriteLine(i.Account_1);
                 }
 
-                //*************************************to excel****************************************
+                //******************************************************************************************************
+                //********************block End***********
+                //******************************************************************************************************
+
+
+
+                //******************************************************************************************************
+                //*************extracting T Accounts table********************
+                //******************************************************************************************************
+                SqlConnection conn_TA = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                string query_TA = "Select * from " + TaccountName + " ";
+                SqlDataAdapter sda_TA = new SqlDataAdapter(query, conn);
+                System.Data.DataTable dataTable_TA = new System.Data.DataTable();
+                sda.Fill(dataTable_TA);
+                //string name;
+
+
+                //*********************if need assistance please ask James***************************
+
+
+
+                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
+                foreach (DataRow row in dataTable_TA.Rows)
+                {
+                    tableAdapterr TAccountTable = new tableAdapterr();
+
+                    /*name = row["username"].ToString().Trim();
+                   System.Diagnostics.Debug.WriteLine(name);
+                   list.Add(name);*/
+                    TAccountTable.ID_TAcccounts = Convert.ToInt32(row["ID"]);
+                    TAccountTable.Date = row["Date"].ToString().Trim();
+                    TAccountTable.Account_1 = row["Account_1"].ToString().Trim();
+                    TAccountTable.Account_2 = row["Account_2"].ToString().Trim();
+                    TAccountTable.Type_1 = row["Type_1"].ToString().Trim();
+                    TAccountTable.Type_2 = row["Type_2"].ToString().Trim();
+                    TAccountTable.Debit = Convert.ToDouble(row["Debit"]);
+                    TAccountTable.Credit = Convert.ToDouble(row["Credit"]);
+
+                    //*********adding to list adapter*********
+                    DBList.Add(TAccountTable);
+                }
+
+                //test code
+                foreach (var i in DBList)
+                {
+                    System.Diagnostics.Debug.WriteLine(i.Account_1);
+                }
+
+
+
+
+
+
+
+
+
+
+
+                //******************************************************************************************************
+                //------------------------------------to excel------------------------------------------
+                //******************************************************************************************************
+
+
 
                 //*********************if need assistance please ask ***************************
                 //*****************************James Alexander **************************
