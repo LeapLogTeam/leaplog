@@ -62,8 +62,8 @@
         </DataGrid>
 
         <!-- Add Entry Section-->
-        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="221,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="account1TB_GotFocus"/>
-        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="330,450,0,0" VerticalAlignment="Top" Width="70">
+        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="236,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="account1TB_GotFocus"/>
+        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="345,453,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -71,9 +71,9 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="419,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="221,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="330,513,0,0" VerticalAlignment="Top" Width="70">
+        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="434,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="236,517,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="345,517,0,0" VerticalAlignment="Top" Width="70">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -81,12 +81,12 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="419,513,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="35" Margin="546,449,0,0" VerticalAlignment="Top" Width="70" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
-        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="419,419,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="221,418,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="221,482,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="416,480,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.75,0.583">
+        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="434,517,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="24" Margin="562,455,0,0" VerticalAlignment="Top" Width="62" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
+        <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="434,423,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="236,421,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="236,485,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Credit  Amount" HorizontalAlignment="Left" Height="24" Margin="431,483,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="0.75,0.583">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -96,7 +96,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="324,418,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.5,0.5">
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="339,421,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -106,11 +106,11 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="325,480,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
+        <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="339,483,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
-        <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="64,424,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="72,504,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
+        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="65,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
+        <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="66,429,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="74,509,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
 
         <!--help feature-->
         <Button x:Name="journalHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="journalHelpButton_Click">
@@ -149,7 +149,8 @@
             <Image Source="\images\expense-example-image.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,415,0,0"/>
         </Grid>
 
-        <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="546,501,0,0" VerticalAlignment="Top" Width="94" Height="35" FontWeight="Bold" Click="toExcel_Click"/>
-        <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="116,474,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="546,522,0,0" VerticalAlignment="Top" Width="94" Height="24" FontWeight="Bold" Click="toExcel_Click" RenderTransformOrigin="0.649,0.457"/>
+        <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="118,479,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="savetoDB" Content="Save " HorizontalAlignment="Left" Margin="570,496,0,0" VerticalAlignment="Top" Click="button_Click" FontWeight="Bold" Height="24" Width="46"/>
     </Grid>
 </UserControl>

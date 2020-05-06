@@ -19,7 +19,7 @@ namespace LeapLog
 
             string TaccountName = tableName + "Taccount";
 
-            string dbString = @"CREATE TABLE  " + TaccountName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account  NVARCHAR(50) NULL, Type NVARCHAR(50) NULL," +
+            string dbString = @"CREATE TABLE  " + TaccountName + "( ID INT IDENTITY(1, 1) NOT NULL, Account  NVARCHAR(50) NULL, Type NVARCHAR(50) NULL," +
     "DebitList MONEY NULL, CreditList MONEY NULL, " +
     "TotalDebit MONEY NULL, TotalCredit  MONEY NULL, Balance MONEY NULL, PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
@@ -33,9 +33,9 @@ namespace LeapLog
 
             string BalanceSheetName = tableName + "BalanceSheet";
 
-            string dbString = @"CREATE TABLE  " + BalanceSheetName + "( ID INT IDENTITY(1, 1) NOT NULL, Asset_Account_Name  NVARCHAR(50) NULL,  Asset_Account_Balance  NVARCHAR(50) NULL, Total_Assets MONEY NULL," +
-    "Liability_Account_Name NVARCHAR(50) NULL, Liability_Account_Balance NVARCHAR(50) NULL, " +
-    "Total_Liability NVARCHAR(50) NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+            string dbString = @"CREATE TABLE  " + BalanceSheetName + "( ID INT IDENTITY(1, 1) NOT NULL, Asset_Account_Name  NVARCHAR(50) NULL,  Asset_Account_Balance  MONEY NULL, Total_Assets MONEY NULL," +
+    "Liability_Account_Name NVARCHAR(50) NULL, Liability_Account_Balance MONEY NULL, " +
+    "Total_Liability MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
 
