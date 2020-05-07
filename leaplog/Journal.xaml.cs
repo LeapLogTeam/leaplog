@@ -275,9 +275,7 @@ namespace LeapLog
                 //*********************if need assistance please ask James***************************
 
 
-
-                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
-
+                 
                 foreach (DataRow row in dataTable.Rows)
                 {
                     tableAdapterr journalTable = new tableAdapterr();
@@ -304,11 +302,7 @@ namespace LeapLog
                     System.Diagnostics.Debug.WriteLine(i.Account_1);
                 }
 
-                //******************************************************************************************************
-                //********************block End***********
-                //******************************************************************************************************
-
-
+              
 
                 //******************************************************************************************************
                 //*************extracting T Accounts table********************
@@ -334,15 +328,15 @@ namespace LeapLog
                  
                     TAccountTable.ID_TAcccounts = Convert.ToInt32(row["ID"]);
                     TAccountTable.Account_TAccounts = row["Account"].ToString().Trim();
-                    TAccountTable.Account_1 = row["Type"].ToString().Trim();
-                    TAccountTable.Account_2 = row["DebitList"].ToString().Trim();
-                    TAccountTable.Type_1 = row["CreditList"].ToString().Trim();
-                    TAccountTable.Type_2 = row["TotalDebit"].ToString().Trim();
-                    TAccountTable.Type_2 = row["Balance"].ToString().Trim();
-                    
+                    TAccountTable.Type_TAccounts = row["Type"].ToString().Trim();
+                    TAccountTable.DebitList =   Convert.ToDouble(row["DebitList"]);
+                    TAccountTable.CreditList =  Convert.ToDouble(row["CreditList"]);
+                    TAccountTable.TotalDebit =   Convert.ToDouble(row["TotalDebit"]);
+                    TAccountTable.Balance =   Convert.ToDouble(row["Balance"]);
+
 
                     //*********adding to list adapter*********
-                       DBList.Add(TAccountTable); 
+                    DBList.Add(TAccountTable); 
                 }
 
 
@@ -521,19 +515,22 @@ namespace LeapLog
 
                 // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet (journal).
                 int row1 = 1;
-                
+
                 foreach (var i in DBList)
                 {
-                    row1++;
-                     
-                    //workSheet.Cells[row1, "A"] = i.ID;
-                    workSheet.Cells[row1, "B"] = i.Date;
-                    workSheet.Cells[row1, "C"] = i.Account_1;
-                    workSheet.Cells[row1, "D"] = i.Type_1;
-                    workSheet.Cells[row1, "E"] = i.Debit;        
-                    workSheet.Cells[row1, "F"] = i.Account_2;
-                    workSheet.Cells[row1, "G"] = i.Type_2;
-                    workSheet.Cells[row1, "H"] = i.Credit;
+                    if (i.Debit != 0)
+                    {
+                        row1++;
+
+                        //workSheet.Cells[row1, "A"] = i.ID;
+                        workSheet.Cells[row1, "B"] = i.Date;
+                        workSheet.Cells[row1, "C"] = i.Account_1;
+                        workSheet.Cells[row1, "D"] = i.Type_1;
+                        workSheet.Cells[row1, "E"] = i.Debit;
+                        workSheet.Cells[row1, "F"] = i.Account_2;
+                        workSheet.Cells[row1, "G"] = i.Type_2;
+                        workSheet.Cells[row1, "H"] = i.Credit;
+                    }
                 }
 
 
@@ -545,16 +542,17 @@ namespace LeapLog
                 foreach (var i in DBList)
                 {
                     taccRow++;
-
-                   // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
-                    workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;
-                    workSheet2.Cells[taccRow, "C"] = i.Type_TAccounts;
-                    workSheet2.Cells[taccRow, "D"] = i.DebitList;
-                    workSheet2.Cells[taccRow, "E"] = i.CreditList;
-                    workSheet2.Cells[taccRow, "F"] = i.TotalDebit;
-                    workSheet2.Cells[taccRow, "G"] = i.TotalCredit;
-                    workSheet2.Cells[taccRow, "H"] = i.Balance;
-
+                    if (i.DebitList != 0)
+                    {
+                        // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
+                        workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;
+                        workSheet2.Cells[taccRow, "C"] = i.Type_TAccounts;
+                        workSheet2.Cells[taccRow, "D"] = i.DebitList;
+                        workSheet2.Cells[taccRow, "E"] = i.CreditList;
+                        workSheet2.Cells[taccRow, "F"] = i.TotalDebit;
+                        workSheet2.Cells[taccRow, "G"] = i.TotalCredit;
+                        workSheet2.Cells[taccRow, "H"] = i.Balance;
+                    }
 
                 }
 
@@ -566,13 +564,25 @@ namespace LeapLog
                 //iterate through list of all asset accounts
                 foreach (var i in DBList)
                 {
-                    assetRow++;
+                    
 
                     //get the account name and add to excel sheet
-                    workSheet3.Cells[assetRow, "B"] = i.Asset_Account_Name;
+                    if (i.Asset_Account_Name != null)
+                    {
+                        assetRow++;
+                        workSheet3.Cells[assetRow, "B"] = i.Asset_Account_Name;
+                    }
                     //get the account balance and add to excel sheet
-                    workSheet3.Cells[assetRow, "C"] = i.Asset_Account_Balance;
-                    workSheet3.Cells[2, "D"] = i.Total_Assets;
+                    if (i.Asset_Account_Balance != 0)
+                    {
+                        //assetRow++;
+                        workSheet3.Cells[assetRow, "C"] = i.Asset_Account_Balance;
+                    }
+                    if (i.Total_Assets != 0)
+                    {
+                        assetRow++;
+                        workSheet3.Cells[2, "D"] = i.Total_Assets;
+                    }
                 }
 
                
@@ -580,28 +590,54 @@ namespace LeapLog
                 //iterate through list of all other accounts
                 foreach (var i in DBList)
                 {
-                    loeRow++;
+                    
 
                     //get the account name and add to excel sheet
-                    workSheet3.Cells[loeRow, "E"] = i.Liability_Account_Name;
+                    if (i.Liability_Account_Name != null)
+                    {
+                        loeRow++;
+                        workSheet3.Cells[loeRow, "E"] = i.Liability_Account_Name;
+                    }
                     //get the account balance and add to excel sheet
-                    workSheet3.Cells[loeRow, "F"] = i.Liability_Account_Balance;
-                    workSheet3.Cells[2, "G"] = i.Total_Liability;
+                    if (i.Liability_Account_Balance != 0)
+                    {
+                        //loeRow++;
+                        workSheet3.Cells[loeRow, "F"] = i.Liability_Account_Balance;
+                    }
+                    if (i.Total_Liability != 0)
+                    {
+                        loeRow++;
+                        workSheet3.Cells[2, "G"] = i.Total_Liability;
+                    }
 
                 }
 
 
                 // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4 (income statement).
 
+                //Predicate<tableAdapterr> totalRevenueFinder = (tableAdapterr t) => { return t.Total_Revenue != 0; };
                 int IERow = 1;
                 foreach (var i in DBList)
+
                 {
-                    IERow++;
+                    
+                    // tableAdapterr finder = DBList.Find(totalRevenueFinder);
 
-                    workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
-                    workSheet4.Cells[IERow, "C"] = i.Total_Expense;
-                    workSheet4.Cells[IERow, "D"] = i.Net_Income;
-
+                    if (i.Total_Revenue != 0)
+                    {
+                        IERow++;
+                        workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
+                    }
+                    if (i.Total_Expense != 0)
+                    {
+                       // IERow++;
+                        workSheet4.Cells[IERow, "C"] = i.Total_Expense;
+                    }
+                    if (i.Net_Income != 0)
+                    {
+                        //IERow++;
+                        workSheet4.Cells[IERow, "D"] = i.Net_Income;
+                    }
 
                 }
 
@@ -610,24 +646,41 @@ namespace LeapLog
                 int SOERow = 1;
                 foreach (var i in DBList)
                 {
-                   SOERow++;
 
-                  
-                    workSheet5.Cells[SOERow, "B"] = i.Start_Capital;
-                    workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
-                    workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
-                    workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
 
+                    if (i.Start_Capital != 0)
+                    {
+                        SOERow++;
+                        workSheet5.Cells[SOERow, "B"] = i.Start_Capital;
+                    }
+                    if (i.Net_Income_StatementOfOE != 0)
+                    {
+                        SOERow++;
+                        workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
+                    }
+                    if (i.Total_Withdrawals != 0) {
+                        SOERow++;
+                        workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
+                }
+                    if (i.FInal_Capital != 0)
+                    {
+                       // SOERow++;
+                        workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
+                    }
                 }
 
                 ;
 
                 // Give our table data a nice look and feel.
-                workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                   workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                   workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                   workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                   workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                   workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+ 
+
+
+
                 // Save the file, quit Excel, and display message to user.
                 // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
                 try
