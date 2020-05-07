@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
 
 namespace LeapLog
 {
@@ -18,7 +19,9 @@ namespace LeapLog
      /// </summary>
      public partial class T_Accounts : UserControl
      {
-          public T_Accounts()
+        public static string destinationText = Journal.passingText;
+
+        public T_Accounts()
           {
                InitializeComponent();
           }
@@ -64,7 +67,7 @@ namespace LeapLog
             //if database is empty of t-accounts
             if (Database.TEntries.Count == 0)
             {
-                //add accounts
+                //add accounts to database
                 Database.TEntries.Add(acc1);
                 Database.TEntries.Add(acc2);
             }
@@ -120,7 +123,7 @@ namespace LeapLog
                         updated1 = true;
                     }
                     //if end of list reached and the t-account does not exist,
-                    //update the account's properties and add account to list
+                    //update the account's properties and add account to database
                     else if (i == Database.TEntries.Count - 1 && !(acc1.Account.Equals(Database.TEntries[i].Account)) && !updated1)
                     {
                         Database.TEntries.Add(acc1);
@@ -179,6 +182,24 @@ namespace LeapLog
                 }
             }
 
+            //once list of accounts is updated, update list of accounts for balance sheet
+
+            //clear existing data
+            Database.BalanceData.assetsList.Clear();
+            Database.BalanceData.loeList.Clear();
+            
+            //enter updated data
+            for (int i = 0; i < Database.TEntries.Count; i++)
+            {
+                if (Database.TEntries[i].Type == "Asset")
+                {
+                    Database.BalanceData.assetsList.Add(Database.TEntries[i]);
+                }
+                else
+                {
+                    Database.BalanceData.loeList.Add(Database.TEntries[i]);
+                }
+            }
         }
 
         //method that creates two temporary t-accounts that corresponds to a journal entry
@@ -302,5 +323,7 @@ namespace LeapLog
         {
             taccHelpWindow.Visibility = Visibility.Collapsed;
         }
+
+      
     }
 }

@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace LeapLog
 {
@@ -18,7 +20,9 @@ namespace LeapLog
 	 /// </summary>
 	 public partial class BalanceSheet : UserControl
 	 {
-		  public BalanceSheet()
+		public static string destinationText = Journal.passingText;
+		
+		public BalanceSheet()
 		  {
 			   InitializeComponent();
 			   Database.select_date = DateTime.Now;
@@ -35,8 +39,6 @@ namespace LeapLog
 
 			   double Total_assests = 0;
 			   double Total_LOE = 0;
-			   double total_expenses = 0;
-			   double total_withdrawals = 0;
 
 			   //add t-accounts to respective grids
 			   for (int i = 0; i < Database.TEntries.Count; i++)
@@ -74,6 +76,10 @@ namespace LeapLog
 			   // Add the totals
 			   entryGridTA.Items.Add(new Total() { total = Total_assests });
 			   entryGridTLO.Items.Add(new Total() { total = Total_LOE });
+
+			//add balance sheet data into database
+			Database.BalanceData.total_assets = Total_assests;
+			Database.BalanceData.total_loe = Total_LOE;
 		  }
 
 		  private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -98,5 +104,8 @@ namespace LeapLog
 		{
 			balanceHelpWindow.Visibility = Visibility.Collapsed;
 		}
+
+		
+		}
 	}
-}
+

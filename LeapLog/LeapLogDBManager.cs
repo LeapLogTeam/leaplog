@@ -14,8 +14,8 @@ namespace LeapLog
 
 		public LeapLogDBManager()
 		{
-			
-			//C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\TABLES\DATABASE1.MDF
+
+			//C:\USERS\ENGEL\ONEDRIVE\01LONESTAR\2020SPRING\INEW2332PROJECT\GITHUB\LEAPLOG\LEAPLOG\TABLES\DATABASE1.MDF {Environment.CurrentDirectory}
 			connection = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\DATABASE1.MDF;Integrated Security=True");
 		}
 
@@ -24,18 +24,7 @@ namespace LeapLog
 			connection = new SqlConnection(connectionString);
 		}
 
-		//<<------ this is create journal method tables------>>
-		//in porgress
-		public void CreateJournalTable(string journalName)
-		{
-			 
-			string tableName = journalName.Replace(" ", "") ;
-			string dbString = @"CREATE TABLE  " + tableName + "( ID INT IDENTITY(1, 1) NOT NULL,Date DATE NULL, Account_1  NVARCHAR(50) NULL, Account_2 NVARCHAR(50) NULL," +
-			"Type_1 NVARCHAR(50) NULL, Type_2 NVARCHAR(50) NULL, " +
-			"Debit MONEY NULL, Credit  MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
-			 
-		}
-
+	
 		//<<------ this is read data method tables------>>
 		////in porgress
 		public void ReadData(string databaseCommand)

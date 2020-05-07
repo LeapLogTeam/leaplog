@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+
 
 namespace LeapLog
 {
@@ -18,6 +20,8 @@ namespace LeapLog
     /// </summary>
     public partial class IncomeStatement : UserControl
     {
+        public static string destinationText = Journal.passingText;
+
         public IncomeStatement()
         {
             InitializeComponent();
@@ -79,6 +83,11 @@ namespace LeapLog
             double ni = (Total_revenue - Total_expenses);
             textBox1.Text = ni.ToString();
             Database.net_income = ni;
+
+            //get the three variables, add them into a new income-data class object
+            Database.IncomeData.total_revenue = Total_revenue;
+            Database.IncomeData.total_expenses = Total_expenses;
+            Database.IncomeData.net_income = ni;
         }
 
         private void from_SelectionChanged(object sender, RoutedEventArgs e)
@@ -104,5 +113,7 @@ namespace LeapLog
         {
             incomeHelpWindow.Visibility = Visibility.Collapsed;
         }
+
+  
     }
 }
