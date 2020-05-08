@@ -37,6 +37,8 @@ namespace LeapLog
 
             //clear any warnings, if necessary
             warningTB.Visibility = Visibility.Hidden;
+            warningAT.Visibility = Visibility.Hidden;
+            warningAN.Visibility = Visibility.Hidden;
 
             //populates new entry object with user data given
             //REVISION NEEDED: validation could be improved.
@@ -45,7 +47,20 @@ namespace LeapLog
                 //process account names to make sure no quotation marks are entered
                 if (account1TB.Text.Contains("'") || account2TB.Text.Contains("'"))
                 {
-                    throw new Exception();
+                    throw new Exception("quotation");
+                }
+
+                // Check for account types.
+                if (type1CB.SelectedItem == null || type2CB.SelectedItem == null)
+                {
+
+                    throw new Exception("null_account_types");
+                }
+
+                // Check for blank account names.
+                if (account1TB.Text.Replace(" ", "") == string.Empty || account2TB.Text.Replace(" ", "") == string.Empty)
+                {
+                    throw new Exception("blank_account_names");
                 }
 
                 tempEntry.Account1 = account1TB.Text;
@@ -73,10 +88,23 @@ namespace LeapLog
                 sqlTables.WriteData("INSERT INTO " + tableName + " VALUES ('" + DateTime.Now + "','" + account1TB.Text + "','" + account2TB.Text + "','" + type1CB.Text + "','" + type2CB.Text + "','" + double.Parse(debitTB.Text) + "','" + double.Parse(creditTB.Text) + "')");
 
             }
-            catch {
-                //if incorrect data entered, warning given
-                //and entry not saved
-                warningTB.Visibility = Visibility.Visible;
+            catch (Exception error){
+                switch (error.Message)
+                {
+                    case "quotation":
+                        //if incorrect data entered, warning given
+                        //and entry not saved
+                        warningTB.Visibility = Visibility.Visible;
+                        break;
+                    case "null_account_types":
+                        // if the account types are null, display a warning.
+                        warningAT.Visibility = Visibility.Visible;
+                        break;
+                    case "blank_account_names":
+                        // if account names are blank display warning.
+                        warningAN.Visibility = Visibility.Visible;
+                        break;
+                }
             }
 
             //clear textboxes
@@ -772,6 +800,7 @@ namespace LeapLog
         {
             //clear any warnings, if necessary
             warningTB.Visibility = Visibility.Hidden;
+            warningAN.Visibility = Visibility.Hidden;
         }
         private void user_Input_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -845,6 +874,11 @@ namespace LeapLog
                 //MessageBox.Show("Table data saved to database.", "Saved", button, icon);
                 return true;
             }
+        }
+
+        private void type1CB_GotFocus(object sender, RoutedEventArgs e)
+        {
+            warningAT.Visibility = Visibility.Hidden;
         }
     }
 }

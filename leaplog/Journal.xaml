@@ -63,7 +63,7 @@
 
         <!-- Add Entry Section-->
         <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="236,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="account1TB_GotFocus"/>
-        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="345,453,0,0" VerticalAlignment="Top" Width="70">
+        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="345,453,0,0" VerticalAlignment="Top" Width="70" GotFocus="type1CB_GotFocus">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -72,8 +72,8 @@
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="434,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="236,517,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="345,517,0,0" VerticalAlignment="Top" Width="70">
+        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="236,517,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" GotFocus="account1TB_GotFocus"/>
+        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="345,517,0,0" VerticalAlignment="Top" Width="70" GotFocus="type1CB_GotFocus">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -108,6 +108,8 @@
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="339,483,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
+        <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
+        <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="65,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
         <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="66,429,0,0" VerticalAlignment="Top" Width="127"/>
         <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="74,509,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
