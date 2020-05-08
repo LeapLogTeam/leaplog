@@ -117,9 +117,6 @@
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="65,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged" FontStyle="Italic"/>
-        <Label x:Name="label" Content="Select Existing Database:" HorizontalAlignment="Left" Margin="56,427,0,0" VerticalAlignment="Top" Width="146"/>
-        <Button x:Name="enter_button" Content="Add New Database" HorizontalAlignment="Left" Margin="74,509,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="112" FontWeight="Bold"/>
         <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="57,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
         <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="58,34,0,0" VerticalAlignment="Top" Width="127"/>
         <Button x:Name="enter_button" Content="Add New Journal" HorizontalAlignment="Left" Margin="61,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
@@ -175,12 +172,5 @@
             </Button.Resources>
         </Button>
         <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="110,84,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="savetoDB" Content="Save " HorizontalAlignment="Left" Margin="606,116,0,0" VerticalAlignment="Top" Click="button_Click" FontWeight="Bold" Height="24" Width="70" BorderBrush="#353535" Background="#d9d9d9">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
-                </Style>
-            </Button.Resources>
-        </Button>
     </Grid>
 </UserControl>
