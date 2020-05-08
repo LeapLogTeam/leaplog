@@ -82,7 +82,7 @@
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
         <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="434,517,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="24" Margin="562,455,0,0" VerticalAlignment="Top" Width="62" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
+        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="24" Margin="549,455,0,0" VerticalAlignment="Top" Width="94" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal"/>
         <Label Content="Debit Amount" HorizontalAlignment="Left" Height="24" Margin="434,423,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Debit" HorizontalAlignment="Left" Height="24" Margin="236,421,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Account to Credit" HorizontalAlignment="Left" Height="24" Margin="236,485,0,0" VerticalAlignment="Top" Width="104"/>
@@ -149,8 +149,7 @@
             <Image Source="\images\expense-example-image.png" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="522" Margin="0,415,0,0"/>
         </Grid>
 
-        <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="546,522,0,0" VerticalAlignment="Top" Width="94" Height="24" FontWeight="Bold" Click="toExcel_Click" RenderTransformOrigin="0.649,0.457"/>
+        <Button x:Name="toExcel" Content="Export to Excel" HorizontalAlignment="Left" Margin="549,488,0,0" VerticalAlignment="Top" Width="94" Height="24" FontWeight="Bold" Click="toExcel_Click" RenderTransformOrigin="0.649,0.457"/>
         <Label x:Name="label1" Content="Or" HorizontalAlignment="Left" Margin="118,479,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="savetoDB" Content="Save " HorizontalAlignment="Left" Margin="570,496,0,0" VerticalAlignment="Top" Click="button_Click" FontWeight="Bold" Height="24" Width="46"/>
     </Grid>
 </UserControl>

@@ -232,7 +232,7 @@ namespace LeapLog
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
-           
+            Save_DB();
             string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
@@ -718,7 +718,7 @@ namespace LeapLog
 
         //**************Save All table to DB*******************
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Save_DB()
         {
             LeapLogDBManager sqlTables = new LeapLogDBManager();
 
