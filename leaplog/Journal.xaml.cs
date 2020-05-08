@@ -232,7 +232,9 @@ namespace LeapLog
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
-            Save_DB();
+            // Save the database before exporting.
+            if (Save_DB() == false) return;
+
             string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
@@ -717,8 +719,8 @@ namespace LeapLog
 
 
         //**************Save All table to DB*******************
-
-        private void Save_DB()
+        // This used to be the save button event but I turned it into a save function.
+        private bool Save_DB()
         {
             LeapLogDBManager sqlTables = new LeapLogDBManager();
 
@@ -738,6 +740,7 @@ namespace LeapLog
             if (user_Input.Text == "")
             {
                 MessageBox.Show("No table name selected.", "Error", button, icon);
+                return false;
             }
 
             else
@@ -776,7 +779,8 @@ namespace LeapLog
                 sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital + "')");
 
 
-                MessageBox.Show("Table data saved to database.", "Saved", button, icon);
+                //MessageBox.Show("Table data saved to database.", "Saved", button, icon);
+                return true;
             }
         }
     }
