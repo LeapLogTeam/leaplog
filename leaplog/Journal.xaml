@@ -110,9 +110,9 @@
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="65,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
-        <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="66,429,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button x:Name="enter_button" Content="Add new Journal" HorizontalAlignment="Left" Margin="74,509,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="110" FontWeight="Bold"/>
+        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="65,455,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged" FontStyle="Italic"/>
+        <Label x:Name="label" Content="Select Existing Database:" HorizontalAlignment="Left" Margin="56,427,0,0" VerticalAlignment="Top" Width="146"/>
+        <Button x:Name="enter_button" Content="Add New Database" HorizontalAlignment="Left" Margin="74,509,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="30" Width="112" FontWeight="Bold"/>
 
         <!--help feature-->
         <Button x:Name="journalHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="journalHelpButton_Click">
