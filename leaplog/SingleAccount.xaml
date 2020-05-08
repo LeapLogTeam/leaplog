@@ -12,7 +12,7 @@
         BorderBrush="#182C42"
         BorderThickness="2"
         Title="SingleAccount" Height="426" Width="462">
-    <Grid Background="#234264">
+    <Grid Background="White">
         <Grid Background="#182C42" DockPanel.Dock="Top" VerticalAlignment="Top" MouseDown="Grid_MouseDown_1" Height="30">
             <Image Source="\images\icon.jpg" Height="15" HorizontalAlignment="Left" Margin="10,8,0,8"/>
             <StackPanel Orientation="Horizontal"
@@ -28,7 +28,7 @@
             </StackPanel>
         </Grid>
         <!-- account name label -->
-        <Label Content="ACCOUNT NAME" Name="accountName" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label Content="ACCOUNT NAME" Name="accountName" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
 
         <!-- account debits and credits dataGrids -->
         <DataGrid x:Name="debitGrid" Margin="44,74,256,74" AutoGenerateColumns="False">
@@ -45,8 +45,8 @@
 
 
         <!-- total account balance -->
-        <Label Content="Balance:" HorizontalAlignment="Left" Margin="297,350,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label Content="" Name="balanceLbl" HorizontalAlignment="Left" Margin="355,350,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Balance:" HorizontalAlignment="Left" Margin="297,350,0,0" VerticalAlignment="Top" />
+        <Label Content="" Name="balanceLbl" HorizontalAlignment="Left" Margin="355,350,0,0" VerticalAlignment="Top" />
 
     </Grid>
 </Window>

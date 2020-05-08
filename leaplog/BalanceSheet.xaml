@@ -5,46 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LeapLog"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="650"
+             d:DesignHeight="504" d:DesignWidth="745"
              Background="White">
     <Grid>
-        <Calendar HorizontalAlignment="Left" Height="173" Margin="10,10,0,0" VerticalAlignment="Top" Width="194" SelectedDatesChanged="Calendar_SelectedDatesChanged"/>
-        <DataGrid x:Name="entryGridA" HorizontalAlignment="Left" Height="206" Margin="10,188,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridA" HorizontalAlignment="Left" Height="206" Margin="97,160,0,0" VerticalAlignment="Top" Width="260">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Asset" Width="160" Binding="{Binding Account}"/>
                 <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTA" HorizontalAlignment="Left" Height="141" Margin="10,399,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridTA" HorizontalAlignment="Left" Height="67" Margin="97,372,0,0" VerticalAlignment="Top" Width="260">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Total assets" Width="302" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridLO" HorizontalAlignment="Left" Height="206" Margin="330,188,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridLO" HorizontalAlignment="Left" Height="206" Margin="391,160,0,0" VerticalAlignment="Top" Width="260">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Liability and Owner's Equity" Width="160" Binding="{Binding Account}"/>
                 <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTLO" HorizontalAlignment="Left" Height="141" Margin="330,399,0,0" VerticalAlignment="Top" Width="310">
+        <DataGrid x:Name="entryGridTLO" HorizontalAlignment="Left" Height="67" Margin="391,372,0,0" VerticalAlignment="Top" Width="260">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Total liabilities and equity" Width="302" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label Content="Choose Date:" FontWeight="Bold" HorizontalAlignment="Left" Height="30" Margin="96,87,0,0" VerticalAlignment="Top" Width="92"/>
+        <TextBox Name="selectDateBox" HorizontalAlignment="Left" Margin="188,93,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="selectDateBox_SelectionChanged"/>
 
         <!--help feature-->
-        <Button x:Name="balanceHelpButton" Content="?" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="balanceHelpButton_Click">
+        <Grid x:Name="balanceHelpWindow" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="746" Fill="#bdbdbd" Opacity="0.5"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Left" Margin="348,28,0,0" Text="The purpose of the balance sheet is to give the user an overview of their accounts. The user can use this sheet to verify that their accounts are balanced." TextWrapping="Wrap" VerticalAlignment="Top" Height="92" Width="336"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Left" Margin="348,125,0,0" Text="Start by choosing a date." TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="250"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Left" Margin="98,446,0,0" Text="To have a balanced set of accounts, your total assets should be the same amount as your total Liabilities and Owner's Equity." TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="558"/>
+            <Image Source="\images\red-arrow3.jpg" HorizontalAlignment="Left" Height="86" Margin="220,3,0,0" VerticalAlignment="Top" Width="122"/>
+        </Grid>
+        <Button x:Name="balanceHelpButton" Content="Help" HorizontalAlignment="Left" Margin="685,10,0,0" VerticalAlignment="Top" Width="50" Height="24"  FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="balanceHelpButton_Click">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Grid x:Name="balanceHelpWindow" Visibility="Collapsed">
-            <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
-            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Left" Margin="91,126,0,0" Text="The purpose of the balance sheet is to give the user an overview of their accounts. The user can use this sheet to verify that their accounts are balanced. Start by click on a specific date." TextWrapping="Wrap" VerticalAlignment="Top" Height="149" Width="479"/>
-            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Left" Margin="91,280,0,0" Text="A balanced set of accounts follows the fundamental accounting equation of Assets = Liabilities + Owner's Equity. Therefore, your total assets should be the same amount as your total Liabilities and Owner's Equity." TextWrapping="Wrap" VerticalAlignment="Top" Height="157" Width="479"/>
-            <Button x:Name="balanceCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="572,70,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="balanceCloseButton_Click" RenderTransformOrigin="2.477,0.376"/>
-        </Grid>
     </Grid>
 </UserControl>

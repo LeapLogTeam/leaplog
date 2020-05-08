@@ -43,19 +43,17 @@
         </DataGrid>
 
         <!--help feature-->
-        <Button x:Name="taccHelpButton" Content="?" HorizontalAlignment="Left" Margin="695,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="taccHelpButton_Click">
+        <Grid x:Name="taccHelpWindow" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Center" Margin="0,10,0,0" Text="The T-Accounts section allows the user to look at each account created individually. The accounts are separated by type." TextWrapping="Wrap" VerticalAlignment="Top" Height="55" Width="478"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18"  HorizontalAlignment="Center" Margin="0,446,0,0" Text="Click on an account name to see the financial history of that account." TextWrapping="Wrap" VerticalAlignment="Top" Height="58" Width="478"/>
+        </Grid>
+        <Button x:Name="taccHelpButton" Content="Help" HorizontalAlignment="Left" Margin="685,10,0,0" VerticalAlignment="Top"  Width="50" Height="24"  FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="taccHelpButton_Click">
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Grid x:Name="taccHelpWindow" Visibility="Collapsed">
-            <Rectangle HorizontalAlignment="Center" Height="451" Stroke="Black" VerticalAlignment="Center" Width="582" Fill="#316341"/>
-            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Center" Margin="0,126,0,0" Text="The T-Accounts section allows the user to look at each account created individually. The accounts are separated by type." TextWrapping="Wrap" VerticalAlignment="Top" Height="148" Width="478"/>
-            <TextBlock Foreground="White" FontSize="23" HorizontalAlignment="Center" Margin="0,291,0,0" Text="Click on an account name to see the financial history of each account." TextWrapping="Wrap" VerticalAlignment="Top" Height="157" Width="478"/>
-            <Button x:Name="tCloseButton" Content="  X  " HorizontalAlignment="Left" Margin="607,70,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Click="tCloseButton_Click" RenderTransformOrigin="2.477,0.376"/>
-        </Grid>
-
     </Grid>
 </UserControl>

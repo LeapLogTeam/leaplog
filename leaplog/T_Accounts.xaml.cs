@@ -315,15 +315,14 @@ namespace LeapLog
         //method for when help feature button is clicked
         private void taccHelpButton_Click(object sender, RoutedEventArgs e)
         {
-            taccHelpWindow.Visibility = Visibility.Visible;
+            if (taccHelpWindow.Visibility == Visibility.Collapsed)
+            {
+                taccHelpWindow.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                taccHelpWindow.Visibility = Visibility.Collapsed;
+            }
         }
-
-        //method for when close button on help feature is clicked
-        private void tCloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            taccHelpWindow.Visibility = Visibility.Collapsed;
-        }
-
-      
     }
 }
