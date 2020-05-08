@@ -260,6 +260,8 @@ namespace LeapLog
         private void backButton2_Click(object sender, RoutedEventArgs e)
         {
             journalHelpWindow3.Visibility = Visibility.Collapsed;
+            journalHelpWindow2.Visibility = Visibility.Visible;
+            journalHelpWindow1.Visibility = Visibility.Collapsed;
         }
 
        
