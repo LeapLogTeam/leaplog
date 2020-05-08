@@ -232,6 +232,58 @@ namespace LeapLog
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
+            //******************check if table is in the db **********************
+
+            MessageBoxButton button2 = MessageBoxButton.OK;
+            MessageBoxImage icon2 = MessageBoxImage.Warning;
+            //**********************Check if table name already exists**********************
+
+            List<String> list = new List<String>(); // to save the table names
+
+            string connetionString = null;
+            SqlConnection connection;
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataSet ds = new DataSet();
+            int counterV = 0;
+            string sql = null;
+
+            connetionString = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True";
+            sql = "Select DISTINCT(name) FROM sys.Tables";
+
+            connection = new SqlConnection(connetionString);
+
+            try
+            {
+                connection.Open();
+                command = new SqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds);
+                adapter.Dispose();
+                command.Dispose();
+                connection.Close();
+
+                for (counterV = 0; counterV <= ds.Tables[0].Rows.Count - 1; counterV++)
+                {
+                    list.Add(ds.Tables[0].Rows[counterV].ItemArray[0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Can not open connection ! ");
+            }
+            //******************end of block of code*********************************
+
+
+            //******************Control if statement****************** MessageBox.Show("Table name already taken.", "Try again", button, icon);
+
+            if (list.FindIndex(x => x.Equals(user_Input.Text.Trim().Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase)) != -1)
+
+            {  
+
+
+            //******************check if table is in the db **********************
+
             // Save the database before exporting.
             if (Save_DB() == false) return;
 
@@ -253,457 +305,468 @@ namespace LeapLog
 
 
 
-            //**************************flow control************************************
-            if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
-            {
-                MessageBox.Show(messageBoxText, caption, button, icon);
+                //**************************flow control************************************
+                if (String.IsNullOrEmpty(user_Input.Text) || user_Input.Text == "")
+                {
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
+
+                //***********************from db to table adapter*******************************        
+
+                else
+                {
+                    //******************************************************************************************************
+                    //*************extracting journal table********************
+                    //******************************************************************************************************
+                    SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                    string query = "Select * from " + tableName + " ";
+                    SqlDataAdapter sda = new SqlDataAdapter(query, conn);
+                    System.Data.DataTable dataTable = new System.Data.DataTable();
+                    sda.Fill(dataTable);
+                    //string name;
+
+
+                    //*********************if need assistance please ask James***************************
+
+
+
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        tableAdapterr journalTable = new tableAdapterr();
+
+                        /*name = row["username"].ToString().Trim();
+                       System.Diagnostics.Debug.WriteLine(name);
+                       list.Add(name);*/
+                        journalTable.ID = Convert.ToInt32(row["ID"]);
+                        journalTable.Date = row["Date"].ToString().Trim();
+                        journalTable.Account_1 = row["Account_1"].ToString().Trim();
+                        journalTable.Account_2 = row["Account_2"].ToString().Trim();
+                        journalTable.Type_1 = row["Type_1"].ToString().Trim();
+                        journalTable.Type_2 = row["Type_2"].ToString().Trim();
+                        journalTable.Debit = Convert.ToDouble(row["Debit"]);
+                        journalTable.Credit = Convert.ToDouble(row["Credit"]);
+
+                        //*********adding to list adapter*********
+                        DBList.Add(journalTable);
+                    }
+
+                    //test code
+                    foreach (var i in DBList)
+                    {
+                        System.Diagnostics.Debug.WriteLine(i.Account_1);
+                    }
+
+
+
+                    //******************************************************************************************************
+                    //*************extracting T Accounts table********************
+                    //******************************************************************************************************
+                    SqlConnection conn_TA = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                    string query_TA = "Select * from " + TaccountName + " ";
+                    SqlDataAdapter sda_TA = new SqlDataAdapter(query_TA, conn_TA);
+                    System.Data.DataTable dataTable_TA = new System.Data.DataTable();
+                    sda_TA.Fill(dataTable_TA);
+                    //string name;
+
+
+                    //*********************if need assistance please ask James***************************
+
+
+
+                    //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
+                    foreach (DataRow row in dataTable_TA.Rows)
+                    {
+                        tableAdapterr TAccountTable = new tableAdapterr();
+
+
+                        TAccountTable.ID_TAcccounts = Convert.ToInt32(row["ID"]);
+                        TAccountTable.Account_TAccounts = row["Account"].ToString().Trim();
+                        TAccountTable.Type_TAccounts = row["Type"].ToString().Trim();
+                        TAccountTable.DebitList = Convert.ToDouble(row["DebitList"]);
+                        TAccountTable.CreditList = Convert.ToDouble(row["CreditList"]);
+                        TAccountTable.TotalDebit = Convert.ToDouble(row["TotalDebit"]);
+                        TAccountTable.Balance = Convert.ToDouble(row["Balance"]);
+
+
+                        //*********adding to list adapter*********
+                        DBList.Add(TAccountTable);
+                    }
+
+
+                    //******************************************************************************************************
+                    //*************extracting Balance Sheet********************
+                    //******************************************************************************************************
+                    SqlConnection conn_BS = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                    string query_BS = "Select * from " + BalanceSheetName + " ";
+                    SqlDataAdapter sda_BS = new SqlDataAdapter(query_BS, conn_BS);
+                    System.Data.DataTable dataTable_BS = new System.Data.DataTable();
+                    sda_BS.Fill(dataTable_BS);
+                    //string name;
+
+
+                    //*********************if need assistance please ask James***************************
+
+
+
+                    //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
+                    foreach (DataRow row in dataTable_BS.Rows)
+                    {
+                        tableAdapterr BalanceSheetTable = new tableAdapterr();
+
+
+                        BalanceSheetTable.ID_BalanceSheet = Convert.ToInt32(row["ID"]);
+                        BalanceSheetTable.Asset_Account_Name = row["Asset_Account_Name"].ToString().Trim();
+                        BalanceSheetTable.Asset_Account_Balance = Convert.ToDouble(row["Asset_Account_Balance"]);
+                        BalanceSheetTable.Total_Assets = Convert.ToDouble(row["Total_Assets"]);
+                        BalanceSheetTable.Liability_Account_Name = row["Liability_Account_Name"].ToString().Trim();
+                        BalanceSheetTable.Liability_Account_Balance = Convert.ToDouble(row["Liability_Account_Balance"]);
+                        BalanceSheetTable.Total_Liability = Convert.ToDouble(row["Total_Liability"]);
+
+
+                        //*********adding to list adapter*********
+                        DBList.Add(BalanceSheetTable);
+                    }
+
+
+
+                    //******************************************************************************************************
+                    //*************extracting Income Statement********************
+                    //******************************************************************************************************
+                    SqlConnection conn_IS = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                    string query_IS = "Select * from " + IncomeStatementName + " ";
+                    SqlDataAdapter sda_IS = new SqlDataAdapter(query_IS, conn_IS);
+                    System.Data.DataTable dataTable_IS = new System.Data.DataTable();
+                    sda_IS.Fill(dataTable_IS);
+                    //string name;
+
+                    //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
+                    foreach (DataRow row in dataTable_IS.Rows)
+                    {
+                        tableAdapterr IncomeStatementTable = new tableAdapterr();
+
+
+                        IncomeStatementTable.ID_IncomeStatement = Convert.ToInt32(row["ID"]);
+                        IncomeStatementTable.Total_Revenue = Convert.ToDouble(row["Total_Revenue"]);
+                        IncomeStatementTable.Total_Expense = Convert.ToDouble(row["Total_Expense"]);
+                        IncomeStatementTable.Net_Income = Convert.ToDouble(row["Net_Income"]);
+
+
+                        //*********adding to list adapter*********
+                        DBList.Add(IncomeStatementTable);
+                    }
+
+
+                    //******************************************************************************************************
+                    //*************extracting StatementOfOEName********************
+                    //******************************************************************************************************
+                    SqlConnection conn_SOE = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
+                    string query_SOE = "Select * from " + StatementOfOEName + " ";
+                    SqlDataAdapter sda_SOE = new SqlDataAdapter(query_SOE, conn_SOE);
+                    System.Data.DataTable dataTable_SOE = new System.Data.DataTable();
+                    sda_SOE.Fill(dataTable_SOE);
+                    //string name;
+
+                    //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
+
+                    foreach (DataRow row in dataTable_SOE.Rows)
+                    {
+                        tableAdapterr OwnerEquityTable = new tableAdapterr();
+
+
+                        OwnerEquityTable.ID_StatementOfOE = Convert.ToInt32(row["ID"]);
+                        OwnerEquityTable.Start_Capital = Convert.ToDouble(row["Start_Capital"]);
+                        OwnerEquityTable.Net_Income_StatementOfOE = Convert.ToDouble(row["Net_Income"]);
+                        OwnerEquityTable.Total_Withdrawals = Convert.ToDouble(row["Total_Withdrawals"]);
+                        OwnerEquityTable.FInal_Capital = Convert.ToDouble(row["Final_Capital"]);
+
+
+                        //*********adding to list adapter*********
+                        DBList.Add(OwnerEquityTable);
+                    }
+
+                    //******************************************************************************************************
+                    //------------------------------------to excel------------------------------------------
+                    //******************************************************************************************************
+
+
+
+                    //*********************if need assistance please ask ***************************
+                    //*****************************James Alexander **************************
+
+                    // Load up Excel, then make a new empty workbook.
+                    Excel.Application excelApp = new Excel.Application();
+
+
+
+                    object missing = System.Reflection.Missing.Value;
+
+                    Excel.Workbook oWB = excelApp.Workbooks.Add(missing);
+
+                    //excelApp.Workbooks.Add();
+                    // This example uses a single workSheet.
+                    Worksheet workSheet = (Worksheet)oWB.ActiveSheet;
+                    workSheet.Name = "Journal";
+                    // Establish column headings in cells.
+                    workSheet.Cells[1, "A"] = "ID";
+                    workSheet.Cells[1, "B"] = "Date";
+                    workSheet.Cells[1, "C"] = "Account 1";
+                    workSheet.Cells[1, "D"] = "Type 1";
+                    workSheet.Cells[1, "E"] = "Debit";
+                    workSheet.Cells[1, "F"] = "Account 2";
+                    workSheet.Cells[1, "G"] = "Type 2";
+                    workSheet.Cells[1, "H"] = "Credit";
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet.
+                    //****************T Accounts *******************
+                    Worksheet workSheet2 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                    workSheet2.Name = "T Accounts";
+                    // Establish column headings in cells.
+                    workSheet2.Cells[1, "A"] = "ID";
+                    workSheet2.Cells[1, "B"] = "Account";
+                    workSheet2.Cells[1, "C"] = "Type";
+                    workSheet2.Cells[1, "D"] = "List of Debits";
+                    workSheet2.Cells[1, "E"] = "List of Credits";
+                    workSheet2.Cells[1, "F"] = "Total Debit";
+                    workSheet2.Cells[1, "G"] = "Total Credit";
+                    workSheet2.Cells[1, "H"] = "Balance";
+
+                    //****************Balance sheet*******************
+                    Worksheet workSheet3 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                    workSheet3.Name = "Balance Sheet";
+                    // Establish column headings in cells.
+                    workSheet3.Cells[1, "A"] = "ID";
+                    workSheet3.Cells[1, "B"] = "Asset Account Name";
+                    workSheet3.Cells[1, "C"] = "Asset Account Balance";
+                    workSheet3.Cells[1, "D"] = "Total Assets";
+                    workSheet3.Cells[1, "E"] = "Liability or Owners Equity Account Name";
+                    workSheet3.Cells[1, "F"] = "Liability or Owners Equity Account Balance";
+                    workSheet3.Cells[1, "G"] = "Total Liabilities and Owners Equity";
+
+                    //****************Income Statement*******************
+                    Worksheet workSheet4 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                    workSheet4.Name = "Income Statement";
+                    // Establish column headings in cells.
+                    workSheet4.Cells[1, "A"] = "ID";
+                    workSheet4.Cells[1, "B"] = "Total Revenue";
+                    workSheet4.Cells[1, "C"] = "Total Expense";
+                    workSheet4.Cells[1, "D"] = "Net Income";
+
+                    //****************Statement of Owner Equity*******************
+                    Worksheet workSheet5 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
+                    workSheet5.Name = "Statement of Owner Equity";
+                    // Establish column headings in cells.
+                    workSheet5.Cells[1, "A"] = "ID";
+                    workSheet5.Cells[1, "B"] = "Start Capital";
+                    workSheet5.Cells[1, "C"] = "Net Income";
+                    workSheet5.Cells[1, "D"] = "Total Withdrawals";
+                    workSheet5.Cells[1, "E"] = "Final Capital";
+
+
+
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet (journal).
+                    int row1 = 1;
+
+                    foreach (var i in DBList)
+                    {
+                        if (i.Debit != 0)
+                        {
+                            row1++;
+
+                            //workSheet.Cells[row1, "A"] = i.ID;
+                            workSheet.Cells[row1, "B"] = i.Date;
+                            workSheet.Cells[row1, "C"] = i.Account_1;
+                            workSheet.Cells[row1, "D"] = i.Type_1;
+                            workSheet.Cells[row1, "E"] = i.Debit;
+                            workSheet.Cells[row1, "F"] = i.Account_2;
+                            workSheet.Cells[row1, "G"] = i.Type_2;
+                            workSheet.Cells[row1, "H"] = i.Credit;
+                        }
+                    }
+
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the Sheet 2 (t-accounts).
+
+                    int taccRow = 1;
+
+                    //for every account, pull data
+                    foreach (var i in DBList)
+                    {
+                        taccRow++;
+                        if (i.DebitList != 0)
+                        {
+                            // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
+                            workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;
+                            workSheet2.Cells[taccRow, "C"] = i.Type_TAccounts;
+                            workSheet2.Cells[taccRow, "D"] = i.DebitList;
+                            workSheet2.Cells[taccRow, "E"] = i.CreditList;
+                            workSheet2.Cells[taccRow, "F"] = i.TotalDebit;
+                            workSheet2.Cells[taccRow, "G"] = i.TotalCredit;
+                            workSheet2.Cells[taccRow, "H"] = i.Balance;
+                        }
+
+                    }
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the Sheet 3 (balance sheet).
+
+                    int assetRow = 1;
+                    int loeRow = 1;
+
+                    //iterate through list of all asset accounts
+                    foreach (var i in DBList)
+                    {
+
+
+                        //get the account name and add to excel sheet
+                        if (i.Asset_Account_Name != null)
+                        {
+                            assetRow++;
+                            workSheet3.Cells[assetRow, "B"] = i.Asset_Account_Name;
+                        }
+                        //get the account balance and add to excel sheet
+                        if (i.Asset_Account_Balance != 0)
+                        {
+                            //assetRow++;
+                            workSheet3.Cells[assetRow, "C"] = i.Asset_Account_Balance;
+                        }
+                        if (i.Total_Assets != 0)
+                        {
+                            assetRow++;
+                            workSheet3.Cells[2, "D"] = i.Total_Assets;
+                        }
+                    }
+
+
+
+                    //iterate through list of all other accounts
+                    foreach (var i in DBList)
+                    {
+
+
+                        //get the account name and add to excel sheet
+                        if (i.Liability_Account_Name != null)
+                        {
+                            loeRow++;
+                            workSheet3.Cells[loeRow, "E"] = i.Liability_Account_Name;
+                        }
+                        //get the account balance and add to excel sheet
+                        if (i.Liability_Account_Balance != 0)
+                        {
+                            //loeRow++;
+                            workSheet3.Cells[loeRow, "F"] = i.Liability_Account_Balance;
+                        }
+                        if (i.Total_Liability != 0)
+                        {
+                            loeRow++;
+                            workSheet3.Cells[2, "G"] = i.Total_Liability;
+                        }
+
+                    }
+
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4 (income statement).
+
+                    //Predicate<tableAdapterr> totalRevenueFinder = (tableAdapterr t) => { return t.Total_Revenue != 0; };
+                    int IERow = 1;
+                    foreach (var i in DBList)
+
+                    {
+
+                        // tableAdapterr finder = DBList.Find(totalRevenueFinder);
+
+                        if (i.Total_Revenue != 0)
+                        {
+                            IERow++;
+                            workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
+                        }
+                        if (i.Total_Expense != 0)
+                        {
+                            // IERow++;
+                            workSheet4.Cells[IERow, "C"] = i.Total_Expense;
+                        }
+                        if (i.Net_Income != 0)
+                        {
+                            //IERow++;
+                            workSheet4.Cells[IERow, "D"] = i.Net_Income;
+                        }
+
+                    }
+
+                    // Now, map all data in List<tableAdapterr> to the cells of the Sheet 5 (oe statement).
+
+                    int SOERow = 1;
+                    foreach (var i in DBList)
+                    {
+
+
+                        if (i.Start_Capital != 0)
+                        {
+                            SOERow++;
+                            workSheet5.Cells[SOERow, "B"] = i.Start_Capital;
+                        }
+                        if (i.Net_Income_StatementOfOE != 0)
+                        {
+                            SOERow++;
+                            workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
+                        }
+                        if (i.Total_Withdrawals != 0)
+                        {
+                            SOERow++;
+                            workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
+                        }
+                        if (i.FInal_Capital != 0)
+                        {
+                            // SOERow++;
+                            workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
+                        }
+                    }
+
+                    ;
+
+                    // Give our table data a nice look and feel.
+                    workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+
+
+
+
+                    // Save the file, quit Excel, and display message to user.
+                    // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                    try
+                    {
+                        oWB.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
+                    }
+                    catch (Exception unused)
+                    {
+                        excelApp.Quit();
+                        return;
+                    }
+                    //excelApp.Quit();
+                    excelApp.Visible = true;
+
+                    System.Diagnostics.Debug.WriteLine("The tableOne.xslx file has been saved to your app folder");
+
+                    //*********************if need assistance please ask ***************************
+                    //*****************************James Alexander **************************
+                }
+                 
             }
-
-            //***********************from db to table adapter*******************************        
-
             else
             {
-                //******************************************************************************************************
-                //*************extracting journal table********************
-                //******************************************************************************************************
-                SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
-                string query = "Select * from " + tableName + " ";
-                SqlDataAdapter sda = new SqlDataAdapter(query, conn);
-                System.Data.DataTable dataTable = new System.Data.DataTable();
-                sda.Fill(dataTable);
-                //string name;
-
-
-                //*********************if need assistance please ask James***************************
-
-
-                 
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    tableAdapterr journalTable = new tableAdapterr();
-
-                    /*name = row["username"].ToString().Trim();
-                   System.Diagnostics.Debug.WriteLine(name);
-                   list.Add(name);*/
-                    journalTable.ID = Convert.ToInt32(row["ID"]);
-                    journalTable.Date = row["Date"].ToString().Trim();
-                    journalTable.Account_1 = row["Account_1"].ToString().Trim();
-                    journalTable.Account_2 = row["Account_2"].ToString().Trim();
-                    journalTable.Type_1 = row["Type_1"].ToString().Trim();
-                    journalTable.Type_2 = row["Type_2"].ToString().Trim();
-                    journalTable.Debit = Convert.ToDouble(row["Debit"]);
-                    journalTable.Credit = Convert.ToDouble(row["Credit"]);
-
-                    //*********adding to list adapter*********
-                    DBList.Add(journalTable);
-                }
-
-                //test code
-                foreach (var i in DBList)
-                {
-                    System.Diagnostics.Debug.WriteLine(i.Account_1);
-                }
-
-              
-
-                //******************************************************************************************************
-                //*************extracting T Accounts table********************
-                //******************************************************************************************************
-                SqlConnection conn_TA = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
-                string query_TA = "Select * from " + TaccountName + " ";
-                SqlDataAdapter sda_TA = new SqlDataAdapter(query_TA, conn_TA);
-                System.Data.DataTable dataTable_TA = new System.Data.DataTable();
-                sda_TA.Fill(dataTable_TA);
-                //string name;
-
-
-                //*********************if need assistance please ask James***************************
-
-
-
-                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
-
-                foreach (DataRow row in dataTable_TA.Rows)
-                {
-                    tableAdapterr TAccountTable = new tableAdapterr();
-
-                 
-                    TAccountTable.ID_TAcccounts = Convert.ToInt32(row["ID"]);
-                    TAccountTable.Account_TAccounts = row["Account"].ToString().Trim();
-                    TAccountTable.Type_TAccounts = row["Type"].ToString().Trim();
-                    TAccountTable.DebitList =   Convert.ToDouble(row["DebitList"]);
-                    TAccountTable.CreditList =  Convert.ToDouble(row["CreditList"]);
-                    TAccountTable.TotalDebit =   Convert.ToDouble(row["TotalDebit"]);
-                    TAccountTable.Balance =   Convert.ToDouble(row["Balance"]);
-
-
-                    //*********adding to list adapter*********
-                    DBList.Add(TAccountTable); 
-                }
-
-
-                //******************************************************************************************************
-                //*************extracting Balance Sheet********************
-                //******************************************************************************************************
-                SqlConnection conn_BS = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
-                string query_BS = "Select * from " + BalanceSheetName + " ";
-                SqlDataAdapter sda_BS = new SqlDataAdapter(query_BS, conn_BS);
-                System.Data.DataTable dataTable_BS = new System.Data.DataTable();
-                sda_BS.Fill(dataTable_BS);
-                //string name;
-
-
-                //*********************if need assistance please ask James***************************
-
-
-
-                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
-
-                foreach (DataRow row in dataTable_BS.Rows)
-                {
-                    tableAdapterr BalanceSheetTable = new tableAdapterr();
-
-
-                    BalanceSheetTable.ID_BalanceSheet= Convert.ToInt32(row["ID"]);
-                    BalanceSheetTable.Asset_Account_Name = row["Asset_Account_Name"].ToString().Trim();
-                    BalanceSheetTable.Asset_Account_Balance = Convert.ToDouble(row["Asset_Account_Balance"]);
-                    BalanceSheetTable.Total_Assets = Convert.ToDouble(row["Total_Assets"]);
-                    BalanceSheetTable.Liability_Account_Name = row["Liability_Account_Name"].ToString().Trim();
-                    BalanceSheetTable.Liability_Account_Balance = Convert.ToDouble(row["Liability_Account_Balance"]);
-                    BalanceSheetTable.Total_Liability = Convert.ToDouble(row["Total_Liability"]);
-
-
-                    //*********adding to list adapter*********
-                    DBList.Add(BalanceSheetTable);
-                }
-
-
-
-                //******************************************************************************************************
-                //*************extracting Income Statement********************
-                //******************************************************************************************************
-                SqlConnection conn_IS = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
-                string query_IS = "Select * from " + IncomeStatementName + " ";
-                SqlDataAdapter sda_IS = new SqlDataAdapter(query_IS, conn_IS);
-                System.Data.DataTable dataTable_IS = new System.Data.DataTable();
-                sda_IS.Fill(dataTable_IS);
-                //string name;
-
-                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
-
-                foreach (DataRow row in dataTable_IS.Rows)
-                {
-                    tableAdapterr IncomeStatementTable = new tableAdapterr();
-
-
-                    IncomeStatementTable.ID_IncomeStatement = Convert.ToInt32(row["ID"]);
-                    IncomeStatementTable.Total_Revenue = Convert.ToDouble(row["Total_Revenue"]);
-                    IncomeStatementTable.Total_Expense = Convert.ToDouble(row["Total_Expense"]);
-                    IncomeStatementTable.Net_Income = Convert.ToDouble(row["Net_Income"]);
-                   
-
-                    //*********adding to list adapter*********
-                    DBList.Add(IncomeStatementTable);
-                }
-
-
-                //******************************************************************************************************
-                //*************extracting StatementOfOEName********************
-                //******************************************************************************************************
-                SqlConnection conn_SOE = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\Database1.MDF;Integrated Security=True");
-                string query_SOE = "Select * from " + StatementOfOEName + " ";
-                SqlDataAdapter sda_SOE = new SqlDataAdapter(query_SOE, conn_SOE);
-                System.Data.DataTable dataTable_SOE = new System.Data.DataTable();
-                sda_SOE.Fill(dataTable_SOE);
-                //string name;
-
-                //***********************Extraction journal data from DB to journalTable then to DBList adapter*******************************        
-
-                foreach (DataRow row in dataTable_SOE.Rows)
-                {
-                    tableAdapterr OwnerEquityTable = new tableAdapterr();
-
-
-                    OwnerEquityTable.ID_StatementOfOE = Convert.ToInt32(row["ID"]);
-                    OwnerEquityTable.Start_Capital = Convert.ToDouble(row["Start_Capital"]);
-                    OwnerEquityTable.Net_Income_StatementOfOE = Convert.ToDouble(row["Net_Income"]);
-                    OwnerEquityTable.Total_Withdrawals = Convert.ToDouble(row["Total_Withdrawals"]);
-                    OwnerEquityTable.FInal_Capital = Convert.ToDouble(row["Final_Capital"]);
-
-
-                    //*********adding to list adapter*********
-                    DBList.Add(OwnerEquityTable);
-                }
-
-                //******************************************************************************************************
-                //------------------------------------to excel------------------------------------------
-                //******************************************************************************************************
-
-
-
-                //*********************if need assistance please ask ***************************
-                //*****************************James Alexander **************************
-
-                // Load up Excel, then make a new empty workbook.
-                Excel.Application excelApp = new Excel.Application();
-
-
-
-                object missing = System.Reflection.Missing.Value;
-
-                Excel.Workbook oWB = excelApp.Workbooks.Add(missing);
-
-                //excelApp.Workbooks.Add();
-                // This example uses a single workSheet.
-                Worksheet workSheet = (Worksheet)oWB.ActiveSheet;
-                workSheet.Name = "Journal";
-                // Establish column headings in cells.
-                workSheet.Cells[1, "A"] = "ID";
-                workSheet.Cells[1, "B"] = "Date";
-                workSheet.Cells[1, "C"] = "Account 1";
-                workSheet.Cells[1, "D"] = "Type 1";
-                workSheet.Cells[1, "E"] = "Debit";
-                workSheet.Cells[1, "F"] = "Account 2";
-                workSheet.Cells[1, "G"] = "Type 2";
-                workSheet.Cells[1, "H"] = "Credit";
-
-                // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet.
-               //****************T Accounts *******************
-                Worksheet workSheet2 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
-                workSheet2.Name = "T Accounts";
-                // Establish column headings in cells.
-                workSheet2.Cells[1, "A"] = "ID";             
-                workSheet2.Cells[1, "B"] = "Account";
-                workSheet2.Cells[1, "C"] = "Type";
-                workSheet2.Cells[1, "D"] = "List of Debits";
-                workSheet2.Cells[1, "E"] = "List of Credits";
-                workSheet2.Cells[1, "F"] = "Total Debit";
-                workSheet2.Cells[1, "G"] = "Total Credit";
-                workSheet2.Cells[1, "H"] = "Balance";
-
-                //****************Balance sheet*******************
-                Worksheet workSheet3 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
-                workSheet3.Name = "Balance Sheet";
-                // Establish column headings in cells.
-                workSheet3.Cells[1, "A"] = "ID";
-                workSheet3.Cells[1, "B"] = "Asset Account Name";
-                workSheet3.Cells[1, "C"] = "Asset Account Balance";
-                workSheet3.Cells[1, "D"] = "Total Assets";
-                workSheet3.Cells[1, "E"] = "Liability or Owners Equity Account Name";
-                workSheet3.Cells[1, "F"] = "Liability or Owners Equity Account Balance";
-                workSheet3.Cells[1, "G"] = "Total Liabilities and Owners Equity";
-
-                //****************Income Statement*******************
-                Worksheet workSheet4 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
-                workSheet4.Name = "Income Statement";
-                // Establish column headings in cells.
-                workSheet4.Cells[1, "A"] = "ID";
-                workSheet4.Cells[1, "B"] = "Total Revenue";         
-                workSheet4.Cells[1, "C"] = "Total Expense";
-                workSheet4.Cells[1, "D"] = "Net Income";
-
-                //****************Statement of Owner Equity*******************
-                Worksheet workSheet5 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
-                workSheet5.Name = "Statement of Owner Equity";
-                // Establish column headings in cells.
-                workSheet5.Cells[1, "A"] = "ID";
-                workSheet5.Cells[1, "B"] = "Start Capital";       
-                workSheet5.Cells[1, "C"] = "Net Income";
-                workSheet5.Cells[1, "D"] = "Total Withdrawals";
-                workSheet5.Cells[1, "E"] = "Final Capital";
-
-
-
-
-                // Now, map all data in List<tableAdapterr> to the cells of the spreadsheet (journal).
-                int row1 = 1;
-
-                foreach (var i in DBList)
-                {
-                    if (i.Debit != 0)
-                    {
-                        row1++;
-
-                        //workSheet.Cells[row1, "A"] = i.ID;
-                        workSheet.Cells[row1, "B"] = i.Date;
-                        workSheet.Cells[row1, "C"] = i.Account_1;
-                        workSheet.Cells[row1, "D"] = i.Type_1;
-                        workSheet.Cells[row1, "E"] = i.Debit;
-                        workSheet.Cells[row1, "F"] = i.Account_2;
-                        workSheet.Cells[row1, "G"] = i.Type_2;
-                        workSheet.Cells[row1, "H"] = i.Credit;
-                    }
-                }
-
-
-                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 2 (t-accounts).
-
-                int taccRow = 1;
-
-                //for every account, pull data
-                foreach (var i in DBList)
-                {
-                    taccRow++;
-                    if (i.DebitList != 0)
-                    {
-                        // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
-                        workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;
-                        workSheet2.Cells[taccRow, "C"] = i.Type_TAccounts;
-                        workSheet2.Cells[taccRow, "D"] = i.DebitList;
-                        workSheet2.Cells[taccRow, "E"] = i.CreditList;
-                        workSheet2.Cells[taccRow, "F"] = i.TotalDebit;
-                        workSheet2.Cells[taccRow, "G"] = i.TotalCredit;
-                        workSheet2.Cells[taccRow, "H"] = i.Balance;
-                    }
-
-                }
-
-                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 3 (balance sheet).
-
-                int assetRow = 1;
-                int loeRow = 1;
-
-                //iterate through list of all asset accounts
-                foreach (var i in DBList)
-                {
-                    
-
-                    //get the account name and add to excel sheet
-                    if (i.Asset_Account_Name != null)
-                    {
-                        assetRow++;
-                        workSheet3.Cells[assetRow, "B"] = i.Asset_Account_Name;
-                    }
-                    //get the account balance and add to excel sheet
-                    if (i.Asset_Account_Balance != 0)
-                    {
-                        //assetRow++;
-                        workSheet3.Cells[assetRow, "C"] = i.Asset_Account_Balance;
-                    }
-                    if (i.Total_Assets != 0)
-                    {
-                        assetRow++;
-                        workSheet3.Cells[2, "D"] = i.Total_Assets;
-                    }
-                }
-
-               
-
-                //iterate through list of all other accounts
-                foreach (var i in DBList)
-                {
-                    
-
-                    //get the account name and add to excel sheet
-                    if (i.Liability_Account_Name != null)
-                    {
-                        loeRow++;
-                        workSheet3.Cells[loeRow, "E"] = i.Liability_Account_Name;
-                    }
-                    //get the account balance and add to excel sheet
-                    if (i.Liability_Account_Balance != 0)
-                    {
-                        //loeRow++;
-                        workSheet3.Cells[loeRow, "F"] = i.Liability_Account_Balance;
-                    }
-                    if (i.Total_Liability != 0)
-                    {
-                        loeRow++;
-                        workSheet3.Cells[2, "G"] = i.Total_Liability;
-                    }
-
-                }
-
-
-                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4 (income statement).
-
-                //Predicate<tableAdapterr> totalRevenueFinder = (tableAdapterr t) => { return t.Total_Revenue != 0; };
-                int IERow = 1;
-                foreach (var i in DBList)
-
-                {
-                    
-                    // tableAdapterr finder = DBList.Find(totalRevenueFinder);
-
-                    if (i.Total_Revenue != 0)
-                    {
-                        IERow++;
-                        workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
-                    }
-                    if (i.Total_Expense != 0)
-                    {
-                       // IERow++;
-                        workSheet4.Cells[IERow, "C"] = i.Total_Expense;
-                    }
-                    if (i.Net_Income != 0)
-                    {
-                        //IERow++;
-                        workSheet4.Cells[IERow, "D"] = i.Net_Income;
-                    }
-
-                }
-
-                // Now, map all data in List<tableAdapterr> to the cells of the Sheet 5 (oe statement).
-
-                int SOERow = 1;
-                foreach (var i in DBList)
-                {
-
-
-                    if (i.Start_Capital != 0)
-                    {
-                        SOERow++;
-                        workSheet5.Cells[SOERow, "B"] = i.Start_Capital;
-                    }
-                    if (i.Net_Income_StatementOfOE != 0)
-                    {
-                        SOERow++;
-                        workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
-                    }
-                    if (i.Total_Withdrawals != 0) {
-                        SOERow++;
-                        workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
-                }
-                    if (i.FInal_Capital != 0)
-                    {
-                       // SOERow++;
-                        workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
-                    }
-                }
-
-                ;
-
-                // Give our table data a nice look and feel.
-                   workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                   workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                   workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                   workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
-                   workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
- 
-
-
-
-                // Save the file, quit Excel, and display message to user.
-                // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
-                try
-                {
-                    oWB.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
-                }
-                catch (Exception unused)
-                {
-                    excelApp.Quit();
-                    return;
-                }
-                //excelApp.Quit();
-                excelApp.Visible = true;
-
-                System.Diagnostics.Debug.WriteLine("The tableOne.xslx file has been saved to your app folder");
-
-                //*********************if need assistance please ask ***************************
-                //*****************************James Alexander **************************
+                MessageBox.Show("No database with file name '"+user_Input.Text+"' was found. Add a new database or try again with a " +
+                    "different name.", "Try again", button2, icon2);
             }
 
         }
+
+
+
 
         private void account1TB_GotFocus(object sender, RoutedEventArgs e)
         {
