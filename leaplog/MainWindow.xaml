@@ -11,7 +11,6 @@
         ResizeMode="NoResize"
         Title="Dashboard" Height="650" Width="800" Closing="Window_Closing_1" WindowStartupLocation="CenterScreen">
     <Grid>
-
         <Rectangle Fill="#234264"></Rectangle>
         <Grid Background="#182C42" DockPanel.Dock="Top" VerticalAlignment="Top" MouseDown="Grid_MouseDown" Height="30">
             <Image Source="\images\icon.jpg" Height="15" HorizontalAlignment="Left" Margin="10,8,0,8"/>

@@ -21,5 +21,20 @@ namespace LeapLog
         {
             InitializeComponent();
         }
+
+        private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void MinimizeButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
