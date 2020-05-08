@@ -94,7 +94,7 @@ namespace LeapLog
         private void enter_button_Click(object sender, RoutedEventArgs e)
         {
 
-            string messageBoxText = "Journal field cannot be null or empty";
+            string messageBoxText = "Database field cannot be null or empty";
             string caption = "Wrong Input";
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBoxImage icon = MessageBoxImage.Warning;
@@ -141,7 +141,7 @@ namespace LeapLog
 
             if (list.FindIndex(x => x.Equals(user_Input.Text.Trim().Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase)) != -1)
 
-                MessageBox.Show("Table name already taken.", "Try again", button, icon);
+                MessageBox.Show("Database name already taken.", "Try again", button, icon);
 
             else
             {
@@ -846,5 +846,8 @@ namespace LeapLog
                 return true;
             }
         }
+
+         
+
     }
 }
