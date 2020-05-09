@@ -270,6 +270,7 @@ namespace LeapLog
 
         private void toExcel_Click(object sender, RoutedEventArgs e)
         {
+            if (Save_DB() == false) return;
             //******************check if table is in the db **********************
 
             MessageBoxButton button2 = MessageBoxButton.OK;
@@ -323,7 +324,7 @@ namespace LeapLog
             //******************check if table is in the db **********************
 
             // Save the database before exporting.
-            if (Save_DB() == false) return;
+            
 
             string messageBoxText = "Journal field cannot be null or empty";
             string caption = "Wrong Input";

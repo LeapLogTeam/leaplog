@@ -155,3 +155,4 @@ C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\Le
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.pdb
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.genruntimeconfig.cache
+C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.csprojAssemblyReference.cache
