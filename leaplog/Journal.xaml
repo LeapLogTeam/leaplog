@@ -160,8 +160,8 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Image Source="\images\red-one.jpg" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="62"/>
-            <Image Source="\images\red-two.jpg" HorizontalAlignment="Left" Height="55" Margin="232,0,0,0" VerticalAlignment="Top" Width="62" RenderTransformOrigin="0.484,0.455"/>
+            <Image Source="\images\red-one.jpg" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="50" Margin="10,5,0,0"/>
+            <Image Source="\images\red-two.jpg" HorizontalAlignment="Left" Height="50" Margin="238,5,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="0.484,0.455"/>
             <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Center" Margin="0,397,0,0" Text="The 'Export to Excel' button saves and exports all the data you have entered into an excel file that is separated into worksheets." TextWrapping="Wrap" VerticalAlignment="Top" Height="72" Width="596"/>
         </Grid>
         <Grid x:Name="journalHelpWindow2" Visibility="Collapsed">
