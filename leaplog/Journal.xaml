@@ -125,7 +125,7 @@
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="424,61,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox TabIndex="0" x:Name="user_Input" HorizontalAlignment="Left" Margin="63,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
-        <Label x:Name="label" Content="Select Existing Database:" HorizontalAlignment="Left" Margin="65,16,0,0" VerticalAlignment="Top" Width="126"/>
+        <Label x:Name="label" Content="Select Existing Database:" HorizontalAlignment="Left" Margin="54,16,0,0" VerticalAlignment="Top" Width="146"/>
         <Button TabIndex="1" x:Name="enter_button" Content="Add New Database" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="24" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -141,12 +141,12 @@
                 </Style>
             </Button.Resources>
         </Button>
-        
+
         <!--warning messages-->
         <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
         <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
-        
+
         <!--help feature-->
         <Grid x:Name="journalHelpWindow1" Visibility="Collapsed" >
             <Rectangle  HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
