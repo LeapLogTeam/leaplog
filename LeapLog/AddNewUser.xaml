@@ -40,7 +40,7 @@
             <Image x:Name="image" Height="103" Margin="94,62,0,0" Width="110" Source="\images\new-frog.jpg" Canvas.Left="15" RenderTransformOrigin="0.485,0.499" Canvas.Top="-10"/>
             <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="162" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
             <Label x:Name="label_Copy" Content="Password:" FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="216" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
-            <TextBox x:Name="newUsername" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic"  Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" FlowDirection="LeftToRight"/>
+            <TextBox x:Name="newUsername" TabIndex="1" TextWrapping="Wrap" FontFamily="Segoe UI" FontStyle="Normal"  Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" FlowDirection="LeftToRight" FontSize="13"/>
             <Button x:Name="exitButton" TabIndex="4" Content="EXIT" BorderBrush="#353535" Background="#d9d9d9" Height="34" Canvas.Left="174" Canvas.Top="284" Width="80"  FontSize="15" FontFamily="Calibri" FontWeight="Bold" Click="exitButton_Click_1">
                 <Button.Resources>
                     <Style TargetType="Border">

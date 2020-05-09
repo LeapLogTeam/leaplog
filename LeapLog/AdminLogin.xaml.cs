@@ -35,7 +35,9 @@ namespace LeapLog
 
         private void enter_Button_Click(object sender, RoutedEventArgs e)
         {
-         
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+
             SqlConnection conn = new SqlConnection($@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory}\LOGINDB.MDF;Integrated Security=True");
             string query = "Select * from AdminLogin where username = '" + userName.Text.Trim() + "' and password = '" + Pass.Password.ToString() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, conn);
@@ -49,7 +51,7 @@ namespace LeapLog
             }
             else
             {
-                MessageBox.Show(this, "Wrong User Name or Password", "Information");//, MessageBoxButtons.OK,
+                MessageBox.Show(this, "The username or password is incorrect.", "Error", button, icon);//, MessageBoxButtons.OK,
                                                                                     // MessageBoxIcon.Information);
                 userName.Clear();
                 Pass.Clear();

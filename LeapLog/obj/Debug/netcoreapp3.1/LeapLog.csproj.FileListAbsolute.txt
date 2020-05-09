@@ -118,7 +118,6 @@ C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\Le
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
-C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.csprojAssemblyReference.cache
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\LeapLog.csproj.ResolveComReference.cache
 C:\Users\engel\OneDrive\01LoneStar\2020Spring\INEW2332Project\GitRepo\leaplog\LeapLog\obj\Debug\netcoreapp3.1\AddNewUser.g.cs
