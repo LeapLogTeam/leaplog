@@ -125,8 +125,8 @@
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="424,61,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
         <TextBox TabIndex="0" x:Name="user_Input" HorizontalAlignment="Left" Margin="63,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
-        <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="65,16,0,0" VerticalAlignment="Top" Width="126"/>
-        <Button TabIndex="1" x:Name="enter_button" Content="Add New Journal" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="24" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
+        <Label x:Name="label" Content="Select Existing Database:" HorizontalAlignment="Left" Margin="65,16,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button TabIndex="1" x:Name="enter_button" Content="Add New Database" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="24" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
