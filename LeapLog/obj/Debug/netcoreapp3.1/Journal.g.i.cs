@@ -50,7 +50,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 65 "..\..\..\Journal.xaml"
+        #line 75 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox account1TB;
         
@@ -58,7 +58,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 66 "..\..\..\Journal.xaml"
+        #line 76 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox type1CB;
         
@@ -66,7 +66,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 74 "..\..\..\Journal.xaml"
+        #line 84 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox debitTB;
         
@@ -74,7 +74,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 75 "..\..\..\Journal.xaml"
+        #line 85 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox account2TB;
         
@@ -82,7 +82,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 76 "..\..\..\Journal.xaml"
+        #line 86 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox type2CB;
         
@@ -90,7 +90,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 84 "..\..\..\Journal.xaml"
+        #line 94 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox creditTB;
         
@@ -98,7 +98,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 85 "..\..\..\Journal.xaml"
+        #line 95 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button addEntryBtn;
         
@@ -106,15 +106,15 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 110 "..\..\..\Journal.xaml"
+        #line 127 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox warningTB;
+        internal System.Windows.Controls.TextBox user_Input;
         
         #line default
         #line hidden
         
         
-        #line 111 "..\..\..\Journal.xaml"
+        #line 128 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox warningAT;
         
@@ -122,7 +122,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 112 "..\..\..\Journal.xaml"
+        #line 129 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox warningAN;
         
@@ -130,7 +130,7 @@ namespace LeapLog {
         #line hidden
         
         
-        #line 113 "..\..\..\Journal.xaml"
+        #line 136 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox user_Input;
         
@@ -156,7 +156,7 @@ namespace LeapLog {
         
         #line 118 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button journalHelpButton;
+        internal System.Windows.Controls.Button toExcel;
         
         #line default
         #line hidden
@@ -164,7 +164,7 @@ namespace LeapLog {
         
         #line 125 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Grid journalHelpWindow1;
+        internal System.Windows.Controls.TextBox warningTB;
         
         #line default
         #line hidden
@@ -172,7 +172,7 @@ namespace LeapLog {
         
         #line 129 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button forwardButton;
+        internal System.Windows.Controls.TextBox warningAT;
         
         #line default
         #line hidden
@@ -180,7 +180,7 @@ namespace LeapLog {
         
         #line 131 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Grid journalHelpWindow2;
+        internal System.Windows.Controls.TextBox warningAN;
         
         #line default
         #line hidden
@@ -188,7 +188,7 @@ namespace LeapLog {
         
         #line 135 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button backButton;
+        internal System.Windows.Controls.Grid journalHelpWindow1;
         
         #line default
         #line hidden
@@ -196,7 +196,7 @@ namespace LeapLog {
         
         #line 136 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button forwardButton2;
+        internal System.Windows.Controls.Button forwardButton;
         
         #line default
         #line hidden
@@ -204,7 +204,7 @@ namespace LeapLog {
         
         #line 142 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Grid journalHelpWindow3;
+        internal System.Windows.Controls.Grid journalHelpWindow2;
         
         #line default
         #line hidden
@@ -212,7 +212,7 @@ namespace LeapLog {
         
         #line 144 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button backButton2;
+        internal System.Windows.Controls.Button backButton;
         
         #line default
         #line hidden
@@ -220,7 +220,7 @@ namespace LeapLog {
         
         #line 145 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button jCloseButton;
+        internal System.Windows.Controls.Button forwardButton2;
         
         #line default
         #line hidden
@@ -228,7 +228,7 @@ namespace LeapLog {
         
         #line 154 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button toExcel;
+        internal System.Windows.Controls.Grid journalHelpWindow3;
         
         #line default
         #line hidden
@@ -236,7 +236,15 @@ namespace LeapLog {
         
         #line 155 "..\..\..\Journal.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label label1;
+        internal System.Windows.Controls.Button backButton2;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 208 "..\..\..\Journal.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button journalHelpButton;
         
         #line default
         #line hidden
@@ -277,7 +285,7 @@ namespace LeapLog {
             case 2:
             this.account1TB = ((System.Windows.Controls.TextBox)(target));
             
-            #line 65 "..\..\..\Journal.xaml"
+            #line 75 "..\..\..\Journal.xaml"
             this.account1TB.GotFocus += new System.Windows.RoutedEventHandler(this.account1TB_GotFocus);
             
             #line default
@@ -319,7 +327,7 @@ namespace LeapLog {
             case 8:
             this.addEntryBtn = ((System.Windows.Controls.Button)(target));
             
-            #line 85 "..\..\..\Journal.xaml"
+            #line 95 "..\..\..\Journal.xaml"
             this.addEntryBtn.Click += new System.Windows.RoutedEventHandler(this.addEntryBtn_Click);
             
             #line default

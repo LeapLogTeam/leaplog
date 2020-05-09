@@ -101,12 +101,15 @@ namespace LeapLog
 
         private void SOEHelpButton_Click(object sender, RoutedEventArgs e)
         {
-            SOEHelpWindow.Visibility = Visibility.Visible;
-        }
-
-        private void SOECloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            SOEHelpWindow.Visibility = Visibility.Collapsed;
+            if (SOEHelpWindow.Visibility == Visibility.Collapsed)
+            {
+                SOEHelpWindow.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SOEHelpWindow.Visibility = Visibility.Collapsed;
+            }
+            
         }
     }
 }

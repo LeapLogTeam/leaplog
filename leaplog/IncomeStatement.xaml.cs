@@ -105,15 +105,15 @@ namespace LeapLog
         //method for when help feature button is clicked
         private void incomeHelpButton_Click(object sender, RoutedEventArgs e)
         {
-            incomeHelpWindow.Visibility = Visibility.Visible;
-        }
+            if (incomeHelpWindow.Visibility == Visibility.Collapsed)
+            {
+                incomeHelpWindow.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                incomeHelpWindow.Visibility = Visibility.Collapsed;
 
-        //method for when help feature close button is clicked
-        private void incomeStatementCloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            incomeHelpWindow.Visibility = Visibility.Collapsed;
+            }
         }
-
-  
     }
 }

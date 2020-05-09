@@ -43,6 +43,8 @@ namespace LeapLog
             statementofownersequity.Refresh();
         }
 
+        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (gettingStartedWindow.Visibility == Visibility.Collapsed)
@@ -53,6 +55,22 @@ namespace LeapLog
                 gettingStartedWindow.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
+        }
+
     }
 
 }
