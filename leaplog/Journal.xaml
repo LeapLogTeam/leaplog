@@ -9,7 +9,17 @@
              Background="White">
     <!-- create grid to show journal entries -->
     <Grid>
-        <DataGrid x:Name="entryGrid" HorizontalAlignment="Center" Height="281" VerticalAlignment="Top" Width="725" RenderTransformOrigin="0.5,0.5" Margin="0,176,0,0">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" IsReadOnly="True" x:Name="entryGrid" HorizontalAlignment="Center" Height="281" VerticalAlignment="Top" Width="725" RenderTransformOrigin="0.5,0.5" Margin="0,176,0,0" IsEnabled="False" AlternatingRowBackground="#FFE4E4E4" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <!-- Column Header Text & Bindings -->
             <DataGrid.Columns>
                 <!-- Date Column -->
@@ -62,8 +72,8 @@
         </DataGrid>
 
         <!-- Add Entry Section-->
-        <TextBox Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="296,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" GotFocus="account1TB_GotFocus"/>
-        <ComboBox Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="412,41,0,0" VerticalAlignment="Top" Width="108">
+        <TextBox TabIndex="2" Name="account1TB" HorizontalAlignment="Left" Height="22" Margin="296,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" GotFocus="account1TB_GotFocus"/>
+        <ComboBox TabIndex="3" Name="type1CB" HorizontalAlignment="Left" Height="20" Margin="412,41,0,0" VerticalAlignment="Top" Width="108">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -71,9 +81,9 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="541,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <TextBox Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="296,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <ComboBox Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="411,89,0,0" VerticalAlignment="Top" Width="108">
+        <TextBox TabIndex="4" Name="debitTB" HorizontalAlignment="Left" Height="22" Margin="541,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <TextBox TabIndex="5" Name="account2TB" HorizontalAlignment="Left" Height="22" Margin="296,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <ComboBox TabIndex="6" Name="type2CB" HorizontalAlignment="Left" Height="20" Margin="411,89,0,0" VerticalAlignment="Top" Width="108">
             <ComboBoxItem Content="Asset"></ComboBoxItem>
             <ComboBoxItem Content="Liability"></ComboBoxItem>
             <ComboBoxItem Content="Owners Equity"></ComboBoxItem>
@@ -81,8 +91,8 @@
             <ComboBoxItem Content="Expense"></ComboBoxItem>
             <ComboBoxItem Content="Withdrawal"></ComboBoxItem>
         </ComboBox>
-        <TextBox Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="541,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
-        <Button Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="24" Margin="430,129,0,0" VerticalAlignment="Top" Width="70" BorderBrush="#353535" Background="#d9d9d9" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal">
+        <TextBox TabIndex="7" Name="creditTB" HorizontalAlignment="Left" Height="22" Margin="541,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95"/>
+        <Button TabIndex="8" Name="addEntryBtn" Content="Add Entry" HorizontalAlignment="Left" Height="24" Margin="430,129,0,0" VerticalAlignment="Top" Width="70" BorderBrush="#353535" Background="#d9d9d9" Click="addEntryBtn_Click" FontWeight="Bold" FontStyle="Normal">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -114,12 +124,9 @@
             </Label.RenderTransform>
         </Label>
         <Label Content="Account Type" HorizontalAlignment="Left" Height="28" Margin="424,61,0,0" VerticalAlignment="Top" Width="82" RenderTransformOrigin="0.37,0.264"/>
-        <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
-        <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="user_Input" HorizontalAlignment="Left" Margin="63,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
+        <TextBox TabIndex="0" x:Name="user_Input" HorizontalAlignment="Left" Margin="63,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.566,2.187" Height="22" TextChanged="user_Input_TextChanged"/>
         <Label x:Name="label" Content="Select existing Journal:" HorizontalAlignment="Left" Margin="65,16,0,0" VerticalAlignment="Top" Width="126"/>
-        <Button x:Name="enter_button" Content="Add New Journal" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="24" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
+        <Button TabIndex="1" x:Name="enter_button" Content="Add New Journal" HorizontalAlignment="Left" Margin="67,100,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.135,0.384" Click="enter_button_Click" Height="24" Width="120" FontWeight="Bold" BorderBrush="#353535" Background="#d9d9d9">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -134,10 +141,16 @@
                 </Style>
             </Button.Resources>
         </Button>
-
+        
+        <!--warning messages-->
+        <TextBox Name="warningTB" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed"  Height="60" Margin="0,217,0,0" Text="Error: Please make sure you are not entering quotation marks in your account names and that you are entering numbers for credit and debit." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
+        <TextBox Name="warningAT" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: please also select an account type for both entries." TextWrapping="Wrap" VerticalAlignment="Top" Width="312"/>
+        <TextBox Name="warningAN" HorizontalAlignment="Center" Background="Beige" Visibility="Collapsed" Height="18" Margin="0,217,0,0" Text="Error: blank accounts are not accepted." TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        
         <!--help feature-->
         <Grid x:Name="journalHelpWindow1" Visibility="Collapsed" >
             <Rectangle  HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
+            <Image Source="\images\journalsnip.png" Margin="10,60,10,-69"></Image>
             <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Center" Margin="0,216,0,0" Text="The journal allows the user to record financial transactions. Begin by first creating a journal table. After you type its name and click the 'Add New Journal' button, fill out the entry form." TextWrapping="Wrap" VerticalAlignment="Top" Height="80" Width="596"/>
             <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Center" Margin="0,301,0,0" Text="To switch between tables that have already been created, simply type the name of the existing table and start filling out your entry. You do not need to click the 'Add New Journal' button to switch between tables." TextWrapping="Wrap" VerticalAlignment="Top" Height="72" Width="596"/>
             <Button Name="forwardButton" Content="Next" HorizontalAlignment="Left" Margin="694,302,0,0" VerticalAlignment="Top" Height="20" Width="35" FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="forwardButton_Click">
@@ -153,6 +166,7 @@
         </Grid>
         <Grid x:Name="journalHelpWindow2" Visibility="Collapsed">
             <Rectangle HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
+            <Image Source="\images\journalsnip.png" Margin="10,60,10,-69"></Image>
             <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="14" HorizontalAlignment="Center" Margin="0,202,0,0" Text="An example of a journal entry using assets would be to purchase equipment with cash. You are increasing one asset and decreasing another." TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="606"/>
             <Image Source="\images\asset-example.png" HorizontalAlignment="Center" Height="50" Margin="0,242,0,0" VerticalAlignment="Top" Width="606"/>
             <Button Name="backButton" Height="20" Width="35" FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White" Content="Back" HorizontalAlignment="Left" Margin="17,304,0,0" VerticalAlignment="Top" Click="backButton_Click">
@@ -176,6 +190,7 @@
         </Grid>
         <Grid x:Name="journalHelpWindow3" Visibility="Collapsed">
             <Rectangle HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
+            <Image Source="\images\journalsnip.png" Margin="10,60,10,-69"></Image>
             <Button Name="backButton2" Content="Back" HorizontalAlignment="Left" Margin="17,304,0,0" VerticalAlignment="Top" Height="20" Width="35" FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White"  Click="backButton2_Click">
                 <Button.Resources>
                     <Style TargetType="Border">

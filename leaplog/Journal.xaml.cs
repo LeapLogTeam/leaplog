@@ -41,7 +41,6 @@ namespace LeapLog
             warningAN.Visibility = Visibility.Hidden;
 
             //populates new entry object with user data given
-            //REVISION NEEDED: validation could be improved.
             try
             {
                 //process account names to make sure no quotation marks are entered

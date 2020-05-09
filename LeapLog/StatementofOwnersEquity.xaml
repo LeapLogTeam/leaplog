@@ -11,9 +11,9 @@
         <TextBox x:Name="From" HorizontalAlignment="Left" Margin="168,234,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="from_SelectionChanged"/>
         <Label Content="To:" HorizontalAlignment="Left" Margin="138,254,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="To" HorizontalAlignment="Left" Margin="168,258,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" SelectionChanged="to_SelectionChanged"/>
-        <Label Content="Capital at start date:" HorizontalAlignment="Left" Height="22" Margin="372,200,0,0" VerticalAlignment="Top" Width="116"/>
-        <Label Content="Net income:" HorizontalAlignment="Left" Height="22" Margin="412,228,0,0" VerticalAlignment="Top" Width="76"/>
-        <Label Content="Withdrawals:" HorizontalAlignment="Left" Height="22" Margin="406,256,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label Content="Capital at start date:" HorizontalAlignment="Left" Height="26" Margin="372,200,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Net income:" HorizontalAlignment="Left" Height="28" Margin="412,228,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="Withdrawals:" HorizontalAlignment="Left" Height="24" Margin="406,256,0,0" VerticalAlignment="Top" Width="82"/>
         <Label Content="Capital at end date:" HorizontalAlignment="Left" Height="26" Margin="372,284,0,0" VerticalAlignment="Top" Width="116"/>
         <TextBox Name="textbox1" HorizontalAlignment="Left" Margin="492,204,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <TextBox Name="textbox2" HorizontalAlignment="Left" Margin="492,232,0,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>

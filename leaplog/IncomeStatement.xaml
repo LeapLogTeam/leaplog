@@ -7,26 +7,66 @@
              mc:Ignorable="d"
              Background="White" Height="504" Width="745">
     <Grid>
-        <DataGrid x:Name="entryGridR" HorizontalAlignment="Left" Height="206" Margin="91,152,0,0" VerticalAlignment="Top" Width="260">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="entryGridR" HorizontalAlignment="Left" Height="206" Margin="91,152,0,0" VerticalAlignment="Top" Width="260" IsEnabled="False" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Revenue" Width="160" Binding="{Binding Account}"/>
-                <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
+                <DataGridTextColumn Header="$" Width="*" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridE" HorizontalAlignment="Left" Height="206" Margin="383,152,0,0" VerticalAlignment="Top" Width="260">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="entryGridE" HorizontalAlignment="Left" Height="206" Margin="383,152,0,0" VerticalAlignment="Top" Width="260" IsEnabled="False" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Expenses" Width="160" Binding="{Binding Account}"/>
-                <DataGridTextColumn Header="$" Width="160" Binding="{Binding Balance}"/>
+                <DataGridTextColumn Header="$" Width="*" Binding="{Binding Balance}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTR" HorizontalAlignment="Left" Height="70" Margin="91,362,0,0" VerticalAlignment="Top" Width="260">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="entryGridTR" HorizontalAlignment="Left" Height="40" Margin="91,362,0,0" VerticalAlignment="Top" Width="260" IsEnabled="False" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Total" Width="302" Binding="{Binding total}"/>
+                <DataGridTextColumn Header="Total Revenue" Width="*" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="entryGridTE" HorizontalAlignment="Left" Height="70" Margin="383,362,0,0" VerticalAlignment="Top" Width="260">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="entryGridTE" HorizontalAlignment="Left" Height="40" Margin="383,362,0,0" VerticalAlignment="Top" Width="260" IsEnabled="False" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Total" Width="302" Binding="{Binding total}"/>
+                <DataGridTextColumn Header="Total Expenses" Width="*" Binding="{Binding total}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Choose Date Range:" FontWeight="Bold" HorizontalAlignment="Left" Height="35" Margin="91,39,0,0" VerticalAlignment="Top" Width="130"/>
@@ -40,9 +80,9 @@
         <!--help feature-->
         <Grid x:Name="incomeHelpWindow" Visibility="Collapsed" >
             <Rectangle HorizontalAlignment="Center" Height="504" Stroke="Black" VerticalAlignment="Center" Width="745" Fill="#bdbdbd" Opacity="0.5"/>
-            <Image HorizontalAlignment="Left" Source="\images\red-arrow2.jpg" Height="178" Margin="154,96,0,0" VerticalAlignment="Top" Width="186"/>
-            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18"  HorizontalAlignment="Left" Margin="269,123,0,0" Text="Start by selecting the start and end dates." TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="390"/>
-            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18"  HorizontalAlignment="Left" Margin="269,42,0,0" Text="The income statement, or profit and loss statement, allows a user to see their overall net income over a specific period of time." TextWrapping="Wrap" VerticalAlignment="Top" Height="96" Width="390"/>
+            <Image Source="\images\red-income-arrow.jpg" Margin="-3,131,13,0"></Image>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18"  HorizontalAlignment="Left" Margin="276,116,0,0" Text="Start by selecting the start and end dates." TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="390"/>
+            <TextBlock Foreground="#96251c" FontFamily="Calibri" FontSize="18"  HorizontalAlignment="Left" Margin="276,35,0,0" Text="The income statement, or profit and loss statement, allows a user to see their overall net income over a specific period of time." TextWrapping="Wrap" VerticalAlignment="Top" Height="96" Width="390"/>
         </Grid>
         <Button x:Name="incomeHelpButton" Content="Help" HorizontalAlignment="Left" Margin="685,10,0,0" VerticalAlignment="Top"  Width="50" Height="24"  FontWeight="Bold" BorderBrush="#96251c" Background="#96251c" Foreground="White" Click="incomeHelpButton_Click">
             <Button.Resources>

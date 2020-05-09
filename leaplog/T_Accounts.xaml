@@ -9,7 +9,17 @@
              Background="White">
     <Grid>
         <!-- assets grid -->
-        <DataGrid x:Name="a_Grid" SelectionUnit="Cell" HorizontalAlignment="Left" Height="370" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5" Margin="38,0,0,0">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="a_Grid" SelectionUnit="Cell" HorizontalAlignment="Left" Height="370" VerticalAlignment="Center" Width="200" RenderTransformOrigin="0.5,0.5" Margin="38,0,0,0" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
@@ -20,7 +30,17 @@
             </DataGrid.Columns>
         </DataGrid>
         <!-- liabilities grid -->
-        <DataGrid x:Name="l_Grid" SelectionMode="Single" HorizontalAlignment="Center" Height="370" VerticalAlignment="Center" Width="198" RenderTransformOrigin="0.5,0.5">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="l_Grid" SelectionMode="Single" HorizontalAlignment="Center" Height="370" VerticalAlignment="Center" Width="198" RenderTransformOrigin="0.5,0.5" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
@@ -31,7 +51,17 @@
             </DataGrid.Columns>
         </DataGrid>
         <!-- owner's equity grid -->
-        <DataGrid x:Name="oe_Grid" SelectionMode="Single" HorizontalAlignment="Left" Height="370" VerticalAlignment="Center" Width="199" RenderTransformOrigin="0.5,0.5" Margin="506,0,0,0">
+        <DataGrid BorderThickness="0.5" RowHeaderWidth="0" Background="#d6d6d6" BorderBrush="#d6d6d6" x:Name="oe_Grid" SelectionMode="Single" HorizontalAlignment="Left" Height="370" VerticalAlignment="Center" Width="199" RenderTransformOrigin="0.5,0.5" Margin="506,0,0,0" HorizontalGridLinesBrush="{x:Null}" VerticalGridLinesBrush="#FFD6D6D6" AlternatingRowBackground="#FFE4E4E4">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#234264"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderThickness" Value="0.5"/>
+                    <Setter Property="BorderBrush" Value="#d6d6d6"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
                     <EventSetter Event="PreviewMouseDown" Handler="DataGridCell_MouseDown"/>
