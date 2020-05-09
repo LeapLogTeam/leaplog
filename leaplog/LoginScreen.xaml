@@ -25,7 +25,7 @@
             </Rectangle>
             <Label x:Name="label" Content="Username:" RenderTransformOrigin="-0.897,0.593" FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="162" Width="166" FontFamily="Microsoft Sans Serif" Padding="0,0,0,0"/>
             <Label x:Name="label1" Content="Password: " FontSize="14" Height="16" Canvas.Left="68" Canvas.Top="216" Width="166" FontFamily="Microsoft Sans Serif" FlowDirection="LeftToRight" Padding="0,0,0,0"/>
-            <TextBox x:Name="UserName" TabIndex="1" TextWrapping="Wrap" FontFamily="Calibri" FontStyle="Italic" PreviewKeyUp="UserName_PreviewKeyUp" Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" PreviewMouseDown="UserName_PreviewMouseDown" FlowDirection="LeftToRight"/>
+            <TextBox x:Name="UserName" TabIndex="1" TextWrapping="Wrap" FontFamily="Segoe UI" FontStyle="Normal" PreviewKeyUp="UserName_PreviewKeyUp" Height="24" Canvas.Left="68" Canvas.Top="182" Width="192" PreviewMouseDown="UserName_PreviewMouseDown" FlowDirection="LeftToRight" FontSize="13"/>
             <Button x:Name="enterButton" TabIndex="3" BorderBrush="#353535" Background="#d9d9d9" Content="ENTER" Click="button_Click" RenderTransformOrigin="0.388,0.555" KeyUp="enterButton_KeyUp" Height="34" Canvas.Left="76" Canvas.Top="284" Width="80" FontFamily="Calibri" FontWeight="Bold" FontSize="15">
                 <Button.Resources>
                     <Style TargetType="Border">

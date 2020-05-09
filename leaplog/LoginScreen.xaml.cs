@@ -37,7 +37,8 @@ namespace LeapLog
 
          private void button_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Warning;
 
             //database funtionality for user login credentials
 
@@ -58,7 +59,7 @@ namespace LeapLog
             }
             else
             {
-                MessageBox.Show(this, "Wrong User Name or Password", "Information");//, MessageBoxButtons.OK,
+                MessageBox.Show(this, "The username or password is incorrect.", "Error", button, icon);//, MessageBoxButtons.OK,
                                                                                     // MessageBoxIcon.Information);
                 UserName.Clear();
                 Pass.Clear();
