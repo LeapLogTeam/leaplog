@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>LeapLog</RootNamespace>
     <AssemblyName>LeapLog</AssemblyName>
-    <ApplicationIcon>Turbomilk-Zoom-Eyed-Creatures-Frog.ico</ApplicationIcon>
+    <ApplicationIcon>blue frog.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
