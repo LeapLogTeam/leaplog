@@ -12,9 +12,14 @@ accounting for users and small businesses unfamiliar with accounting tools.
 <br>
 
 ## Current Features
-- Login Screen
+- Login Screens
 - Journal
 - T-Accounts
 - Balance Sheet
 - Income Statement
 - Statement of Owner's Equity
+- Help Features
+- Export to Excel Feature
+
+
+https://github.com/LeapLogTeam/leaplog
