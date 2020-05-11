@@ -489,7 +489,11 @@ namespace LeapLog
 
 
                         IncomeStatementTable.ID_IncomeStatement = Convert.ToInt32(row["ID"]);
+                        IncomeStatementTable.Revenue_Account_Name = row["Revenue_Account_Name"].ToString().Trim();
+                        IncomeStatementTable.Revenue_Account_Balance = Convert.ToDouble(row["Revenue_Account_Balance"]);
                         IncomeStatementTable.Total_Revenue = Convert.ToDouble(row["Total_Revenue"]);
+                        IncomeStatementTable.Expense_Account_Name = row["Expense_Account_Name"].ToString().Trim();
+                        IncomeStatementTable.Expense_Account_Balance = Convert.ToDouble(row["Expense_Account_Balance"]);
                         IncomeStatementTable.Total_Expense = Convert.ToDouble(row["Total_Expense"]);
                         IncomeStatementTable.Net_Income = Convert.ToDouble(row["Net_Income"]);
 
@@ -590,9 +594,13 @@ namespace LeapLog
                     workSheet4.Name = "Income Statement";
                     // Establish column headings in cells.
                     workSheet4.Cells[1, "A"] = "ID";
-                    workSheet4.Cells[1, "B"] = "Total Revenue";
-                    workSheet4.Cells[1, "C"] = "Total Expense";
-                    workSheet4.Cells[1, "D"] = "Net Income";
+                    workSheet4.Cells[1, "B"] = "Revenue Account Name";
+                    workSheet4.Cells[1, "C"] = "Revenue Account Balance";
+                    workSheet4.Cells[1, "D"] = "Total Revenue";
+                    workSheet4.Cells[1, "E"] = "Expense Account Name";
+                    workSheet4.Cells[1, "F"] = "Expense Account Balance";
+                    workSheet4.Cells[1, "G"] = "Total Expense";
+                    workSheet4.Cells[1, "H"] = "Net Income";
 
                     //****************Statement of Owner Equity*******************
                     Worksheet workSheet5 = (Worksheet)oWB.Sheets.Add(missing, missing, 1, missing);
@@ -655,27 +663,22 @@ namespace LeapLog
 
                     int assetRow = 1;
                     int loeRow = 1;
-
+                    int totalRow = 1;
                     //iterate through list of all asset accounts
                     foreach (var i in DBList)
                     {
 
 
                         //get the account name and add to excel sheet
-                        if (i.Asset_Account_Name != null)
+                        if (i.Asset_Account_Name != null && i.Asset_Account_Balance != 0)
                         {
                             assetRow++;
                             workSheet3.Cells[assetRow, "B"] = i.Asset_Account_Name;
-                        }
-                        //get the account balance and add to excel sheet
-                        if (i.Asset_Account_Balance != 0)
-                        {
-                            //assetRow++;
                             workSheet3.Cells[assetRow, "C"] = i.Asset_Account_Balance;
                         }
                         if (i.Total_Assets != 0)
                         {
-                            assetRow++;
+                            totalRow++;
                             workSheet3.Cells[2, "D"] = i.Total_Assets;
                         }
                     }
@@ -688,20 +691,15 @@ namespace LeapLog
 
 
                         //get the account name and add to excel sheet
-                        if (i.Liability_Account_Name != null)
+                        if (i.Liability_Account_Name != null && i.Liability_Account_Balance != 0)
                         {
                             loeRow++;
                             workSheet3.Cells[loeRow, "E"] = i.Liability_Account_Name;
-                        }
-                        //get the account balance and add to excel sheet
-                        if (i.Liability_Account_Balance != 0)
-                        {
-                            //loeRow++;
                             workSheet3.Cells[loeRow, "F"] = i.Liability_Account_Balance;
                         }
                         if (i.Total_Liability != 0)
                         {
-                            loeRow++;
+                            totalRow++;
                             workSheet3.Cells[2, "G"] = i.Total_Liability;
                         }
 
@@ -711,7 +709,9 @@ namespace LeapLog
                     // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4 (income statement).
 
                     //Predicate<tableAdapterr> totalRevenueFinder = (tableAdapterr t) => { return t.Total_Revenue != 0; };
-                    int IERow = 2;
+                    int totalsRow = 2;
+                    int revRow = 1;
+                    int expRow = 1;
                     foreach (var i in DBList)
 
                     {
@@ -719,20 +719,24 @@ namespace LeapLog
                         // tableAdapterr finder = DBList.Find(totalRevenueFinder);
                         if (i.Net_Income != 0)
                         {
-                            IERow++;
-                            workSheet4.Cells[IERow, "D"] = i.Net_Income;
+                            workSheet4.Cells[totalsRow, "H"] = i.Net_Income;
+                            workSheet4.Cells[totalsRow, "D"] = i.Total_Revenue;
+                            workSheet4.Cells[totalsRow, "G"] = i.Total_Expense;
                         }
-                        if (i.Total_Revenue != 0)
+
+                        if (i.Revenue_Account_Name != null && i.Revenue_Account_Balance != 0)
                         {
-                            //IERow++;
-                            workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
+                            revRow++;
+                            workSheet4.Cells[revRow, "B"] = i.Revenue_Account_Name;
+                            workSheet4.Cells[revRow, "C"] = i.Revenue_Account_Balance;
                         }
-                        if (i.Total_Expense != 0)
+
+                        if (i.Expense_Account_Name != null && i.Expense_Account_Balance != 0)
                         {
-                            //IERow++;
-                            workSheet4.Cells[IERow, "C"] = i.Total_Expense;
+                            expRow++;
+                            workSheet4.Cells[expRow, "E"] = i.Expense_Account_Name;
+                            workSheet4.Cells[expRow, "F"] = i.Expense_Account_Balance;
                         }
-                        
 
                     }
 
@@ -747,20 +751,8 @@ namespace LeapLog
                         {
                             SOERow++;
                             workSheet5.Cells[SOERow, "B"] = i.Start_Capital;
-                        }
-                        if (i.Net_Income_StatementOfOE != 0)
-                        {
-                            //SOERow++;
                             workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
-                        }
-                        if (i.Total_Withdrawals != 0)
-                        {
-                            //SOERow++;
                             workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
-                        }
-                        if (i.FInal_Capital != 0)
-                        {
-                            //SOERow++;
                             workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
                         }
                     }
@@ -769,10 +761,15 @@ namespace LeapLog
 
                     // Give our table data a nice look and feel.
                     workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet.Columns.EntireColumn.AutoFit();
                     workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet2.Columns.EntireColumn.AutoFit();
                     workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet3.Columns.EntireColumn.AutoFit();
                     workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet4.Columns.EntireColumn.AutoFit();
                     workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
+                    workSheet5.Columns.EntireColumn.AutoFit();
 
 
 
@@ -863,10 +860,23 @@ namespace LeapLog
 
 
                 //iterate through list of all asset accounts
-                foreach (var i in Database.BalanceData.assetsList)
+                for (int i = 0; i < Database.TEntries.Count; i++)
                 {
-                    //
-                    sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_assets + "','" + i.Account + "','" + i.Balance + "','" + Database.BalanceData.total_loe + "')");
+                    string assetAccountName = "";
+                    double assetBalance = 0;
+                    string loeAccountName = "";
+                    double loeBalance = 0;
+                    if (i < Database.BalanceData.assetsList.Count)
+                    {
+                        assetAccountName = Database.BalanceData.assetsList[i].Account;
+                        assetBalance = Database.BalanceData.assetsList[i].Balance;
+                    }
+                    if (i < Database.BalanceData.loeList.Count)
+                    {
+                        loeAccountName = Database.BalanceData.loeList[i].Account;
+                        loeBalance = Database.BalanceData.loeList[i].Balance;
+                    }
+                    sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + assetAccountName + "','" + assetBalance + "','" + Database.BalanceData.total_assets + "','" + loeAccountName + "','" + loeBalance + "','" + Database.BalanceData.total_loe + "')");
 
 
                 }
@@ -874,9 +884,26 @@ namespace LeapLog
 
                 //**********insert into Income Statement************
 
+                for (int i = 0; i < Database.TEntries.Count; i++)
+                {
 
-                sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + Database.IncomeData.total_revenue + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
-
+                    string revenueAccountName = "";
+                    double revenueBalance = 0;
+                    string expenseAccountName = "";
+                    double expenseBalance = 0;
+                    if (i < Database.IncomeData.revenueList.Count)
+                    {
+                        revenueAccountName = Database.IncomeData.revenueList[i].Account;
+                        revenueBalance = Database.IncomeData.revenueList[i].Balance;
+                    }
+                    if (i < Database.IncomeData.expenseList.Count)
+                    {
+                        expenseAccountName = Database.IncomeData.expenseList[i].Account;
+                        expenseBalance = Database.IncomeData.expenseList[i].Balance;
+                    }
+                    
+                    sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + revenueAccountName + "','" + revenueBalance + "','" + Database.IncomeData.total_revenue + "','" + expenseAccountName + "','" + expenseBalance + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
+                }
 
                 //**********insert into Stetemtent of Owner Equity************
 

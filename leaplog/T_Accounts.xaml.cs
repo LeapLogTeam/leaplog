@@ -182,14 +182,35 @@ namespace LeapLog
                 }
             }
 
-            //once list of accounts is updated, update list of accounts for balance sheet
+            //once list of accounts is updated, update list of accounts for balance sheet and income statement
 
             //clear existing data
             Database.BalanceData.assetsList.Clear();
             Database.BalanceData.loeList.Clear();
-            
-            //enter updated data
+            Database.IncomeData.revenueList.Clear();
+            Database.IncomeData.expenseList.Clear();
+
+            //remove zeros from list of debits and credits
             for (int i = 0; i < Database.TEntries.Count; i++)
+            {
+                for (int j = 0; j < Database.TEntries[i].Debit.Count; j++)
+                {
+                    if (Database.TEntries[i].Debit[j] == 0)
+                    {
+                        Database.TEntries[i].Debit.RemoveAt(j);
+                    }
+                }
+                for (int j = 0; j < Database.TEntries[i].Credit.Count; j++)
+                {
+                    if (Database.TEntries[i].Credit[j] == 0)
+                    {
+                        Database.TEntries[i].Credit.RemoveAt(j);
+                    }
+                }
+            }
+
+                //enter updated data
+                for (int i = 0; i < Database.TEntries.Count; i++)
             {
                 if (Database.TEntries[i].Type == "Asset")
                 {
@@ -198,6 +219,15 @@ namespace LeapLog
                 else
                 {
                     Database.BalanceData.loeList.Add(Database.TEntries[i]);
+                }
+
+                if (Database.TEntries[i].Type == "Revenue")
+                {
+                    Database.IncomeData.revenueList.Add(Database.TEntries[i]);
+                }
+                else if (Database.TEntries[i].Type == "Expense")
+                {
+                    Database.IncomeData.expenseList.Add(Database.TEntries[i]);
                 }
             }
         }

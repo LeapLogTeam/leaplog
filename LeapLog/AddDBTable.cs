@@ -47,7 +47,7 @@ namespace LeapLog
             string IncomeStatementName = tableName + "IncomeStatement";
 
 
-            string dbString = @"CREATE TABLE  " + IncomeStatementName + "( ID INT IDENTITY(1, 1) NOT NULL,Total_Revenue FLOAT NULL, Total_Expense FLOAT NULL," +
+            string dbString = @"CREATE TABLE  " + IncomeStatementName + "( ID INT IDENTITY(1, 1) NOT NULL, Revenue_Account_Name NVARCHAR(50) NULL, Revenue_Account_Balance FLOAT NULL, Total_Revenue FLOAT NULL, Expense_Account_Name NVARCHAR(50) NULL, Expense_Account_Balance FLOAT NULL, Total_Expense FLOAT NULL," +
     "Net_Income FLOAT NULL,PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }

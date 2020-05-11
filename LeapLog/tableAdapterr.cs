@@ -38,7 +38,11 @@ namespace LeapLog
 
         //Income Statement
         public int ID_IncomeStatement { get; set; }
+        public string Revenue_Account_Name { get; set; }
+        public double Revenue_Account_Balance { get; set; }
         public double Total_Revenue { get; set; }
+        public string Expense_Account_Name { get; set; }
+        public double Expense_Account_Balance { get; set; }
         public double Total_Expense { get; set; }
         public double Net_Income { get; set; }
     
