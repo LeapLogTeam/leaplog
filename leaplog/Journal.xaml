@@ -23,7 +23,7 @@
             <!-- Column Header Text & Bindings -->
             <DataGrid.Columns>
                 <!-- Date Column -->
-                <DataGridTextColumn Header="Date" Width="59" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="Date" Width="61" Binding="{Binding Date}"/>
                 <!-- Accounts Column -->
                 <DataGridTemplateColumn Header="Accounts" Width="250 ">
                     <DataGridTemplateColumn.CellTemplate>
