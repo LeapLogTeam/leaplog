@@ -20,8 +20,8 @@ namespace LeapLog
             string TaccountName = tableName + "Taccount";
 
             string dbString = @"CREATE TABLE  " + TaccountName + "( ID INT IDENTITY(1, 1) NOT NULL, Account  NVARCHAR(50) NULL, Type NVARCHAR(50) NULL," +
-    "DebitList MONEY NULL, CreditList MONEY NULL, " +
-    "TotalDebit MONEY NULL, TotalCredit  MONEY NULL, Balance MONEY NULL, PRIMARY KEY CLUSTERED(Id ASC))";
+    "DebitList FLOAT NULL, CreditList FLOAT NULL, " +
+    "TotalDebit FLOAT NULL, TotalCredit  FLOAT NULL, Balance FLOAT NULL, PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
 
@@ -33,9 +33,9 @@ namespace LeapLog
 
             string BalanceSheetName = tableName + "BalanceSheet";
 
-            string dbString = @"CREATE TABLE  " + BalanceSheetName + "( ID INT IDENTITY(1, 1) NOT NULL, Asset_Account_Name  NVARCHAR(50) NULL,  Asset_Account_Balance  MONEY NULL, Total_Assets MONEY NULL," +
-    "Liability_Account_Name NVARCHAR(50) NULL, Liability_Account_Balance MONEY NULL, " +
-    "Total_Liability MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+            string dbString = @"CREATE TABLE  " + BalanceSheetName + "( ID INT IDENTITY(1, 1) NOT NULL, Asset_Account_Name  NVARCHAR(50) NULL,  Asset_Account_Balance  FLOAT NULL, Total_Assets FLOAT NULL," +
+    "Liability_Account_Name NVARCHAR(50) NULL, Liability_Account_Balance FLOAT NULL, " +
+    "Total_Liability FLOAT NULL,PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
 
@@ -47,8 +47,8 @@ namespace LeapLog
             string IncomeStatementName = tableName + "IncomeStatement";
 
 
-            string dbString = @"CREATE TABLE  " + IncomeStatementName + "( ID INT IDENTITY(1, 1) NOT NULL,Total_Revenue MONEY NULL, Total_Expense MONEY NULL," +
-    "Net_Income MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+            string dbString = @"CREATE TABLE  " + IncomeStatementName + "( ID INT IDENTITY(1, 1) NOT NULL,Total_Revenue FLOAT NULL, Total_Expense FLOAT NULL," +
+    "Net_Income FLOAT NULL,PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
 
@@ -60,8 +60,8 @@ namespace LeapLog
             string StatementOfOEName = tableName + "StatementOfOE";
 
 
-            string dbString = @"CREATE TABLE  " + StatementOfOEName + "( ID INT IDENTITY(1, 1) NOT NULL,Start_Capital MONEY NULL, Net_Income MONEY NULL, Total_Withdrawals MONEY NULL," +
-    "Final_Capital MONEY NULL,PRIMARY KEY CLUSTERED(Id ASC))";
+            string dbString = @"CREATE TABLE  " + StatementOfOEName + "( ID INT IDENTITY(1, 1) NOT NULL,Start_Capital FLOAT NULL, Net_Income FLOAT NULL, Total_Withdrawals FLOAT NULL," +
+    "Final_Capital FLOAT NULL,PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
 
