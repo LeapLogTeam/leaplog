@@ -422,8 +422,8 @@ namespace LeapLog
                         TAccountTable.ID_TAcccounts = Convert.ToInt32(row["ID"]);
                         TAccountTable.Account_TAccounts = row["Account"].ToString().Trim();
                         TAccountTable.Type_TAccounts = row["Type"].ToString().Trim();
-                        TAccountTable.DebitList = Convert.ToDouble(row["DebitList"]);
-                        TAccountTable.CreditList = Convert.ToDouble(row["CreditList"]);
+                        TAccountTable.DebitList = row["DebitList"].ToString();
+                        TAccountTable.CreditList = row["CreditList"].ToString();
                         TAccountTable.TotalDebit = Convert.ToDouble(row["TotalDebit"]);
                         TAccountTable.Balance = Convert.ToDouble(row["Balance"]);
 
@@ -635,7 +635,7 @@ namespace LeapLog
                     foreach (var i in DBList)
                     {
                         taccRow++;
-                        if (i.DebitList != 0)
+                        if (i.DebitList != null)
                         {
                             // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
                             workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;

@@ -20,8 +20,8 @@ namespace LeapLog
         public int ID_TAcccounts { get; set; }
         public string Account_TAccounts{ get; set; }
         public string Type_TAccounts { get; set; }
-        public double DebitList { get; set; }
-        public double CreditList { get; set; }
+        public string DebitList { get; set; }
+        public string CreditList { get; set; }
         public double TotalDebit { get; set; }
         public double TotalCredit { get; set; }
         public double Balance { get; set; }
