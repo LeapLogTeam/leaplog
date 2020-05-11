@@ -20,7 +20,7 @@ namespace LeapLog
             string TaccountName = tableName + "Taccount";
 
             string dbString = @"CREATE TABLE  " + TaccountName + "( ID INT IDENTITY(1, 1) NOT NULL, Account  NVARCHAR(50) NULL, Type NVARCHAR(50) NULL," +
-    "DebitList FLOAT NULL, CreditList FLOAT NULL, " +
+    "DebitList NVARCHAR(50) NULL, CreditList NVARCHAR(50) NULL, " +
     "TotalDebit FLOAT NULL, TotalCredit  FLOAT NULL, Balance FLOAT NULL, PRIMARY KEY CLUSTERED(Id ASC))";
             sqlTables.WriteData(dbString);
         }
