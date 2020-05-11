@@ -709,7 +709,7 @@ namespace LeapLog
                     // Now, map all data in List<tableAdapterr> to the cells of the Sheet 4 (income statement).
 
                     //Predicate<tableAdapterr> totalRevenueFinder = (tableAdapterr t) => { return t.Total_Revenue != 0; };
-                    int IERow = 1;
+                    int IERow = 2;
                     foreach (var i in DBList)
 
                     {
