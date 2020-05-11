@@ -80,5 +80,13 @@ namespace LeapLog
         {
             enter_Button_KeyUp(sender, e);
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }

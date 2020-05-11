@@ -9,7 +9,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         ResizeMode="NoResize"
-        Title="AdminLogin" Height="460" Width="340" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+        Title="AdminLogin" Height="460" Width="340" Closing="Window_Closing" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
     <Border CornerRadius="20" BorderThickness="14" BorderBrush="#234264">
         <Canvas HorizontalAlignment="Center" Margin="0,0,0,0" Width="320" VerticalAlignment="Stretch">
             <Image Source="images\member-login-background.jpg" Height="436" Canvas.Left="-51" Width="424"/>

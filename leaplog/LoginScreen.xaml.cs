@@ -25,6 +25,7 @@ namespace LeapLog
     public partial class LoginScreen : Window
     {
 
+     
 
         public object MessageBoxIcon { get; private set; }
 
@@ -176,6 +177,14 @@ namespace LeapLog
         private void loginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
              System.Windows.Application.Current.Shutdown();
+        }
+
+        private void loginWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
         }
     }
 }
