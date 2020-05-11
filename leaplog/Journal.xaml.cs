@@ -425,6 +425,7 @@ namespace LeapLog
                         TAccountTable.DebitList = row["DebitList"].ToString();
                         TAccountTable.CreditList = row["CreditList"].ToString();
                         TAccountTable.TotalDebit = Convert.ToDouble(row["TotalDebit"]);
+                        TAccountTable.TotalCredit = Convert.ToDouble(row["TotalCredit"]);
                         TAccountTable.Balance = Convert.ToDouble(row["Balance"]);
 
 
@@ -634,9 +635,10 @@ namespace LeapLog
                     //for every account, pull data
                     foreach (var i in DBList)
                     {
-                        taccRow++;
+                        
                         if (i.DebitList != null)
                         {
+                            taccRow++;
                             // workSheet2.Cells[taccRow, "A"] = i.ID_TAcccounts;    
                             workSheet2.Cells[taccRow, "B"] = i.Account_TAccounts;
                             workSheet2.Cells[taccRow, "C"] = i.Type_TAccounts;
@@ -715,22 +717,22 @@ namespace LeapLog
                     {
 
                         // tableAdapterr finder = DBList.Find(totalRevenueFinder);
-
-                        if (i.Total_Revenue != 0)
+                        if (i.Net_Income != 0)
                         {
                             IERow++;
+                            workSheet4.Cells[IERow, "D"] = i.Net_Income;
+                        }
+                        if (i.Total_Revenue != 0)
+                        {
+                            //IERow++;
                             workSheet4.Cells[IERow, "B"] = i.Total_Revenue;
                         }
                         if (i.Total_Expense != 0)
                         {
-                            // IERow++;
+                            //IERow++;
                             workSheet4.Cells[IERow, "C"] = i.Total_Expense;
                         }
-                        if (i.Net_Income != 0)
-                        {
-                            //IERow++;
-                            workSheet4.Cells[IERow, "D"] = i.Net_Income;
-                        }
+                        
 
                     }
 
@@ -740,7 +742,7 @@ namespace LeapLog
                     foreach (var i in DBList)
                     {
 
-
+                        
                         if (i.Start_Capital != 0)
                         {
                             SOERow++;
@@ -748,17 +750,17 @@ namespace LeapLog
                         }
                         if (i.Net_Income_StatementOfOE != 0)
                         {
-                            SOERow++;
+                            //SOERow++;
                             workSheet5.Cells[SOERow, "C"] = i.Net_Income_StatementOfOE;
                         }
                         if (i.Total_Withdrawals != 0)
                         {
-                            SOERow++;
+                            //SOERow++;
                             workSheet5.Cells[SOERow, "D"] = i.Total_Withdrawals;
                         }
                         if (i.FInal_Capital != 0)
                         {
-                            // SOERow++;
+                            //SOERow++;
                             workSheet5.Cells[SOERow, "E"] = i.FInal_Capital;
                         }
                     }
