@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
+using Syncfusion.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -762,18 +763,24 @@ namespace LeapLog
                     // Give our table data a nice look and feel.
                     workSheet.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                     workSheet.Columns.EntireColumn.AutoFit();
+                    workSheet.Range["A1", "H1"].Interior.Color = Excel.XlRgbColor.rgbDarkBlue;
+
                     workSheet2.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                     workSheet2.Columns.EntireColumn.AutoFit();
+                    workSheet2.Range["A1", "H1"].Interior.Color = Excel.XlRgbColor.rgbDarkBlue;
+
                     workSheet3.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                     workSheet3.Columns.EntireColumn.AutoFit();
+                    workSheet3.Range["A1", "G1"].Interior.Color = Excel.XlRgbColor.rgbDarkBlue;
+
                     workSheet4.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                     workSheet4.Columns.EntireColumn.AutoFit();
+                    workSheet4.Range["A1", "H1"].Interior.Color = Excel.XlRgbColor.rgbDarkBlue;
+                    
                     workSheet5.Range["A1"].AutoFormat(XlRangeAutoFormat.xlRangeAutoFormatClassic2);
                     workSheet5.Columns.EntireColumn.AutoFit();
-
-
-
-
+                    workSheet5.Range["A1", "E1"].Interior.Color = Excel.XlRgbColor.rgbDarkBlue;
+                    
                     // Save the file, quit Excel, and display message to user.
                     // workSheet.SaveAs($@"{Environment.CurrentDirectory}\" + tableName + ".xlsx");
                     try
@@ -803,8 +810,29 @@ namespace LeapLog
 
         }
 
+        public void colorRows(Excel._Worksheet worksheet)
+        {
 
+            //counter variable
+            int count = 1;
 
+            //Iterate the rows in the used range
+            foreach (Excel.Range row in worksheet.UsedRange.Rows)
+            {
+                //if row is even
+                if (count % 2 == 0)
+                {
+                    row.Interior.Color = Excel.XlRgbColor.rgbWhiteSmoke;
+                }
+                //if row is odd
+                else
+                {
+                    row.Interior.Color = Excel.XlRgbColor.rgbSlateGrey;
+                }
+
+                count++;
+            }
+        }
 
         private void account1TB_GotFocus(object sender, RoutedEventArgs e)
         {
