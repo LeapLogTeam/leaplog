@@ -875,72 +875,79 @@ namespace LeapLog
 
             else
             {
-
-                foreach (var i in Database.TEntries)
+                try
                 {
+                    foreach (var i in Database.TEntries)
+                    {
 
-                    sqlTables.WriteData("INSERT INTO " + TaccountName + " VALUES ('" + i.Account + "','" + i.Type + "','" + string.Join("\n", i.Debit.ToArray()) + "','" + string.Join("\n", i.Credit.ToArray()) + "','" + i.TotalDebit + "','" + i.TotalCredit + "','" + i.Balance + "')");
+                        sqlTables.WriteData("INSERT INTO " + TaccountName + " VALUES ('" + i.Account + "','" + i.Type + "','" + string.Join("\n", i.Debit.ToArray()) + "','" + string.Join("\n", i.Credit.ToArray()) + "','" + i.TotalDebit + "','" + i.TotalCredit + "','" + i.Balance + "')");
 
 
+                    }
+
+                    //**********insert into Balance Sheet************
+
+
+                    //iterate through list of all asset accounts
+                    for (int i = 0; i < Database.TEntries.Count; i++)
+                    {
+                        string assetAccountName = "";
+                        double assetBalance = 0;
+                        string loeAccountName = "";
+                        double loeBalance = 0;
+                        if (i < Database.BalanceData.assetsList.Count)
+                        {
+                            assetAccountName = Database.BalanceData.assetsList[i].Account;
+                            assetBalance = Database.BalanceData.assetsList[i].Balance;
+                        }
+                        if (i < Database.BalanceData.loeList.Count)
+                        {
+                            loeAccountName = Database.BalanceData.loeList[i].Account;
+                            loeBalance = Database.BalanceData.loeList[i].Balance;
+                        }
+                        sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + assetAccountName + "','" + assetBalance + "','" + Database.BalanceData.total_assets + "','" + loeAccountName + "','" + loeBalance + "','" + Database.BalanceData.total_loe + "')");
+
+
+                    }
+
+
+                    //**********insert into Income Statement************
+
+                    for (int i = 0; i < Database.TEntries.Count; i++)
+                    {
+
+                        string revenueAccountName = "";
+                        double revenueBalance = 0;
+                        string expenseAccountName = "";
+                        double expenseBalance = 0;
+                        if (i < Database.IncomeData.revenueList.Count)
+                        {
+                            revenueAccountName = Database.IncomeData.revenueList[i].Account;
+                            revenueBalance = Database.IncomeData.revenueList[i].Balance;
+                        }
+                        if (i < Database.IncomeData.expenseList.Count)
+                        {
+                            expenseAccountName = Database.IncomeData.expenseList[i].Account;
+                            expenseBalance = Database.IncomeData.expenseList[i].Balance;
+                        }
+
+                        sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + revenueAccountName + "','" + revenueBalance + "','" + Database.IncomeData.total_revenue + "','" + expenseAccountName + "','" + expenseBalance + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
+                    }
+
+                    //**********insert into Stetemtent of Owner Equity************
+
+
+                    sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital + "')");
+
+
+                    //MessageBox.Show("Table data saved to database.", "Saved", button, icon);
+                    return true;
                 }
-
-                //**********insert into Balance Sheet************
-
-
-                //iterate through list of all asset accounts
-                for (int i = 0; i < Database.TEntries.Count; i++)
+                catch
                 {
-                    string assetAccountName = "";
-                    double assetBalance = 0;
-                    string loeAccountName = "";
-                    double loeBalance = 0;
-                    if (i < Database.BalanceData.assetsList.Count)
-                    {
-                        assetAccountName = Database.BalanceData.assetsList[i].Account;
-                        assetBalance = Database.BalanceData.assetsList[i].Balance;
-                    }
-                    if (i < Database.BalanceData.loeList.Count)
-                    {
-                        loeAccountName = Database.BalanceData.loeList[i].Account;
-                        loeBalance = Database.BalanceData.loeList[i].Balance;
-                    }
-                    sqlTables.WriteData("INSERT INTO " + BalanceSheetName + " VALUES ('" + assetAccountName + "','" + assetBalance + "','" + Database.BalanceData.total_assets + "','" + loeAccountName + "','" + loeBalance + "','" + Database.BalanceData.total_loe + "')");
-
-
+                    MessageBox.Show("Add a database first before attempting to export.", "Error", button, icon);
+                    return false;
                 }
-
-
-                //**********insert into Income Statement************
-
-                for (int i = 0; i < Database.TEntries.Count; i++)
-                {
-
-                    string revenueAccountName = "";
-                    double revenueBalance = 0;
-                    string expenseAccountName = "";
-                    double expenseBalance = 0;
-                    if (i < Database.IncomeData.revenueList.Count)
-                    {
-                        revenueAccountName = Database.IncomeData.revenueList[i].Account;
-                        revenueBalance = Database.IncomeData.revenueList[i].Balance;
-                    }
-                    if (i < Database.IncomeData.expenseList.Count)
-                    {
-                        expenseAccountName = Database.IncomeData.expenseList[i].Account;
-                        expenseBalance = Database.IncomeData.expenseList[i].Balance;
-                    }
-                    
-                    sqlTables.WriteData("INSERT INTO " + IncomeStatementName + " VALUES ('" + revenueAccountName + "','" + revenueBalance + "','" + Database.IncomeData.total_revenue + "','" + expenseAccountName + "','" + expenseBalance + "','" + Database.IncomeData.total_expenses + "','" + Database.IncomeData.net_income + "')");
-                }
-
-                //**********insert into Stetemtent of Owner Equity************
-
-
-                sqlTables.WriteData("INSERT INTO " + StatementOfOEName + " VALUES ('" + Database.SoeData.start_capital + "','" + Database.SoeData.net_income + "','" + Database.SoeData.total_withdrawals + "','" + Database.SoeData.final_capital + "')");
-
-
-                //MessageBox.Show("Table data saved to database.", "Saved", button, icon);
-                return true;
             }
         }
 
