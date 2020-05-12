@@ -20,6 +20,7 @@ accounting for users and small businesses unfamiliar with accounting tools.
 - Statement of Owner's Equity
 - Help Features
 - Export to Excel Feature
+- Database that holds user information and data
 
 
 https://github.com/LeapLogTeam/leaplog
